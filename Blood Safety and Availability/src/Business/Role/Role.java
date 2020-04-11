@@ -25,7 +25,7 @@ public abstract class Role {
         Doctor("Doctor"),
         Donor("Donor"),
         Patient("Patient");
-        
+
         private String value;
         private RoleType(String value){
             this.value = value;
