@@ -246,7 +246,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         String name = nameJTextField.getText();
         
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
-        if(enterprise.getEnterpriseType().equals("Hospital")) {
+        if(enterprise.getEnterpriseType().getValue().equals("Hospital")) {
             UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
         } else {
             UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new BloodBankAdminRole());
