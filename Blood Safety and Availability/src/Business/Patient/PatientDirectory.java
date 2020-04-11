@@ -4,11 +4,25 @@
  * and open the template in the editor.
  */
 package Business.Patient;
-
+import java.util.ArrayList;
 /**
  *
  * @author Marisa
  */
 public class PatientDirectory {
-    
+  private ArrayList<Patient> patientList;
+ public PatientDirectory() {
+        patientList = new ArrayList();
+    } 
+ 
+  public ArrayList<Patient> getPatientList() {
+        return patientList;
+    }
+  
+  public Patient createPatient(String patientName){
+        Patient patient = new Patient();
+        patient.setPatientName(patientName);
+        patientList.add(patient);
+        return patient;
+    }
 }

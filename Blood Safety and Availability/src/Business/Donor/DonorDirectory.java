@@ -4,11 +4,25 @@
  * and open the template in the editor.
  */
 package Business.Donor;
-
+import java.util.ArrayList;
 /**
  *
  * @author Marisa
  */
 public class DonorDirectory {
-    
+   private ArrayList<Donor> donorList; 
+   
+   public DonorDirectory() {
+        donorList = new ArrayList();
+    }
+   
+   public ArrayList<Donor> getDonorList() {
+        return donorList;}
+   
+   public Donor createDonor(String donorName){
+        Donor donor = new Donor();
+        donor.setDonorName(donorName);
+        donorList.add(donor);
+        return donor;
+    }
 }
