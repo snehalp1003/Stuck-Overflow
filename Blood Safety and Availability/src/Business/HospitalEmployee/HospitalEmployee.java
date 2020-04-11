@@ -31,10 +31,6 @@ public class HospitalEmployee {
     public int getHospitalEmpId() {
         return hospitalEmpId;
     }
-
-    public void setHospitalEmpId(int hospitalEmpId) {
-        this.hospitalEmpId = hospitalEmpId;
-    }
         
     @Override
     public String toString() {
