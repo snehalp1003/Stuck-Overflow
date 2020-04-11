@@ -21,11 +21,11 @@ public abstract class Role {
         BloodBankAdmin("BloodBankAdmin"),
         HospitalStaff("HospitalStaff"),
         BloodBankStaff("BloodBankStaff"),
+        LabSupervisor("LabSupervisor"),
         Doctor("Doctor"),
         Donor("Donor"),
         Patient("Patient");
-        
-        
+
         private String value;
         private RoleType(String value){
             this.value = value;
