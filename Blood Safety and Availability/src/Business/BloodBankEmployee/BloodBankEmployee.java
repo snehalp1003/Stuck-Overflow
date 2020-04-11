@@ -10,5 +10,11 @@ package Business.BloodBankEmployee;
  * @author Snehal
  */
 public class BloodBankEmployee {
+    private String name;
+    private int bloodBankEmpId;
+    private static int count = 1;
     
+    public BloodBankEmployee() {
+        
+    }
 }
