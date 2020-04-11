@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Donor;
+package Business.Donor;
+
+import java.util.Date;
 
 
 
@@ -15,16 +17,16 @@ public class Donor {
 
 
   private String donorName;
-    private int d_ID;
+    private int donorID;
     private String donorBloodType;
     private long contact;
     private String donorMedHist;
-    private date donatedDate;
+    private Date donatedDate;
     
     private static int count = 1;
 
     public Donor() {
-        d_ID = count;
+        donorID = count;
         count++;
     }  
      
