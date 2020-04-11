@@ -15,6 +15,24 @@ public class BloodBankEmployee {
     private static int count = 1;
     
     public BloodBankEmployee() {
-        
+        bloodBankEmpId = count;
+        count++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getBloodBankEmpId() {
+        return bloodBankEmpId;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
