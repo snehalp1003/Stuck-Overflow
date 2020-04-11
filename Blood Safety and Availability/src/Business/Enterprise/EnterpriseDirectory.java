@@ -27,14 +27,17 @@ public class EnterpriseDirectory {
         enterpriseList=new ArrayList<Enterprise>();
     }
     
-    //Create enterprise to be updated later
+    //Create enterprise 
     
-//    public Enterprise createAndAddEnterprise(String name,Enterprise.EnterpriseType type){
-//        Enterprise enterprise=null;
-//        if(type==Enterprise.EnterpriseType.Hospital){
-//            enterprise=new HospitalEnterprise(name);
-//            enterpriseList.add(enterprise);
-//        }
-//        return enterprise;
-//    }
+    public Enterprise createAndAddEnterprise(String name,Enterprise.EnterpriseType type){
+        Enterprise enterprise=null;
+        if(type==Enterprise.EnterpriseType.Hospital){
+            enterprise=new HospitalEnterprise(name);
+            enterpriseList.add(enterprise);
+        } else if (type==Enterprise.EnterpriseType.BloodBank) {
+            enterprise=new BloodBankEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
+        return enterprise;
+    }
 }
