@@ -9,6 +9,7 @@ import Business.Employee.Employee;
 import Business.Employee.EmployeeDirectory;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
+import Business.Organization.OrganizationDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -22,15 +23,15 @@ import javax.swing.table.DefaultTableModel;
 public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    private Enterprise enterprise;
+    private OrganizationDirectory organizationDir;
 
     /**
      * Creates new form HospitalManageEmployeeJPanel
      */
-    public ManageHospitalEmployeeJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    public ManageHospitalEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDir) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.enterprise = enterprise;
+        this.organizationDir = organizationDir;
 
         populateOrganizationComboBox();
         populateTable();
@@ -38,25 +39,31 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
 
     public void populateOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
-
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            organizationJComboBox.addItem(organization);
-        }
-    }
-
-    public void populateRoleComboBox(Organization organization) {
         roleJComboBox.removeAllItems();
 
-        for (Role role : organization.getSupportedRole()) {
-            roleJComboBox.addItem(role);
+        for (Organization organization : organizationDir.getOrganizationList()) {
+            organizationJComboBox.addItem(organization);
+//            for (Role.RoleType type : Role.RoleType.values()) {
+            for (Role role : organization.getSupportedRole()) {
+                
+                roleJComboBox.addItem(role.toString());
+            }
         }
     }
+
+//    public void populateRoleComboBox(OrganizationDirectory organizationDir) {
+//        roleJComboBox.removeAllItems();
+//
+//        for (Role role : organization.getSupportedRole()) {
+//            roleJComboBox.addItem(role);
+//        }
+//    }
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) employeeJTable.getModel();
 
         model.setRowCount(0);
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+        for (Organization organization : organizationDir.getOrganizationList()) {
             for (UserAccount userAcc : organization.getUserAccountDirectory().getUserAccountList()) {
                 Object[] row = new Object[2];
                 row[0] = userAcc.getEmployee().getId();
@@ -256,7 +263,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_createEmployeeJButtonActionPerformed
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
-        populateRoleComboBox((Organization) organizationJComboBox.getSelectedItem());
+//        populateRoleComboBox((Organization) organizationJComboBox.getSelectedItem());
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 
 

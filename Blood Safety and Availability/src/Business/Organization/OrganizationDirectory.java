@@ -28,14 +28,20 @@ public class OrganizationDirectory {
        if (type.getValue().equals(Organization.Type.Doctor.getValue())){
            organization = new DoctorOrganization();
             organizationList.add(organization);
-        }
-        else if (type.getValue().equals(Organization.Type.BloodBankStaff.getValue())){
+        } else if (type.getValue().equals(Organization.Type.HospitalStaff.getValue())){
+           organization = new HospitalStaffOrganization();
+            organizationList.add(organization);
+        } else if (type.getValue().equals(Organization.Type.Patient.getValue())){
+           organization = new PatientOrganization();
+            organizationList.add(organization);
+        } else if (type.getValue().equals(Organization.Type.BloodBankStaff.getValue())){
           organization = new BloodBankStaffOrganization();
           organizationList.add(organization);
-       }
-       
-       else if (type.getValue().equals(Organization.Type.LabSupervisor.getValue())){
+       } else if (type.getValue().equals(Organization.Type.LabSupervisor.getValue())){
           organization = new LabSupervisorOrganization();
+          organizationList.add(organization);
+       } else if (type.getValue().equals(Organization.Type.Donor.getValue())){
+          organization = new DonorOrganization();
           organizationList.add(organization);
        }
        
