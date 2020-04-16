@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  *
  * @author HP
  */
-public class AdminWorkAreaJPanel extends javax.swing.JPanel {
+public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     
     JPanel userProcessContainer;
@@ -21,7 +21,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
    
    
     
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    public BloodBankAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -43,7 +43,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         ManageBBEmpJBtn = new javax.swing.JButton();
         ManageUsersjBtn = new javax.swing.JButton();
         ManageOrganizationjBtn = new javax.swing.JButton();
-        ManageBBUserNamesjBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -67,7 +67,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         add(ManageBBEmpJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 260, -1));
 
         ManageUsersjBtn.setText("Manage Donors");
-        add(ManageUsersjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 150, -1));
+        add(ManageUsersjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 150, -1));
 
         ManageOrganizationjBtn.setText("Manage Organization");
         ManageOrganizationjBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -77,13 +77,13 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(ManageOrganizationjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
-        ManageBBUserNamesjBtn.setText("Manage Blood Bank Usernames");
-        ManageBBUserNamesjBtn.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Manage Blood Bank Username");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManageBBUserNamesjBtnActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        add(ManageBBUserNamesjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 260, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ManageBBEmpJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageBBEmpJBtnActionPerformed
@@ -103,22 +103,22 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_ManageOrganizationjBtnActionPerformed
 
-    private void ManageBBUserNamesjBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageBBUserNamesjBtnActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ManageBloodBankUserAccountJPanel mBBUAJP = new ManageBloodBankUserAccountJPanel(userProcessContainer, enterprise);
-        userProcessContainer.add("ManageBloodBankUserAccountJPanel", mBBUAJP);
-
+        
+        ManageBloodBankUserAccountJPanel MBBAJP = new ManageBloodBankUserAccountJPanel(userProcessContainer, enterprise);
+        userProcessContainer.add("MBBAJP", MBBAJP);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_ManageBBUserNamesjBtnActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ManageBBEmpJBtn;
-    private javax.swing.JButton ManageBBUserNamesjBtn;
     private javax.swing.JButton ManageOrganizationjBtn;
     private javax.swing.JButton ManageUsersjBtn;
     private javax.swing.JLabel enterpriseLabel1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel valueLabel1;
     // End of variables declaration//GEN-END:variables
