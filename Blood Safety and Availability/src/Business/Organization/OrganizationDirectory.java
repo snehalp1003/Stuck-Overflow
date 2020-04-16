@@ -5,6 +5,7 @@
  */
 package Business.Organization;
 
+import Business.Organization.Organization.Type;
 import java.util.ArrayList;
 
 /**
@@ -24,23 +25,23 @@ public class OrganizationDirectory {
     
     public Organization createOrganization(Organization.Type type){
         Organization organization = null;
-        // To updated later
-       if (type.getValue().equals(Organization.Type.Doctor.getValue())){
+        
+       if (type.getValue().equals(Type.Doctor.getValue())){
            organization = new DoctorOrganization();
             organizationList.add(organization);
-        } else if (type.getValue().equals(Organization.Type.HospitalStaff.getValue())){
+        } else if (type.getValue().equals(Type.HospitalStaff.getValue())){
            organization = new HospitalStaffOrganization();
             organizationList.add(organization);
-        } else if (type.getValue().equals(Organization.Type.Patient.getValue())){
+        } else if (type.getValue().equals(Type.Patient.getValue())){
            organization = new PatientOrganization();
             organizationList.add(organization);
-        } else if (type.getValue().equals(Organization.Type.BloodBankStaff.getValue())){
+        } else if (type.getValue().equals(Type.BloodBankStaff.getValue())){
           organization = new BloodBankStaffOrganization();
           organizationList.add(organization);
-       } else if (type.getValue().equals(Organization.Type.LabSupervisor.getValue())){
+       } else if (type.getValue().equals(Type.LabSupervisor.getValue())){
           organization = new LabSupervisorOrganization();
           organizationList.add(organization);
-       } else if (type.getValue().equals(Organization.Type.Donor.getValue())){
+       } else if (type.getValue().equals(Type.Donor.getValue())){
           organization = new DonorOrganization();
           organizationList.add(organization);
        }

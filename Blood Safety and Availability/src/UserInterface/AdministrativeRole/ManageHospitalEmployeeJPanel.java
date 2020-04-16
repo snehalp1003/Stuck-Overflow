@@ -46,7 +46,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
 //            for (Role.RoleType type : Role.RoleType.values()) {
             for (Role role : organization.getSupportedRole()) {
                 
-                roleJComboBox.addItem(role.toString());
+                roleJComboBox.addItem(role);
             }
         }
     }
@@ -65,7 +65,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (Organization organization : organizationDir.getOrganizationList()) {
             for (UserAccount userAcc : organization.getUserAccountDirectory().getUserAccountList()) {
-                Object[] row = new Object[2];
+                Object[] row = new Object[3];
                 row[0] = userAcc.getEmployee().getId();
                 row[1] = userAcc.getEmployee().getName();
                 row[2] = userAcc.getRole();
@@ -254,7 +254,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
 
-        EmployeeDirectory empDir = null;
+        EmployeeDirectory empDir = new EmployeeDirectory();
         Employee employee = empDir.createEmployee(name);
         organization.getEmployeeDirectory().getEmployeeList().add(employee);
         organization.getUserAccountDirectory().createUserAccount(username, password, employee, role);
