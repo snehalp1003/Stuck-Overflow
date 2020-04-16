@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class DoctorOrganization extends Organization{
     public DoctorOrganization(){
-        super(Type.Doctor.getValue());
+        super(Organization.Type.Doctor.getValue());
     }
     
     @Override
