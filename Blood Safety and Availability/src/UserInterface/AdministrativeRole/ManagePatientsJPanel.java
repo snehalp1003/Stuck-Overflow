@@ -5,11 +5,11 @@
  */
 package UserInterface.AdministrativeRole;
 
-import Business.Employee.Employee;
-import Business.Employee.EmployeeDirectory;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Patient.Patient;
+import Business.Patient.PatientDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -20,16 +20,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Snehal
  */
-public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
+public class ManagePatientsJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private OrganizationDirectory organizationDir;
-
     /**
-     * Creates new form HospitalManageEmployeeJPanel
+     * Creates new form ManagePatientsJPanel
      */
-    public ManageHospitalEmployeeJPanel(JPanel userProcessContainer, Enterprise enterprise, OrganizationDirectory organizationDir) {
+    public ManagePatientsJPanel(JPanel userProcessContainer, Enterprise enterprise, OrganizationDirectory organizationDir) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -37,43 +36,6 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
 
         populateOrganizationComboBox();
         populateTable();
-    }
-
-    public void populateOrganizationComboBox() {
-        organizationJComboBox.removeAllItems();
-
-        for (Organization organization : organizationDir.getOrganizationList()) {
-            if (!organization.getName().equals("Patient Organization")) {
-                organizationJComboBox.addItem(organization);
-            }
-        }
-    }
-
-    public void populateRoleComboBox(Organization organization) {
-        roleJComboBox.removeAllItems();
-        if (organization != null) {
-            for (Role role : organization.getSupportedRole()) {
-                roleJComboBox.addItem(role);
-            }
-        }
-    }
-
-    private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) employeeJTable.getModel();
-
-        model.setRowCount(0);
-        for (Organization organization : organizationDir.getOrganizationList()) {
-            for (UserAccount userAcc : organization.getUserAccountDirectory().getUserAccountList()) {
-                if (userAcc.getEmployee() != null) {
-                    Object[] row = new Object[3];
-                    row[0] = userAcc.getEmployee().getId();
-                    row[1] = userAcc.getEmployee().getName();
-                    row[2] = userAcc.getRole();
-                    model.addRow(row);
-                }
-            }
-        }
-
     }
 
     /**
@@ -87,12 +49,12 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        employeeJTable = new javax.swing.JTable();
+        patientJTable = new javax.swing.JTable();
         organizationJComboBox = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         nameJTextField = new javax.swing.JTextField();
         backJButton = new javax.swing.JButton();
-        createEmployeeJButton = new javax.swing.JButton();
+        createPatientJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         roleJComboBox = new javax.swing.JComboBox();
@@ -101,7 +63,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         usernameJTextField = new javax.swing.JTextField();
         passwordJPasswordField = new javax.swing.JPasswordField();
 
-        employeeJTable.setModel(new javax.swing.table.DefaultTableModel(
+        patientJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -127,7 +89,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(employeeJTable);
+        jScrollPane1.setViewportView(patientJTable);
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -145,10 +107,10 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
             }
         });
 
-        createEmployeeJButton.setText("Create Employee");
-        createEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
+        createPatientJButton.setText("Create Patient");
+        createPatientJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createEmployeeJButtonActionPerformed(evt);
+                createPatientJButtonActionPerformed(evt);
             }
         });
 
@@ -168,30 +130,32 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(185, 185, 185)
-                .addComponent(createEmployeeJButton)
+                .addComponent(createPatientJButton)
                 .addGap(48, 48, 48)
                 .addComponent(backJButton)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(162, 162, 162)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(usernameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(nameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(roleJComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 247, Short.MAX_VALUE)
-                        .addComponent(passwordJPasswordField))
-                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(usernameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(nameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(roleJComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 247, Short.MAX_VALUE)
+                                .addComponent(passwordJPasswordField))
+                            .addComponent(organizationJComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -221,7 +185,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
                     .addComponent(passwordJPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(createEmployeeJButton)
+                    .addComponent(createPatientJButton)
                     .addComponent(backJButton))
                 .addGap(47, 47, 47))
         );
@@ -232,7 +196,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 177, Short.MAX_VALUE))
+                .addGap(0, 205, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,6 +206,46 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void populateOrganizationComboBox() {
+        organizationJComboBox.removeAllItems();
+
+        for (Organization organization : organizationDir.getOrganizationList()) {
+            if(organization.getName().equals("Patient Organization")) {
+                organizationJComboBox.addItem(organization);
+            }
+        }
+    }
+
+    public void populateRoleComboBox(Organization organization) {
+        roleJComboBox.removeAllItems();
+        if (organization != null) {
+            for (Role role : organization.getSupportedRole()) {
+                roleJComboBox.addItem(role);
+            }
+        }
+    }
+
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) patientJTable.getModel();
+
+        model.setRowCount(0);
+        for (Organization organization : organizationDir.getOrganizationList()) {
+            for (UserAccount userAcc : organization.getUserAccountDirectory().getUserAccountList()) {
+                if (userAcc.getPatient() != null) {
+                    Object[] row = new Object[3];
+                    row[0] = userAcc.getPatient().getPatientID();
+                    row[1] = userAcc.getPatient().getPatientName();
+                    row[2] = userAcc.getRole();
+                    model.addRow(row);
+                }
+            }
+        }
+    }
+    
+    private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
+        populateRoleComboBox((Organization) organizationJComboBox.getSelectedItem());
+    }//GEN-LAST:event_organizationJComboBoxActionPerformed
+
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
         userProcessContainer.remove(this);
@@ -249,7 +253,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void createEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEmployeeJButtonActionPerformed
+    private void createPatientJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPatientJButtonActionPerformed
 
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         Role role = (Role) roleJComboBox.getSelectedItem();
@@ -257,23 +261,18 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
 
-        EmployeeDirectory empDir = new EmployeeDirectory();
-        Employee employee = empDir.createEmployee(name);
-        organization.getEmployeeDirectory().getEmployeeList().add(employee);
-        organization.getUserAccountDirectory().createUserAccount(username, password, employee, null, null, role);
+        PatientDirectory patientDir = new PatientDirectory();
+        Patient patient = patientDir.createPatient(name);
+        organization.getPatientDirectory().createPatient(name);
+        organization.getUserAccountDirectory().createUserAccount(username, password, null, patient, null, role);
 
         populateTable();
-    }//GEN-LAST:event_createEmployeeJButtonActionPerformed
-
-    private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
-        populateRoleComboBox((Organization) organizationJComboBox.getSelectedItem());
-    }//GEN-LAST:event_organizationJComboBoxActionPerformed
+    }//GEN-LAST:event_createPatientJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
-    private javax.swing.JButton createEmployeeJButton;
-    private javax.swing.JTable employeeJTable;
+    private javax.swing.JButton createPatientJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -284,6 +283,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox organizationJComboBox;
     private javax.swing.JPasswordField passwordJPasswordField;
+    private javax.swing.JTable patientJTable;
     private javax.swing.JComboBox roleJComboBox;
     private javax.swing.JTextField usernameJTextField;
     // End of variables declaration//GEN-END:variables

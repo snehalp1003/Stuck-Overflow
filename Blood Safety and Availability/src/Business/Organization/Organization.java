@@ -5,7 +5,9 @@
  */
 package Business.Organization;
 
+import Business.Donor.DonorDirectory;
 import Business.Employee.EmployeeDirectory;
+import Business.Patient.PatientDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -20,6 +22,8 @@ public abstract class Organization {
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
+    private PatientDirectory patientDirectory;
+    private DonorDirectory donorDirectory;
     private int organizationID;
     private static int counter=0;
     
@@ -39,6 +43,7 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
+        patientDirectory = new PatientDirectory();
         organizationID = counter;
         ++counter;
     }
@@ -55,6 +60,14 @@ public abstract class Organization {
 
     public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
+    }
+
+    public PatientDirectory getPatientDirectory() {
+        return patientDirectory;
+    }
+
+    public DonorDirectory getDonorDirectory() {
+        return donorDirectory;
     }
     
     public String getName() {

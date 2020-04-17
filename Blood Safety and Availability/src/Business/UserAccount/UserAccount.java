@@ -5,7 +5,9 @@
  */
 package Business.UserAccount;
 
+import Business.Donor.Donor;
 import Business.Employee.Employee;
+import Business.Patient.Patient;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
 
@@ -17,15 +19,15 @@ public class UserAccount {
     private String username;
     private String password;
     private Employee employee;
+    private Patient patient;
+    private Donor donor;
     private Role role;
     private WorkQueue workQueue;
 
     public UserAccount() {
         workQueue = new WorkQueue();
     }
-    
-    
-    
+
     public String getUsername() {
         return username;
     }
@@ -58,11 +60,25 @@ public class UserAccount {
         return employee;
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Donor getDonor() {
+        return donor;
+    }
+
+    public void setDonor(Donor donor) {
+        this.donor = donor;
+    }
+
     public WorkQueue getWorkQueue() {
         return workQueue;
     }
-
-    
     
     @Override
     public String toString() {
