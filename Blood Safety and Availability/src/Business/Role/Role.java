@@ -17,14 +17,14 @@ import javax.swing.JPanel;
  */
 public abstract class Role {
     public enum RoleType{
-        HospitalAdmin("HospitalAdmin"),
-        BloodBankAdmin("BloodBankAdmin"),
-        HospitalStaff("Hospital Staff"),
-        BloodBankStaff("BloodBankStaff"),
-        LabSupervisor("LabSupervisor"),
-        Doctor("Doctor"),
-        Donor("Donor"),
-        Patient("Patient");
+        HospitalAdminRole("Hospital Admin"),
+        BloodBankAdminRole("Blood Bank Admin"),
+        HospitalStaffRole("Hospital Staff"),
+        BloodBankStaffRole("Blood Bank Staff"),
+        LabSupervisorRole("Lab Supervisor"),
+        DoctorRole("Doctor"),
+        DonorRole("Donor"),
+        PatientRole("Patient");
 
         private String value;
         private RoleType(String value){
@@ -49,6 +49,17 @@ public abstract class Role {
 
     @Override
     public String toString() {
-        return this.getClass().getName();
+        String roleName = this.getClass().getName();
+        switch(roleName) {
+            case "HospitalAdminRole": return "Hospital Admin";
+            case "BloodBankAdminRole": return "Blood Bank Admin";
+            case "Business.Role.BloodBankStaffRole": return "Blood Bank Staff";
+            case "Business.Role.DoctorRole": return "Doctor";
+            case "Business.Role.DonorRole": return "Donor";
+            case "Business.Role.HospitalStaffRole": return "Hospital Staff";
+            case "Business.Role.LabSupervisorRole": return "Lab Supervisor";
+            case "Business.Role.PatientRole": return "Patient";
+            default: return roleName;                
+        }
     }
 }

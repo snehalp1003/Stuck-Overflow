@@ -41,7 +41,7 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel1 = new javax.swing.JLabel();
         valueLabel1 = new javax.swing.JLabel();
         ManageBBEmpJBtn = new javax.swing.JButton();
-        ManageUsersjBtn = new javax.swing.JButton();
+        ManageDonorsJBtn = new javax.swing.JButton();
         ManageOrganizationjBtn = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,11 +51,11 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
         enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel1.setText("EnterPrise :");
+        enterpriseLabel1.setText("Enterprise :");
         add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 120, 30));
 
         valueLabel1.setText("<value>");
-        add(valueLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 130, -1));
+        add(valueLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
 
         ManageBBEmpJBtn.setText("Manage Blood Bank Employees");
         ManageBBEmpJBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -65,8 +65,13 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(ManageBBEmpJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 260, -1));
 
-        ManageUsersjBtn.setText("Manage Donors");
-        add(ManageUsersjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 150, -1));
+        ManageDonorsJBtn.setText("Manage Donors");
+        ManageDonorsJBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageDonorsJBtnActionPerformed(evt);
+            }
+        });
+        add(ManageDonorsJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 260, -1));
 
         ManageOrganizationjBtn.setText("Manage Organization");
         ManageOrganizationjBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +79,7 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
                 ManageOrganizationjBtnActionPerformed(evt);
             }
         });
-        add(ManageOrganizationjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
+        add(ManageOrganizationjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 260, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ManageBBEmpJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageBBEmpJBtnActionPerformed
@@ -90,17 +95,21 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void ManageOrganizationjBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageOrganizationjBtnActionPerformed
         // TODO add your handling code here:
-        ManageOrganizationJPanel manageOrganizationJPanel = new ManageOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
+        ManageBloodBankOrganizationJPanel manageOrganizationJPanel = new ManageBloodBankOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_ManageOrganizationjBtnActionPerformed
 
+    private void ManageDonorsJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageDonorsJBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ManageDonorsJBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ManageBBEmpJBtn;
+    private javax.swing.JButton ManageDonorsJBtn;
     private javax.swing.JButton ManageOrganizationjBtn;
-    private javax.swing.JButton ManageUsersjBtn;
     private javax.swing.JLabel enterpriseLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel valueLabel1;
