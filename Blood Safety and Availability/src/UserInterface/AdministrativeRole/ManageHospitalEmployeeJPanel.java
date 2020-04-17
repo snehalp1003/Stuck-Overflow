@@ -41,25 +41,20 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
 
     public void populateOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
-        roleJComboBox.removeAllItems();
 
         for (Organization organization : organizationDir.getOrganizationList()) {
             organizationJComboBox.addItem(organization);
-//            for (Role.RoleType type : Role.RoleType.values()) {
+        }
+    }
+
+    public void populateRoleComboBox(Organization organization) {
+        roleJComboBox.removeAllItems();
+        if (organization != null) {
             for (Role role : organization.getSupportedRole()) {
-                
                 roleJComboBox.addItem(role);
             }
         }
     }
-
-//    public void populateRoleComboBox(OrganizationDirectory organizationDir) {
-//        roleJComboBox.removeAllItems();
-//
-//        for (Role role : organization.getSupportedRole()) {
-//            roleJComboBox.addItem(role);
-//        }
-//    }
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) employeeJTable.getModel();
@@ -174,10 +169,6 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
                 .addComponent(backJButton)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(162, 162, 162)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -186,12 +177,17 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(usernameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roleJComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 247, Short.MAX_VALUE)
-                    .addComponent(organizationJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passwordJPasswordField))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(usernameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nameJTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(roleJComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 247, Short.MAX_VALUE)
+                        .addComponent(passwordJPasswordField))
+                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -199,11 +195,11 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -232,7 +228,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addGap(0, 177, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +262,7 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_createEmployeeJButtonActionPerformed
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
-//        populateRoleComboBox((Organization) organizationJComboBox.getSelectedItem());
+        populateRoleComboBox((Organization) organizationJComboBox.getSelectedItem());
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 
 
