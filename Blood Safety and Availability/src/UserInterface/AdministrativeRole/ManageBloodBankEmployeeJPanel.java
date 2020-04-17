@@ -21,18 +21,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
 
-    private OrganizationDirectory organizationDir;
+    
     private JPanel userProcessContainer;
+    private OrganizationDirectory organizationDir;
    
     
     public ManageBloodBankEmployeeJPanel(JPanel userProcessContainer,OrganizationDirectory organizationDir) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDir = organizationDir;
-        
-   
         populateOrganizationComboBox();
-        //populateRoleComboBox();
+        populateTable();
+        
+        
         
 
     }
@@ -43,40 +44,30 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         
         for (Organization organization : organizationDir.getOrganizationList()){
             organizationJComboBox.addItem(organization);
-            /*for(Role.RoleType type : Role.RoleType.values())
+            for(Role role : organization.getSupportedRole())
             {
-                for(Role role : organization.getSupportedRole())
-                {
-                    roleJComboBox.addItem(role.toString());
-                }
-            }*/
+              roleJComboBox.addItem(role);
+            }
+            
             
         }
-    }
+    }  
      
      
-     private void populateRoleComboBox(Organization organization){
+     
+    /* private void populateRoleComboBox(Organization organization){
         roleJComboBox.removeAllItems();
         for (Role role : organization.getSupportedRole()){
             roleJComboBox.addItem(role);
         }
-    }
-     
-     
-     
-     /*public void popOrganizationComboBox() {
-        organizationJComboBox.removeAllItems();
-
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            organizationJComboBox.addItem(organization);
-        }
     }*/
+     
      
      
     
     
     private void populateTable(){
-        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) employeeJTable.getModel();
         
         model.setRowCount(0);
         
@@ -84,7 +75,7 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         {
             for(UserAccount userAcc : organization.getUserAccountDirectory().getUserAccountList())
             {
-                Object[] row = new Object[2];
+                Object[] row = new Object[3];
                 row[0] = userAcc.getEmployee().getId();
                 row[1] = userAcc.getEmployee().getName();
                 row[2] = userAcc.getRole();
@@ -107,7 +98,7 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        organizationJTable = new javax.swing.JTable();
+        employeeJTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         organizationJComboBox = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
@@ -121,22 +112,22 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         passwordJPasswordField = new javax.swing.JPasswordField();
 
-        organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
+        employeeJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID", "Name"
+                "ID", "Name", "Role"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -147,7 +138,7 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(organizationJTable);
+        jScrollPane1.setViewportView(employeeJTable);
 
         jLabel3.setText("Role:");
 
@@ -191,24 +182,26 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(184, 184, 184)
+                .addComponent(addJButton)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(backJButton)
-                        .addGap(59, 59, 59))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
+                        .addGap(59, 59, 59))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
+                        .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel4)
@@ -218,15 +211,13 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nameJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                            .addComponent(nameJTextField)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(usernameJTextFeild)
-                            .addComponent(roleJComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordJPasswordField))))
-                .addContainerGap(192, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(addJButton)
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(passwordJPasswordField))
+                        .addContainerGap(125, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,6 +260,8 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+        
+       
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -280,23 +273,15 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         String username = usernameJTextFeild.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
 
-        EmployeeDirectory empDir = null;
+        EmployeeDirectory empDir = new EmployeeDirectory();
         Employee employee = empDir.createEmployee(name);
         organization.getEmployeeDirectory().getEmployeeList().add(employee);
         organization.getUserAccountDirectory().createUserAccount(username, password, employee, role);
 
         populateTable();
-        /*
-        String userName = nameJTextField.getText();
-        String password = passwordJTextField.getText();
-        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-        Role role = (Role) roleJComboBox.getSelectedItem();
-
-        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-
-        popData();
-        */
+        
+       
+       
 
     }//GEN-LAST:event_addJButtonActionPerformed
 
@@ -307,17 +292,14 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         // TODO add your handling code here:
-        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        if (organization != null){
-            //populateEmployeeComboBox(organization);
-            populateRoleComboBox(organization);
-        }
+        
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton;
+    private javax.swing.JTable employeeJTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -326,7 +308,6 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox organizationJComboBox;
-    private javax.swing.JTable organizationJTable;
     private javax.swing.JPasswordField passwordJPasswordField;
     private javax.swing.JComboBox roleJComboBox;
     private javax.swing.JTextField usernameJTextFeild;
