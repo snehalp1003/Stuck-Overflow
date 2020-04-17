@@ -204,8 +204,8 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
                     .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameJTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -239,7 +239,7 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         EmployeeDirectory empDir = new EmployeeDirectory();
         Employee employee = empDir.createEmployee(name);
         organization.getEmployeeDirectory().getEmployeeList().add(employee);
-        organization.getUserAccountDirectory().createUserAccount(username, password, employee, role);
+        organization.getUserAccountDirectory().createUserAccount(username, password, employee, null, null, role);
 
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed

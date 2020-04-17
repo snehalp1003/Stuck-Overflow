@@ -244,9 +244,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         if(enterprise.getEnterpriseType().getValue().equals("Hospital")) {
-            UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
+            UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, null, null, new HospitalAdminRole());
         } else {
-            UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new BloodBankAdminRole());
+            UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, null, null, new BloodBankAdminRole());
         }
 
         populateTable();

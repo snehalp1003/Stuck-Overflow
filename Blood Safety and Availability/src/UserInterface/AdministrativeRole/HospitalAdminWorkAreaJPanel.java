@@ -94,7 +94,6 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ManageHospitalEmployeeJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageHospitalEmployeeJBtnActionPerformed
-        // TODO add your handling code here:
         ManageHospitalEmployeeJPanel manageHospitalEmployeeJPanel = new ManageHospitalEmployeeJPanel(userProcessContainer, enterprise, enterprise.getOrganizationDirectory());
         userProcessContainer.add("manageHospitalEmployeeJPanel", manageHospitalEmployeeJPanel);
 
@@ -103,7 +102,6 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ManageHospitalEmployeeJBtnActionPerformed
 
     private void ManageOrganizationjBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageOrganizationjBtnActionPerformed
-        // TODO add your handling code here:
         ManageHospitalOrganizationJPanel hospitalManageOrganizationJPanel = new ManageHospitalOrganizationJPanel(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("hospitalManageOrganizationJPanel", hospitalManageOrganizationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
@@ -111,7 +109,11 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ManageOrganizationjBtnActionPerformed
 
     private void ManagePatientsJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagePatientsJBtnActionPerformed
-        // TODO add your handling code here:
+        ManagePatientsJPanel managePatientsJPanel = new ManagePatientsJPanel(userProcessContainer, enterprise, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("managePatientsJPanel", managePatientsJPanel);
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_ManagePatientsJBtnActionPerformed
 
 
