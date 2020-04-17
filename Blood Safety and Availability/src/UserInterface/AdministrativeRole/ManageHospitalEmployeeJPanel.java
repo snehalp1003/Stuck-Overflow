@@ -23,14 +23,16 @@ import javax.swing.table.DefaultTableModel;
 public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private Enterprise enterprise;
     private OrganizationDirectory organizationDir;
 
     /**
      * Creates new form HospitalManageEmployeeJPanel
      */
-    public ManageHospitalEmployeeJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDir) {
+    public ManageHospitalEmployeeJPanel(JPanel userProcessContainer, Enterprise enterprise, OrganizationDirectory organizationDir) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
         this.organizationDir = organizationDir;
 
         populateOrganizationComboBox();
