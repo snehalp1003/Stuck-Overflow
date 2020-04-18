@@ -54,11 +54,12 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 255));
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 0, 51));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        loginJButton.setForeground(new java.awt.Color(102, 51, 0));
+        loginJButton.setForeground(new java.awt.Color(51, 0, 51));
         loginJButton.setText("Login");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,13 +67,13 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(102, 51, 0));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("User Name");
 
-        jLabel2.setForeground(new java.awt.Color(102, 51, 0));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Password");
 
-        logoutJButton.setForeground(new java.awt.Color(102, 51, 0));
+        logoutJButton.setForeground(new java.awt.Color(51, 0, 51));
         logoutJButton.setText("Logout");
         logoutJButton.setEnabled(false);
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +122,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
+        container.setBackground(new java.awt.Color(255, 255, 255));
         container.setInheritsPopupMenu(true);
         container.setLayout(new java.awt.CardLayout());
 
@@ -131,6 +133,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/1.JPG"))); // NOI18N
         jLabel3.setLabelFor(jLabel3);
         jLabel3.setText("BLOOD SAFETY & AVAILABILITY");
+        jLabel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.pink, java.awt.Color.black, java.awt.Color.pink, java.awt.Color.black));
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jLabel3.setName(""); // NOI18N
