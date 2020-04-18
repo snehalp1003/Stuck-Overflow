@@ -46,11 +46,11 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setText("My Work Area -Adminstrative Role");
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel2.setText("My Work Area - Adminstrative Role");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         enterpriseLabel1.setText("Enterprise :");
         jPanel1.add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 120, 30));
 
@@ -63,7 +63,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
                 ManageHospitalEmployeeJBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(ManageHospitalEmployeeJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 260, -1));
+        jPanel1.add(ManageHospitalEmployeeJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 260, 30));
 
         ManagePatientsJBtn.setText("Manage Patients");
         ManagePatientsJBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
                 ManagePatientsJBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(ManagePatientsJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 260, -1));
+        jPanel1.add(ManagePatientsJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 260, 30));
 
         ManageOrganizationjBtn.setText("Manage Organization");
         ManageOrganizationjBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
                 ManageOrganizationjBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(ManageOrganizationjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 260, -1));
+        jPanel1.add(ManageOrganizationjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 260, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
