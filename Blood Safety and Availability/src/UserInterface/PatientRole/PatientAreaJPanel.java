@@ -48,6 +48,10 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         helloLabel1 = new javax.swing.JLabel();
         hospitalNameLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(51, 0, 51));
+
+        bookAppointmentJButton.setForeground(new java.awt.Color(51, 0, 51));
         bookAppointmentJButton.setText("Book an Appointment");
         bookAppointmentJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +59,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewPersonalDetailsJButton.setForeground(new java.awt.Color(51, 0, 51));
         viewPersonalDetailsJButton.setText("View Personal Details");
         viewPersonalDetailsJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +72,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         helloLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         helloLabel.setText("Hello,");
 
+        viewHistoryJButton.setForeground(new java.awt.Color(51, 0, 51));
         viewHistoryJButton.setText("View History");
         viewHistoryJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
