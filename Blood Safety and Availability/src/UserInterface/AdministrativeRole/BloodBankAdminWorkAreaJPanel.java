@@ -102,7 +102,10 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ManageOrganizationjBtnActionPerformed
 
     private void ManageDonorsJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageDonorsJBtnActionPerformed
-        // TODO add your handling code here:
+        ManageDonorsJPanel manageDonorsJPanel = new ManageDonorsJPanel(userProcessContainer, enterprise, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("manageDonorsJPanel", manageDonorsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_ManageDonorsJBtnActionPerformed
 
 

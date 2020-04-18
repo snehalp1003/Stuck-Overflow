@@ -36,7 +36,7 @@ public class ManageBloodBankOrganizationJPanel extends javax.swing.JPanel {
         organizationJComboBox.removeAllItems();
         for (Type type : Organization.Type.values())
         {
-            if (type.getValue().equals(Type.BloodBankStaff.getValue())||type.getValue().equals(Type.LabSupervisor.getValue()))
+            if (type.getValue().equals(Type.BloodBankStaff.getValue())|| type.getValue().equals(Type.LabSupervisor.getValue()) || type.getValue().equals(Type.Donor.getValue()))
                 organizationJComboBox.addItem(type);
         }
     }
