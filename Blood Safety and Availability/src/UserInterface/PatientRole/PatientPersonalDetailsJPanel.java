@@ -6,8 +6,12 @@
 package UserInterface.PatientRole;
 
 import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -18,15 +22,52 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private Enterprise enterprise;
+    private Organization organization;
     private UserAccount userAcc;
+    private Patient updatedPatient;
+    private UserAccount updatedUserAccount;
+
     /**
      * Creates new form PatientPersonalDetailsJPanel
      */
-    public PatientPersonalDetailsJPanel(JPanel userProcessContainer, Enterprise enterprise, UserAccount userAcc) {
+    public PatientPersonalDetailsJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        this.organization = organization;
         this.userAcc = userAcc;
+        updatedPatient = userAcc.getPatient();
+        updatedUserAccount = this.userAcc;
+        populateUserDetails();
+    }
+
+    private void populateUserDetails() {
+        nameJTextField.setText(updatedPatient.getPatientName());
+        usernameJTextField.setText(userAcc.getUsername());
+        
+        if (updatedPatient.getPatientContact() != null) {
+            contactNoJTextField.setText(updatedPatient.getPatientContact().toString());
+        } else {
+            contactNoJTextField.setText("");
+        }
+        
+        if (updatedPatient.getPatientGender() != null) {
+            genderJComboBox.setSelectedItem(updatedPatient.getPatientGender());
+        } else {
+            genderJComboBox.setSelectedItem("");
+        }
+        
+        if (updatedPatient.getPatientDOB() != null) {
+            DOBDatePicker.setDate(updatedPatient.getPatientDOB());
+        } else {
+            DOBDatePicker.setDate(null);
+        }
+        
+        if (updatedPatient.getPatientBloodType() != null) {
+            bloodGroupJComboBox.setSelectedItem(updatedPatient.getPatientBloodType());
+        } else {
+            bloodGroupJComboBox.setSelectedItem("");
+        }
     }
 
     /**
@@ -49,11 +90,12 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
         genderJComboBox = new javax.swing.JComboBox();
         DOBDatePicker = new org.jdesktop.swingx.JXDatePicker();
         jLabel5 = new javax.swing.JLabel();
-        usernameJTextField1 = new javax.swing.JTextField();
+        contactNoJTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         bloodGroupJComboBox = new javax.swing.JComboBox();
         SaveJButton = new javax.swing.JButton();
+        changePasswordJButton = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -70,18 +112,17 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Name");
 
+        nameJTextField.setEditable(false);
+
         jLabel3.setText("Username");
+
+        usernameJTextField.setEditable(false);
 
         jLabel4.setText("Gender");
 
         genderJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Male", "Female", "Other" }));
 
         DOBDatePicker.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        DOBDatePicker.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DOBDatePickerActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Date of Birth");
 
@@ -99,51 +140,57 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
             }
         });
 
+        changePasswordJButton.setForeground(new java.awt.Color(51, 0, 51));
+        changePasswordJButton.setText("Change Password");
+        changePasswordJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePasswordJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(changePasswordJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(SaveJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(usernameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(180, 180, 180))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(usernameJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
                                         .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(32, 32, 32)))
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(19, 19, 19))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(usernameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(180, 180, 180))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(contactNoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(genderJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(DOBDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bloodGroupJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(178, 178, 178)
-                        .addComponent(SaveJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 222, Short.MAX_VALUE))
+                                    .addComponent(bloodGroupJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(308, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,21 +205,22 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
                     .addComponent(usernameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(DOBDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DOBDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bloodGroupJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactNoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7))
                 .addGap(97, 97, 97)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SaveJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(100, Short.MAX_VALUE))
+                    .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(changePasswordJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -188,12 +236,45 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SaveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveJButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SaveJButtonActionPerformed
+        Long patientContactNo = Long.parseLong(contactNoJTextField.getText());
+        if (patientContactNo == null || contactNoJTextField.getText().length() != 10) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid 10 digit contact number !");
+            return;
+        }
+        
+        String patientGender = genderJComboBox.getSelectedItem().toString();
+        if (patientGender == null || patientGender.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please select patient's gender !");
+            return;
+        }
+        
+        String patientBloodGroup = bloodGroupJComboBox.getSelectedItem().toString();
+        if (patientBloodGroup == null || patientBloodGroup.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please select patient's blood group !");
+            return;
+        }
 
-    private void DOBDatePickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DOBDatePickerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DOBDatePickerActionPerformed
+        Date today = new Date();
+        Date patientDOB = DOBDatePicker.getDate();
+        if (patientDOB == null || patientDOB.after(today)) {
+            JOptionPane.showMessageDialog(null, "Please select valid date of birth !");
+            return;
+        }
+
+        organization.getPatientDirectory().getPatientList().remove(updatedPatient);
+        organization.getUserAccountDirectory().getUserAccountList().remove(userAcc);
+        
+        updatedPatient.setPatientContact(patientContactNo);
+        updatedPatient.setPatientGender(patientGender);
+        updatedPatient.setPatientDOB(patientDOB);
+        updatedPatient.setPatientBloodType(patientBloodGroup);
+
+        updatedUserAccount.setPatient(updatedPatient);
+
+        organization.getPatientDirectory().getPatientList().add(updatedPatient);
+        organization.getUserAccountDirectory().getUserAccountList().add(updatedUserAccount);
+        JOptionPane.showMessageDialog(null, "Saved patient information !");
+    }//GEN-LAST:event_SaveJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         userProcessContainer.remove(this);
@@ -201,12 +282,21 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    private void changePasswordJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordJButtonActionPerformed
+        PatientPasswordUpdateJPanel patientPasswordUpdateJPanel = new PatientPasswordUpdateJPanel(userProcessContainer, organization, userAcc);
+        userProcessContainer.add("patientPasswordUpdateJPanel", patientPasswordUpdateJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_changePasswordJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXDatePicker DOBDatePicker;
     private javax.swing.JButton SaveJButton;
     private javax.swing.JButton backJButton;
     private javax.swing.JComboBox bloodGroupJComboBox;
+    private javax.swing.JButton changePasswordJButton;
+    private javax.swing.JTextField contactNoJTextField;
     private javax.swing.JComboBox genderJComboBox;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -218,6 +308,5 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JTextField usernameJTextField;
-    private javax.swing.JTextField usernameJTextField1;
     // End of variables declaration//GEN-END:variables
 }

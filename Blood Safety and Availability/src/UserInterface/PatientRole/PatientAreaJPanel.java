@@ -6,6 +6,7 @@
 package UserInterface.PatientRole;
 
 import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -18,14 +19,16 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private Enterprise enterprise;
+    private Organization organization;
     private UserAccount userAcc;
     /**
      * Creates new form PatientAreaJPanel
      */
-    public PatientAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, UserAccount userAcc) {
+    public PatientAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        this.organization = organization;
         this.userAcc = userAcc;
         hospitalNameLabel.setText(enterprise.getName());
         patientNameLabel.setText(userAcc.getPatient().getPatientName());
@@ -142,7 +145,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_bookAppointmentJButtonActionPerformed
 
     private void viewPersonalDetailsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPersonalDetailsJButtonActionPerformed
-        PatientPersonalDetailsJPanel patientPersonalDetailsJPanel = new PatientPersonalDetailsJPanel(userProcessContainer, enterprise, userAcc);
+        PatientPersonalDetailsJPanel patientPersonalDetailsJPanel = new PatientPersonalDetailsJPanel(userProcessContainer, enterprise, organization, userAcc);
         userProcessContainer.add("patientPersonalDetailsJPanel", patientPersonalDetailsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

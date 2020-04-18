@@ -17,7 +17,7 @@ public class Patient {
     private String PatientName;
     private int patientID;
     private String patientBloodType;
-    private long patientContact;
+    private Long patientContact;
     private String patientMedHist;
     private Date patientAdmitDate;
     private Date patientDischargeDate;
@@ -60,11 +60,11 @@ public class Patient {
         this.patientBloodType = patientBloodType;
     }
 
-    public long getPatientContact() {
+    public Long getPatientContact() {
         return patientContact;
     }
 
-    public void setPatientContact(long patientContact) {
+    public void setPatientContact(Long patientContact) {
         this.patientContact = patientContact;
     }
 
