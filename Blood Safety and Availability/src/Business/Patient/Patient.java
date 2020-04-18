@@ -26,7 +26,8 @@ public class Patient {
     private Double patientWeight;
     private Double patientBP;
     private Double patientHeartRate;
-    
+    private String patientGender;
+    private String patientEmail;    
     
     private static int count = 1;
 
@@ -137,5 +138,21 @@ public class Patient {
 
     public static void setCount(int count) {
         Patient.count = count;
+    }
+    
+        public String getPatientGender() {
+        return patientGender;
+    }
+
+    public void setPatientGender(String patientGender) {
+        this.patientGender = patientGender;
+    }
+
+    public String getPatientEmail() {
+        return patientEmail;
+    }
+
+    public void setPatientEmail(String patientEmail) {
+        this.patientEmail = patientEmail;
     }
 }
