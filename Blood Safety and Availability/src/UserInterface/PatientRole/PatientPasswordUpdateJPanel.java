@@ -54,7 +54,7 @@ public class PatientPasswordUpdateJPanel extends javax.swing.JPanel {
         newPasswordJPasswordField = new javax.swing.JPasswordField();
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
-        jLabel6.setText("Personal Information");
+        jLabel6.setText("Update Password");
 
         jLabel3.setText("Username");
 

@@ -74,7 +74,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "ID", "Name", "Role"
+                "Name", "Admit Date", "Role"
             }
         ) {
             Class[] types = new Class [] {
@@ -253,8 +253,8 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
             for (UserAccount userAcc : organization.getUserAccountDirectory().getUserAccountList()) {
                 if (userAcc.getPatient() != null) {
                     Object[] row = new Object[3];
-                    row[0] = userAcc.getPatient().getPatientID();
-                    row[1] = userAcc.getPatient().getPatientName();
+                    row[0] = userAcc.getPatient().getPatientName();
+                    row[1] = userAcc.getPatient().getPatientAdmitDate();
                     row[2] = userAcc.getRole();
                     model.addRow(row);
                 }

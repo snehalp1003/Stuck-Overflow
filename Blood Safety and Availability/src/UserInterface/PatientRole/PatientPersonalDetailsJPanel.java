@@ -24,6 +24,7 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Organization organization;
     private UserAccount userAcc;
+    private Patient oldPatient;
     private Patient updatedPatient;
     private UserAccount updatedUserAccount;
 
@@ -36,35 +37,35 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.organization = organization;
         this.userAcc = userAcc;
-        updatedPatient = userAcc.getPatient();
+        oldPatient = userAcc.getPatient();
         updatedUserAccount = this.userAcc;
         populateUserDetails();
     }
 
     private void populateUserDetails() {
-        nameJTextField.setText(updatedPatient.getPatientName());
+        nameJTextField.setText(oldPatient.getPatientName());
         usernameJTextField.setText(userAcc.getUsername());
-        
-        if (updatedPatient.getPatientContact() != null) {
-            contactNoJTextField.setText(updatedPatient.getPatientContact().toString());
+
+        if (oldPatient.getPatientContact() != null) {
+            contactNoJTextField.setText(oldPatient.getPatientContact().toString());
         } else {
             contactNoJTextField.setText("");
         }
-        
-        if (updatedPatient.getPatientGender() != null) {
-            genderJComboBox.setSelectedItem(updatedPatient.getPatientGender());
+
+        if (oldPatient.getPatientGender() != null) {
+            genderJComboBox.setSelectedItem(oldPatient.getPatientGender());
         } else {
             genderJComboBox.setSelectedItem("");
         }
-        
-        if (updatedPatient.getPatientDOB() != null) {
-            DOBDatePicker.setDate(updatedPatient.getPatientDOB());
+
+        if (oldPatient.getPatientDOB() != null) {
+            DOBDatePicker.setDate(oldPatient.getPatientDOB());
         } else {
             DOBDatePicker.setDate(null);
         }
-        
-        if (updatedPatient.getPatientBloodType() != null) {
-            bloodGroupJComboBox.setSelectedItem(updatedPatient.getPatientBloodType());
+
+        if (oldPatient.getPatientBloodType() != null) {
+            bloodGroupJComboBox.setSelectedItem(oldPatient.getPatientBloodType());
         } else {
             bloodGroupJComboBox.setSelectedItem("");
         }
@@ -240,13 +241,13 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter a valid 10 digit contact number !");
             return;
         }
-        
+
         String patientGender = genderJComboBox.getSelectedItem().toString();
         if (patientGender == null || patientGender.equals("")) {
             JOptionPane.showMessageDialog(null, "Please select patient's gender !");
             return;
         }
-        
+
         String patientBloodGroup = bloodGroupJComboBox.getSelectedItem().toString();
         if (patientBloodGroup == null || patientBloodGroup.equals("")) {
             JOptionPane.showMessageDialog(null, "Please select patient's blood group !");
@@ -260,9 +261,15 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
             return;
         }
 
+        for (Patient patient : organization.getPatientDirectory().getPatientList()) {
+            if (patient.getPatientName().equals(oldPatient.getPatientName()) && patient.getPatientAdmitDate().equals(oldPatient.getPatientAdmitDate()) && (oldPatient.getPatientDOB() == null || patient.getPatientDOB().equals(oldPatient.getPatientDOB())) && ((oldPatient.getPatientGender() == null) || (patient.getPatientGender().equals(oldPatient.getPatientGender()))) && ((patient.getPatientBloodType() == null) || (patient.getPatientBloodType().equals(oldPatient.getPatientBloodType()))) && ((patient.getPatientContact() == null) || (patient.getPatientContact().equals(oldPatient.getPatientContact())))) {
+                updatedPatient = patient;
+            }
+        }
         organization.getPatientDirectory().getPatientList().remove(updatedPatient);
+        organization.getPatientDirectory().getPatientList().remove(userAcc.getPatient());
         organization.getUserAccountDirectory().getUserAccountList().remove(userAcc);
-        
+
         updatedPatient.setPatientContact(patientContactNo);
         updatedPatient.setPatientGender(patientGender);
         updatedPatient.setPatientDOB(patientDOB);
