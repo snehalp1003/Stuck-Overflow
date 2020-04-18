@@ -94,6 +94,11 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         passwordJPasswordField = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(51, 0, 51));
+
+        jScrollPane1.setForeground(new java.awt.Color(51, 0, 51));
+
         employeeJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -122,6 +127,8 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(employeeJTable);
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(51, 0, 51));
         jLabel3.setText("Role:");
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -131,8 +138,11 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("Name");
 
+        backJButton.setForeground(new java.awt.Color(51, 0, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +150,7 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
             }
         });
 
+        addJButton.setForeground(new java.awt.Color(51, 0, 51));
         addJButton.setText("Create Employee");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,15 +158,22 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Organization");
 
         roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("Username");
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(51, 0, 51));
         jLabel5.setText("Password");
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 0, 51));
         jLabel6.setText("Blood Bank Employee Information");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
