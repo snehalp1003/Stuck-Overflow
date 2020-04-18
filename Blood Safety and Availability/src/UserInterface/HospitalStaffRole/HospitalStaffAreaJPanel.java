@@ -5,17 +5,33 @@
  */
 package UserInterface.HospitalStaffRole;
 
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Snehal
  */
 public class HospitalStaffAreaJPanel extends javax.swing.JPanel {
 
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private Organization organization;
+    private UserAccount userAcc;
     /**
      * Creates new form HospitalStaffAreaJPanel
      */
-    public HospitalStaffAreaJPanel() {
+    public HospitalStaffAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount userAcc) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.organization = organization;
+        this.userAcc = userAcc;
+        hospitalNameLabel.setText(enterprise.getName());
+        hospitalStaffNameLabel.setText(userAcc.getEmployee().getName());
     }
 
     /**
@@ -27,22 +43,98 @@ public class HospitalStaffAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        hospitalNameLabel = new javax.swing.JLabel();
+        helloLabel = new javax.swing.JLabel();
+        hospitalStaffNameLabel = new javax.swing.JLabel();
+        viewPatientsJButton = new javax.swing.JButton();
+        requestTransfusionJButton = new javax.swing.JButton();
+
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 0, 51));
+
+        hospitalNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        hospitalNameLabel.setText("<value>");
+
+        helloLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        helloLabel.setText("Hello,");
+
+        hospitalStaffNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        hospitalStaffNameLabel.setText("<value>");
+
+        viewPatientsJButton.setForeground(new java.awt.Color(51, 0, 51));
+        viewPatientsJButton.setText("View Patients");
+        viewPatientsJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPatientsJButtonActionPerformed(evt);
+            }
+        });
+
+        requestTransfusionJButton.setForeground(new java.awt.Color(51, 0, 51));
+        requestTransfusionJButton.setText("Requests for Transfusion");
+        requestTransfusionJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestTransfusionJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(hospitalNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(viewPatientsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(requestTransfusionJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(hospitalStaffNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(hospitalNameLabel)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hospitalStaffNameLabel)
+                    .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addComponent(viewPatientsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(requestTransfusionJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void viewPatientsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientsJButtonActionPerformed
+        ViewPatientsJPanel viewPatientsJPanel = new ViewPatientsJPanel(userProcessContainer, enterprise, organization, userAcc);
+        userProcessContainer.add("viewPatientsJPanel", viewPatientsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_viewPatientsJButtonActionPerformed
+
+    private void requestTransfusionJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTransfusionJButtonActionPerformed
+        ViewPatientsJPanel patientBookAppointmentJPanel = new ViewPatientsJPanel(userProcessContainer, enterprise, organization, userAcc);
+        userProcessContainer.add("patientBookAppointmentJPanel", patientBookAppointmentJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_requestTransfusionJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel helloLabel;
+    private javax.swing.JLabel hospitalNameLabel;
+    private javax.swing.JLabel hospitalStaffNameLabel;
+    private javax.swing.JButton requestTransfusionJButton;
+    private javax.swing.JButton viewPatientsJButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -43,24 +43,14 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bookAppointmentJButton = new javax.swing.JButton();
         viewPersonalDetailsJButton = new javax.swing.JButton();
         patientNameLabel = new javax.swing.JLabel();
         helloLabel = new javax.swing.JLabel();
         viewHistoryJButton = new javax.swing.JButton();
-        helloLabel1 = new javax.swing.JLabel();
         hospitalNameLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 0, 51));
-
-        bookAppointmentJButton.setForeground(new java.awt.Color(51, 0, 51));
-        bookAppointmentJButton.setText("Book an Appointment");
-        bookAppointmentJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bookAppointmentJButtonActionPerformed(evt);
-            }
-        });
 
         viewPersonalDetailsJButton.setForeground(new java.awt.Color(51, 0, 51));
         viewPersonalDetailsJButton.setText("View Personal Details");
@@ -84,9 +74,6 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        helloLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        helloLabel1.setText("Hospital");
-
         hospitalNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         hospitalNameLabel.setText("<value>");
 
@@ -95,21 +82,16 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hospitalNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(hospitalNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(helloLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
                         .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(43, 43, 43)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(viewPersonalDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bookAppointmentJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(viewHistoryJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -119,30 +101,19 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(helloLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hospitalNameLabel))
+                .addGap(31, 31, 31)
+                .addComponent(hospitalNameLabel)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(patientNameLabel)
                     .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(viewPersonalDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(bookAppointmentJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(viewHistoryJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bookAppointmentJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookAppointmentJButtonActionPerformed
-        PatientBookAppointmentJPanel patientBookAppointmentJPanel = new PatientBookAppointmentJPanel(userProcessContainer, enterprise, userAcc);
-        userProcessContainer.add("patientBookAppointmentJPanel", patientBookAppointmentJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_bookAppointmentJButtonActionPerformed
 
     private void viewPersonalDetailsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPersonalDetailsJButtonActionPerformed
         PatientPersonalDetailsJPanel patientPersonalDetailsJPanel = new PatientPersonalDetailsJPanel(userProcessContainer, enterprise, organization, userAcc);
@@ -160,9 +131,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bookAppointmentJButton;
     private javax.swing.JLabel helloLabel;
-    private javax.swing.JLabel helloLabel1;
     private javax.swing.JLabel hospitalNameLabel;
     private javax.swing.JLabel patientNameLabel;
     private javax.swing.JButton viewHistoryJButton;

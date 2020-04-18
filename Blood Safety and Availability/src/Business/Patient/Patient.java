@@ -13,9 +13,8 @@ import java.util.Date;
  */
 public class Patient {
 
-
     private String PatientName;
-    private int patientID;
+//    private int patientID;
     private String patientBloodType;
     private Long patientContact;
     private String patientMedHist;
@@ -27,29 +26,17 @@ public class Patient {
     private Double patientBP;
     private Double patientHeartRate;
     private String patientGender;
-    private String patientEmail;    
-    
-    private static int count = 1;
+    private String patientStatus;
 
     public Patient() {
-        patientID = count;
-        count++;
-    }  
-    
-        public String getPatientName() {
+    }
+
+    public String getPatientName() {
         return PatientName;
     }
 
     public void setPatientName(String PatientName) {
         this.PatientName = PatientName;
-    }
-
-    public int getPatientID() {
-        return patientID;
-    }
-
-    public void setPatientID(int patientID) {
-        this.patientID = patientID;
     }
 
     public String getPatientBloodType() {
@@ -132,15 +119,7 @@ public class Patient {
         this.patientHeartRate = patientHeartRate;
     }
 
-    public static int getCount() {
-        return count;
-    }
-
-    public static void setCount(int count) {
-        Patient.count = count;
-    }
-    
-        public String getPatientGender() {
+    public String getPatientGender() {
         return patientGender;
     }
 
@@ -148,11 +127,11 @@ public class Patient {
         this.patientGender = patientGender;
     }
 
-    public String getPatientEmail() {
-        return patientEmail;
+    public String getPatientStatus() {
+        return patientStatus;
     }
 
-    public void setPatientEmail(String patientEmail) {
-        this.patientEmail = patientEmail;
+    public void setPatientStatus(String patientStatus) {
+        this.patientStatus = patientStatus;
     }
 }

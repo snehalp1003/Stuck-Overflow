@@ -5,6 +5,7 @@
  */
 package Business.Patient;
 import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author Marisa
@@ -22,6 +23,8 @@ public class PatientDirectory {
   public Patient createPatient(String patientName){
         Patient patient = new Patient();
         patient.setPatientName(patientName);
+        patient.setPatientAdmitDate(new Date());
+        patient.setPatientStatus("Admitted");
         patientList.add(patient);
         return patient;
     }
