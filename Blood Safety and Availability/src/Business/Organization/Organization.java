@@ -44,6 +44,7 @@ public abstract class Organization {
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
         patientDirectory = new PatientDirectory();
+        donorDirectory = new DonorDirectory();
         organizationID = counter;
         ++counter;
     }
