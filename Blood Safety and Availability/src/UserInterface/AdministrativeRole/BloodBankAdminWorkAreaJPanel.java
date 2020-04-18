@@ -44,19 +44,25 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
         ManageDonorsJBtn = new javax.swing.JButton();
         ManageOrganizationjBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(51, 0, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("My Work Area - Adminstrative Role");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         enterpriseLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        enterpriseLabel1.setForeground(new java.awt.Color(51, 0, 51));
         enterpriseLabel1.setText("Enterprise :");
         add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 120, 30));
 
+        valueLabel1.setForeground(new java.awt.Color(51, 0, 51));
         valueLabel1.setText("<value>");
         add(valueLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 130, -1));
 
+        ManageBBEmpJBtn.setForeground(new java.awt.Color(51, 0, 51));
         ManageBBEmpJBtn.setText("Manage Blood Bank Employees");
         ManageBBEmpJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +71,8 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(ManageBBEmpJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 260, 30));
 
+        ManageDonorsJBtn.setBackground(new java.awt.Color(255, 255, 255));
+        ManageDonorsJBtn.setForeground(new java.awt.Color(51, 0, 51));
         ManageDonorsJBtn.setText("Manage Donors");
         ManageDonorsJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +81,7 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(ManageDonorsJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 260, 30));
 
+        ManageOrganizationjBtn.setForeground(new java.awt.Color(51, 0, 51));
         ManageOrganizationjBtn.setText("Manage Organization");
         ManageOrganizationjBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

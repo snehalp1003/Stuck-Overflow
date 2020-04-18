@@ -44,19 +44,27 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         ManagePatientsJBtn = new javax.swing.JButton();
         ManageOrganizationjBtn = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(51, 0, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("My Work Area - Adminstrative Role");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
+        enterpriseLabel1.setBackground(new java.awt.Color(255, 255, 255));
         enterpriseLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        enterpriseLabel1.setForeground(new java.awt.Color(51, 0, 51));
         enterpriseLabel1.setText("Enterprise :");
         jPanel1.add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 120, 30));
 
+        valueLabel1.setForeground(new java.awt.Color(51, 0, 51));
         valueLabel1.setText("<value>");
         jPanel1.add(valueLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 130, -1));
 
+        ManageHospitalEmployeeJBtn.setForeground(new java.awt.Color(51, 0, 51));
         ManageHospitalEmployeeJBtn.setText("Manage Hospital Employees");
         ManageHospitalEmployeeJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +73,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(ManageHospitalEmployeeJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 260, 30));
 
+        ManagePatientsJBtn.setForeground(new java.awt.Color(51, 0, 51));
         ManagePatientsJBtn.setText("Manage Patients");
         ManagePatientsJBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +82,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(ManagePatientsJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 260, 30));
 
+        ManageOrganizationjBtn.setForeground(new java.awt.Color(51, 0, 51));
         ManageOrganizationjBtn.setText("Manage Organization");
         ManageOrganizationjBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

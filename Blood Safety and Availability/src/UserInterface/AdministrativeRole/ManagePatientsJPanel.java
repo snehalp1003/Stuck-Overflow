@@ -64,6 +64,8 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
         passwordJPasswordField = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
 
+        jScrollPane1.setForeground(new java.awt.Color(51, 0, 51));
+
         patientJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -92,6 +94,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(patientJTable);
 
+        organizationJComboBox.setForeground(new java.awt.Color(51, 0, 51));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,8 +102,10 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("Name");
 
+        backJButton.setForeground(new java.awt.Color(51, 0, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +113,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
             }
         });
 
+        createPatientJButton.setForeground(new java.awt.Color(51, 0, 51));
         createPatientJButton.setText("Create Patient");
         createPatientJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,17 +121,23 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Organization");
 
+        jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("Role");
 
+        roleJComboBox.setForeground(new java.awt.Color(51, 0, 51));
         roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel3.setForeground(new java.awt.Color(51, 0, 51));
         jLabel3.setText("User Name");
 
+        jLabel5.setForeground(new java.awt.Color(51, 0, 51));
         jLabel5.setText("Password");
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 0, 51));
         jLabel6.setText("Patient Information");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

@@ -74,6 +74,12 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(51, 0, 51));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(51, 0, 51));
+
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -102,6 +108,7 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(organizationJTable);
 
+        addJButton.setForeground(new java.awt.Color(51, 0, 51));
         addJButton.setText("Add Organization");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,10 +116,13 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
             }
         });
 
+        organizationJComboBox.setForeground(new java.awt.Color(51, 0, 51));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Organization Type ");
 
+        backJButton.setForeground(new java.awt.Color(51, 0, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +131,7 @@ public class ManageHospitalOrganizationJPanel extends javax.swing.JPanel {
         });
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 0, 51));
         jLabel6.setText("Create Organization for Hospital");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
