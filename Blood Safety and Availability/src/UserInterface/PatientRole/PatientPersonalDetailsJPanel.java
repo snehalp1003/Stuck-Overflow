@@ -42,6 +42,9 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        backJButton.setForeground(new java.awt.Color(51, 0, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -98,6 +98,10 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         passwordJPasswordField = new javax.swing.JPasswordField();
         backJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(51, 0, 51));
+
+        enterpriseJTable.setForeground(new java.awt.Color(51, 0, 51));
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -119,8 +123,10 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(enterpriseJTable);
 
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Network");
 
+        networkJComboBox.setForeground(new java.awt.Color(51, 0, 51));
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,12 +134,16 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("Username");
 
+        jLabel3.setForeground(new java.awt.Color(51, 0, 51));
         jLabel3.setText("Enterprise");
 
+        enterpriseJComboBox.setForeground(new java.awt.Color(51, 0, 51));
         enterpriseJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        submitJButton.setForeground(new java.awt.Color(51, 0, 51));
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,8 +151,10 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("Password");
 
+        jLabel5.setForeground(new java.awt.Color(51, 0, 51));
         jLabel5.setText("Name");
 
         passwordJPasswordField.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +163,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        backJButton.setForeground(new java.awt.Color(51, 0, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
