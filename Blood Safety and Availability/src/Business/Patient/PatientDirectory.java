@@ -20,7 +20,7 @@ public class PatientDirectory {
         return patientList;
     }
   
-  public Patient createPatient(String patientName){
+  public Patient createPatient(String patientName) {
         Patient patient = new Patient();
         patient.setPatientName(patientName);
         patient.setPatientAdmitDate(new Date());

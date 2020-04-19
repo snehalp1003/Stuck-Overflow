@@ -267,7 +267,6 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
             }
         }
         organization.getPatientDirectory().getPatientList().remove(updatedPatient);
-        organization.getPatientDirectory().getPatientList().remove(userAcc.getPatient());
         organization.getUserAccountDirectory().getUserAccountList().remove(userAcc);
 
         updatedPatient.setPatientContact(patientContactNo);
