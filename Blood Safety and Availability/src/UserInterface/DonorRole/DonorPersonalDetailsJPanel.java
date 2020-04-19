@@ -317,7 +317,6 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
         }
         
         organization.getDonorDirectory().getDonorList().remove(updatedDonor);
-        organization.getDonorDirectory().getDonorList().remove(userAcc.getDonor());
         organization.getUserAccountDirectory().getUserAccountList().remove(userAcc);
         
         updatedDonor.setContact(donorNo);
@@ -331,7 +330,7 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
         
         organization.getDonorDirectory().getDonorList().add(updatedDonor);
         organization.getUserAccountDirectory().getUserAccountList().add(updatedUserAccount);
-         JOptionPane.showMessageDialog(null, "Saved DONOR information !");
+         JOptionPane.showMessageDialog(null, "Saved Donor information !");
 
        
         
