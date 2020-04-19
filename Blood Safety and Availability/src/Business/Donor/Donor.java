@@ -5,6 +5,7 @@
  */
 package Business.Donor;
 
+import Business.Employee.Employee;
 import java.util.Date;
 
 
@@ -17,7 +18,6 @@ public class Donor {
 
 
     private String donorName;
-    private int donorID;
     private String gender;
     private String donorBloodType;
     private String contact;
@@ -29,13 +29,12 @@ public class Donor {
     private Double donorWeight;
     private Double donorBP;
     private Double donorHeartRate;
-    
-    
-    private static int count = 1;
+    private Double donortemp;
+    private String donorstatus;
+     private Employee assignedLab;
+    private Employee assignedStaff;
 
     public Donor() {
-        donorID = count;
-        count++;
     }  
   
     public String getDonorName() {
@@ -44,14 +43,6 @@ public class Donor {
 
     public void setDonorName(String donorName) {
         this.donorName = donorName;
-    }
-
-    public int getDonorID() {
-        return donorID;
-    }
-
-    public void setDonorID(int donorID) {
-        this.donorID = donorID;
     }
 
     public String getDonorBloodType() {
@@ -126,14 +117,6 @@ public class Donor {
         this.donorHeartRate = donorHeartRate;
     }
 
-    public static int getCount() {
-        return count;
-    }
-
-    public static void setCount(int count) {
-        Donor.count = count;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -157,6 +140,47 @@ public class Donor {
     public void setDonorRegisteredDate(Date donorRegisteredDate) {
         this.donorRegisteredDate = donorRegisteredDate;
     }
+
+    public String getDonorstatus() {
+        return donorstatus;
+    }
+
+    public void setDonorstatus(String donorstatus) {
+        this.donorstatus = donorstatus;
+    }
+
+    public Double getDonortemp() {
+        return donortemp;
+    }
+
+    public void setDonortemp(Double donortemp) {
+        this.donortemp = donortemp;
+    }
+
+    public Employee getAssignedLab() {
+        return assignedLab;
+    }
+
+    public void setAssignedLab(Employee assignedLab) {
+        this.assignedLab = assignedLab;
+    }
+
+    public Employee getAssignedStaff() {
+        return assignedStaff;
+    }
+
+    public void setAssignedStaff(Employee assignedStaff) {
+        this.assignedStaff = assignedStaff;
+    }
+    
+    @Override
+    public String toString() {
+        return this.donorName;
+    }
+    
+    
+    
+    
     
    
 }

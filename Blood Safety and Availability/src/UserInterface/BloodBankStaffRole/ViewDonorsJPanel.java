@@ -11,6 +11,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -51,15 +52,39 @@ public class ViewDonorsJPanel extends javax.swing.JPanel {
 
         if (donorOrg != null) {
             for (Donor donor : donorOrg.getDonorDirectory().getDonorList()) {
-                Object[] row = new Object[3];
-                row[0] = donor.getDonorID();
+                Object[] row = new Object[6];
+                row[0] = donor;
                 row[1] = donor.getDonorName();
                 row[2] = donor.getDonorRegisteredDate();
-
+                if(donor.getAssignedLab() == null)
+                {
+                    row[3] = "";
+                }
+                else
+                {
+                    row[3] = donor.getAssignedLab().toString();
+                }
+                if(donor.getAssignedStaff() == null)
+                {
+                    row[4] = "";
+                }
+                else
+                {
+                    row[4] = donor.getAssignedStaff().toString();
+                }
+                if(donor.getDonorstatus() == null)
+                {
+                    row[5]="";
+                }
+                else
+                {
+                    row[5] = donor.getDonorstatus();
+                }
                 model.addRow(row);
             }
         }
     }
+    
 
 
     /**
@@ -76,16 +101,17 @@ public class ViewDonorsJPanel extends javax.swing.JPanel {
         DonorjTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         backjButton = new javax.swing.JButton();
+        viewDonorDetJBtn = new javax.swing.JButton();
 
         DonorjTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Registered Date"
+                "ID", "Name", "Registered Date", "Assigned Staff", "Assigned Lab Supervisor", "Donor Eligibility"
             }
         ));
         jScrollPane1.setViewportView(DonorjTable);
@@ -101,6 +127,13 @@ public class ViewDonorsJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewDonorDetJBtn.setText("View Donor Details");
+        viewDonorDetJBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewDonorDetJBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -108,10 +141,16 @@ public class ViewDonorsJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backjButton)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(76, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(backjButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewDonorDetJBtn)
+                        .addGap(221, 221, 221))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +160,9 @@ public class ViewDonorsJPanel extends javax.swing.JPanel {
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
-                .addComponent(backjButton)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backjButton)
+                    .addComponent(viewDonorDetJBtn))
                 .addGap(67, 67, 67))
         );
 
@@ -144,6 +185,24 @@ public class ViewDonorsJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backjButtonActionPerformed
 
+    private void viewDonorDetJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDonorDetJBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = DonorjTable.getSelectedRow();
+        if(selectedRow>=0)
+        {
+            Donor donor = (Donor) DonorjTable.getValueAt(selectedRow, 0);
+            AssignLabtoDonorJPanel assignLabtoDonorJPanel = new AssignLabtoDonorJPanel(userProcessContainer, enterprise, donorOrg, userAcc, donor);
+            userProcessContainer.add("assignLabtoDonorJPanel", assignLabtoDonorJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please select a Row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+       
+    }//GEN-LAST:event_viewDonorDetJBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable DonorjTable;
@@ -151,5 +210,6 @@ public class ViewDonorsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton viewDonorDetJBtn;
     // End of variables declaration//GEN-END:variables
 }
