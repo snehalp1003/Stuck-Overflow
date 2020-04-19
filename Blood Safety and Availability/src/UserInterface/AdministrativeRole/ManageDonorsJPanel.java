@@ -68,7 +68,7 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
             for (UserAccount userAcc : organization.getUserAccountDirectory().getUserAccountList()) {
                 if (userAcc.getDonor()!= null) {
                     Object[] row = new Object[3];
-                    row[0] = userAcc.getDonor().getDonorID();
+                    row[0] = userAcc.getDonor().getDonorName();
                     row[1] = userAcc.getDonor().getDonorName();
                     row[2] = userAcc.getDonor().getDonorRegisteredDate();
                     
