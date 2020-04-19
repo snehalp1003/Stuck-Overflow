@@ -43,6 +43,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         ManageHospitalEmployeeJBtn = new javax.swing.JButton();
         ManagePatientsJBtn = new javax.swing.JButton();
         ManageOrganizationjBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(51, 0, 51));
@@ -91,15 +92,24 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(ManageOrganizationjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 260, 30));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\16173\\Downloads\\Untitled-2 (1).jpg")); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(3350, 3885));
+        jLabel1.setMinimumSize(new java.awt.Dimension(3350, 3885));
+        jLabel1.setPreferredSize(new java.awt.Dimension(3350, 3885));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-310, -70, 1480, 1170));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -132,6 +142,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton ManageOrganizationjBtn;
     private javax.swing.JButton ManagePatientsJBtn;
     private javax.swing.JLabel enterpriseLabel1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel valueLabel1;
