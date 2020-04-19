@@ -43,6 +43,7 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
         ManageBBEmpJBtn = new javax.swing.JButton();
         ManageDonorsJBtn = new javax.swing.JButton();
         ManageOrganizationjBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 0, 51));
@@ -69,9 +70,8 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
                 ManageBBEmpJBtnActionPerformed(evt);
             }
         });
-        add(ManageBBEmpJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 260, 30));
+        add(ManageBBEmpJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 260, 30));
 
-        ManageDonorsJBtn.setBackground(new java.awt.Color(255, 255, 255));
         ManageDonorsJBtn.setForeground(new java.awt.Color(51, 0, 51));
         ManageDonorsJBtn.setText("Manage Donors");
         ManageDonorsJBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
                 ManageDonorsJBtnActionPerformed(evt);
             }
         });
-        add(ManageDonorsJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 260, 30));
+        add(ManageDonorsJBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 260, 30));
 
         ManageOrganizationjBtn.setForeground(new java.awt.Color(51, 0, 51));
         ManageOrganizationjBtn.setText("Manage Organization");
@@ -88,7 +88,10 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
                 ManageOrganizationjBtnActionPerformed(evt);
             }
         });
-        add(ManageOrganizationjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 260, 30));
+        add(ManageOrganizationjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 260, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/Untitled-3 (1) (1).jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-210, 0, 1940, 830));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ManageBBEmpJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageBBEmpJBtnActionPerformed
@@ -123,6 +126,7 @@ public class BloodBankAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton ManageDonorsJBtn;
     private javax.swing.JButton ManageOrganizationjBtn;
     private javax.swing.JLabel enterpriseLabel1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel valueLabel1;
     // End of variables declaration//GEN-END:variables

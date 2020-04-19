@@ -105,6 +105,7 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         organizationJComboBox = new javax.swing.JComboBox();
         roleJComboBox = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 0, 51));
@@ -126,7 +127,7 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(90, 60, 660, 100);
+        jScrollPane1.setBounds(20, 50, 580, 90);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
@@ -138,23 +139,23 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("Name:");
         add(jLabel2);
-        jLabel2.setBounds(90, 200, 70, 20);
+        jLabel2.setBounds(20, 180, 70, 20);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setForeground(new java.awt.Color(51, 0, 51));
         jLabel3.setText("Username:");
         add(jLabel3);
-        jLabel3.setBounds(90, 240, 80, 20);
+        jLabel3.setBounds(20, 220, 80, 20);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("Password:");
         add(jLabel4);
-        jLabel4.setBounds(90, 280, 80, 20);
+        jLabel4.setBounds(20, 260, 80, 20);
         add(dNameJTestFeild);
-        dNameJTestFeild.setBounds(190, 200, 170, 30);
+        dNameJTestFeild.setBounds(120, 180, 170, 30);
         add(dUserNameJTextFeild);
-        dUserNameJTextFeild.setBounds(190, 240, 170, 30);
+        dUserNameJTextFeild.setBounds(120, 220, 170, 30);
 
         CreateDJBtn.setBackground(new java.awt.Color(255, 255, 255));
         CreateDJBtn.setForeground(new java.awt.Color(51, 0, 51));
@@ -165,7 +166,7 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
             }
         });
         add(CreateDJBtn);
-        CreateDJBtn.setBounds(480, 370, 150, 30);
+        CreateDJBtn.setBounds(410, 350, 150, 30);
 
         BackJBtn.setBackground(new java.awt.Color(255, 255, 255));
         BackJBtn.setForeground(new java.awt.Color(51, 0, 51));
@@ -176,21 +177,21 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
             }
         });
         add(BackJBtn);
-        BackJBtn.setBounds(110, 370, 110, 30);
+        BackJBtn.setBounds(40, 350, 110, 30);
         add(passwordJPasswordField);
-        passwordJPasswordField.setBounds(190, 280, 170, 30);
+        passwordJPasswordField.setBounds(120, 260, 170, 30);
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setForeground(new java.awt.Color(51, 0, 51));
         jLabel11.setText("Role:");
         add(jLabel11);
-        jLabel11.setBounds(420, 250, 70, 20);
+        jLabel11.setBounds(350, 230, 70, 20);
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setForeground(new java.awt.Color(51, 0, 51));
         jLabel12.setText("Organization:");
         add(jLabel12);
-        jLabel12.setBounds(420, 200, 110, 20);
+        jLabel12.setBounds(350, 180, 110, 20);
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -199,11 +200,16 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
             }
         });
         add(organizationJComboBox);
-        organizationJComboBox.setBounds(530, 200, 190, 30);
+        organizationJComboBox.setBounds(460, 180, 190, 30);
 
         roleJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(roleJComboBox);
-        roleJComboBox.setBounds(530, 250, 190, 30);
+        roleJComboBox.setBounds(460, 230, 190, 30);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/drop (1) (1) (1).jpg"))); // NOI18N
+        jLabel8.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(51, 0, 51)));
+        add(jLabel8);
+        jLabel8.setBounds(710, 30, 121, 110);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackJBtnActionPerformed
@@ -253,6 +259,7 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox organizationJComboBox;
