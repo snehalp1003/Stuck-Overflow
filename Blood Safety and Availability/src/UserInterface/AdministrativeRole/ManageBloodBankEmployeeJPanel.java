@@ -7,6 +7,7 @@ package UserInterface.AdministrativeRole;
 
 import Business.Employee.Employee;
 import Business.Employee.EmployeeDirectory;
+import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.Role.Role;
@@ -23,12 +24,14 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
 
     
     private JPanel userProcessContainer;
+    private Enterprise enterprise;
     private OrganizationDirectory organizationDir;
    
     
-    public ManageBloodBankEmployeeJPanel(JPanel userProcessContainer,OrganizationDirectory organizationDir) {
+    public ManageBloodBankEmployeeJPanel(JPanel userProcessContainer,Enterprise enterprise,OrganizationDirectory organizationDir) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
         this.organizationDir = organizationDir;
         populateOrganizationComboBox();
         populateTable();
@@ -38,7 +41,10 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         organizationJComboBox.removeAllItems();
         
         for (Organization organization : organizationDir.getOrganizationList()){
-            organizationJComboBox.addItem(organization);
+            if(!organization.getName().equals("Donor Organization"))
+           {
+                organizationJComboBox.addItem(organization);
+           }
         }
     }   
      
@@ -60,11 +66,14 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         {
             for(UserAccount userAcc : organization.getUserAccountDirectory().getUserAccountList())
             {
-                Object[] row = new Object[3];
-                row[0] = userAcc.getEmployee().getId();
-                row[1] = userAcc.getEmployee().getName();
-                row[2] = userAcc.getRole();
-                model.addRow(row);
+                if(userAcc.getEmployee()!= null)
+                {
+                    Object[] row = new Object[3];
+                    row[0] = userAcc.getEmployee().getId();
+                    row[1] = userAcc.getEmployee().getName();
+                    row[2] = userAcc.getRole();
+                    model.addRow(row);
+                }
             }   
         }
     }
