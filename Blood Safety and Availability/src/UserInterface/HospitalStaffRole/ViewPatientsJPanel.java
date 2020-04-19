@@ -10,7 +10,7 @@ import Business.Organization.Organization;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,7 +24,6 @@ public class ViewPatientsJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Organization organization;
     private UserAccount userAcc;
-    private ArrayList<Organization> organizationList;
     private Organization patientOrg;
     /**
      * Creates new form PatientBookAppointmentJPanel
@@ -35,8 +34,7 @@ public class ViewPatientsJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.organization = organization;
         this.userAcc = userAcc;
-        organizationList = enterprise.getOrganizationDirectory().getOrganizationList();
-        for (Organization org : organizationList) {
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
             if (org.getName().contains("Patient")) {
                 patientOrg = org;
             }
@@ -51,11 +49,20 @@ public class ViewPatientsJPanel extends javax.swing.JPanel {
 
         if (patientOrg != null) {
             for (Patient patient : patientOrg.getPatientDirectory().getPatientList()) {
-                Object[] row = new Object[3];
-                row[0] = patient.getPatientName();
+                Object[] row = new Object[5];
+                row[0] = patient;
                 row[1] = patient.getPatientAdmitDate();
                 row[2] = patient.getPatientStatus();
-
+                if (patient.getAssignedDoctor() == null) {
+                    row[3] = "";
+                } else {
+                    row[3] = patient.getAssignedDoctor().toString();
+                }
+                if (patient.getAssignedStaff() == null) {
+                    row[4] = "";
+                } else {
+                    row[4] = patient.getAssignedStaff().toString();
+                }
                 model.addRow(row);
             }
         }
@@ -75,6 +82,7 @@ public class ViewPatientsJPanel extends javax.swing.JPanel {
         patientJTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         backJButton = new javax.swing.JButton();
+        viewPatientDetailsJButton = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(51, 0, 51));
@@ -83,20 +91,20 @@ public class ViewPatientsJPanel extends javax.swing.JPanel {
 
         patientJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Status"
+                "Name", "Admit Date", "Status", "Assigned Doctor", "Assigned Staff"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -121,6 +129,14 @@ public class ViewPatientsJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewPatientDetailsJButton.setForeground(new java.awt.Color(51, 0, 51));
+        viewPatientDetailsJButton.setText("View Patient Details");
+        viewPatientDetailsJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPatientDetailsJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -128,13 +144,18 @@ public class ViewPatientsJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewPatientDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +165,9 @@ public class ViewPatientsJPanel extends javax.swing.JPanel {
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(126, 126, 126)
-                .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewPatientDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
 
@@ -167,6 +190,19 @@ public class ViewPatientsJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    private void viewPatientDetailsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientDetailsJButtonActionPerformed
+        int selectedRow = patientJTable.getSelectedRow();
+        if (selectedRow >= 0) {
+            Patient patient = (Patient) patientJTable.getValueAt(selectedRow, 0);
+            AssignDoctorToPatientJPanel assignDoctorToPatientJPanel = new AssignDoctorToPatientJPanel(userProcessContainer, enterprise, patientOrg, userAcc, patient);
+            userProcessContainer.add("assignDoctorToPatientJPanel", assignDoctorToPatientJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_viewPatientDetailsJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
@@ -174,5 +210,6 @@ public class ViewPatientsJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable patientJTable;
+    private javax.swing.JButton viewPatientDetailsJButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,8 +14,12 @@ import java.util.Date;
  */
 public abstract class WorkRequest {
     private String message;
-    private UserAccount sender;
-    private UserAccount receiver;
+    private UserAccount patient;
+    private UserAccount doctor;
+    private UserAccount hospitalStaff;
+    private UserAccount bloodBankStaff;
+    private UserAccount labSupervisor;
+    private UserAccount donor;
     private String status;
     private Date requestDate;
     private Date resolveDate;
@@ -32,20 +36,52 @@ public abstract class WorkRequest {
         this.message = message;
     }
 
-    public UserAccount getSender() {
-        return sender;
+    public UserAccount getPatient() {
+        return patient;
     }
 
-    public void setSender(UserAccount sender) {
-        this.sender = sender;
+    public void setPatient(UserAccount patient) {
+        this.patient = patient;
     }
 
-    public UserAccount getReceiver() {
-        return receiver;
+    public UserAccount getDoctor() {
+        return doctor;
     }
 
-    public void setReceiver(UserAccount receiver) {
-        this.receiver = receiver;
+    public void setDoctor(UserAccount doctor) {
+        this.doctor = doctor;
+    }
+
+    public UserAccount getHospitalStaff() {
+        return hospitalStaff;
+    }
+
+    public void setHospitalStaff(UserAccount hospitalStaff) {
+        this.hospitalStaff = hospitalStaff;
+    }
+
+    public UserAccount getBloodBankStaff() {
+        return bloodBankStaff;
+    }
+
+    public void setBloodBankStaff(UserAccount bloodBankStaff) {
+        this.bloodBankStaff = bloodBankStaff;
+    }
+
+    public UserAccount getLabSupervisor() {
+        return labSupervisor;
+    }
+
+    public void setLabSupervisor(UserAccount labSupervisor) {
+        this.labSupervisor = labSupervisor;
+    }
+
+    public UserAccount getDonor() {
+        return donor;
+    }
+
+    public void setDonor(UserAccount donor) {
+        this.donor = donor;
     }
 
     public String getStatus() {

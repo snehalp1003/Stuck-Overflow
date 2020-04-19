@@ -5,6 +5,7 @@
  */
 package Business.Patient;
 
+import Business.Employee.Employee;
 import java.util.Date;
 
 /**
@@ -13,8 +14,7 @@ import java.util.Date;
  */
 public class Patient {
 
-    private String PatientName;
-//    private int patientID;
+    private String patientName;
     private String patientBloodType;
     private Long patientContact;
     private String patientMedHist;
@@ -23,20 +23,24 @@ public class Patient {
     private Date patientDOB;
     private Double patientHeight;
     private Double patientWeight;
-    private Double patientBP;
+    private Double patientLowBP;
+    private Double patientHighBP;
     private Double patientHeartRate;
     private String patientGender;
     private String patientStatus;
+    private Double patientTemperature;
+    private Employee assignedDoctor;
+    private Employee assignedStaff;
 
     public Patient() {
     }
 
     public String getPatientName() {
-        return PatientName;
+        return patientName;
     }
 
-    public void setPatientName(String PatientName) {
-        this.PatientName = PatientName;
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
     }
 
     public String getPatientBloodType() {
@@ -103,12 +107,20 @@ public class Patient {
         this.patientWeight = patientWeight;
     }
 
-    public Double getPatientBP() {
-        return patientBP;
+    public Double getPatientLowBP() {
+        return patientLowBP;
     }
 
-    public void setPatientBP(Double patientBP) {
-        this.patientBP = patientBP;
+    public void setPatientLowBP(Double patientLowBP) {
+        this.patientLowBP = patientLowBP;
+    }
+
+    public Double getPatientHighBP() {
+        return patientHighBP;
+    }
+
+    public void setPatientHighBP(Double patientHighBP) {
+        this.patientHighBP = patientHighBP;
     }
 
     public Double getPatientHeartRate() {
@@ -119,6 +131,14 @@ public class Patient {
         this.patientHeartRate = patientHeartRate;
     }
 
+    public Double getPatientTemperature() {
+        return patientTemperature;
+    }
+
+    public void setPatientTemperature(Double patientTemperature) {
+        this.patientTemperature = patientTemperature;
+    }
+    
     public String getPatientGender() {
         return patientGender;
     }
@@ -134,4 +154,26 @@ public class Patient {
     public void setPatientStatus(String patientStatus) {
         this.patientStatus = patientStatus;
     }
+
+    public Employee getAssignedDoctor() {
+        return assignedDoctor;
+    }
+
+    public void setAssignedDoctor(Employee assignedDoctor) {
+        this.assignedDoctor = assignedDoctor;
+    }
+
+    public Employee getAssignedStaff() {
+        return assignedStaff;
+    }
+
+    public void setAssignedStaff(Employee assignedStaff) {
+        this.assignedStaff = assignedStaff;
+    }
+
+    @Override
+    public String toString() {
+        return this.patientName;
+    }
+
 }
