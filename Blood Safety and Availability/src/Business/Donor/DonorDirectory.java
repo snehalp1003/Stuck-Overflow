@@ -5,6 +5,7 @@
  */
 package Business.Donor;
 import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author Marisa
@@ -22,6 +23,7 @@ public class DonorDirectory {
    public Donor createDonor(String donorName){
         Donor donor = new Donor();
         donor.setDonorName(donorName);
+        donor.setDonorRegisteredDate(new Date());
         donorList.add(donor);
         return donor;
     }

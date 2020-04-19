@@ -70,7 +70,7 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
                     Object[] row = new Object[3];
                     row[0] = userAcc.getDonor().getDonorID();
                     row[1] = userAcc.getDonor().getDonorName();
-                    row[2] = userAcc.getRole();
+                    row[2] = userAcc.getDonor().getDonorRegisteredDate();
                     
                     model.addRow(row);
                 }
@@ -121,7 +121,7 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "ID", "Name", "Role"
+                "ID", "Name", "Registered Date"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

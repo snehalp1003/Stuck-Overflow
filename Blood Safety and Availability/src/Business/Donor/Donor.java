@@ -18,8 +18,9 @@ public class Donor {
 
     private String donorName;
     private int donorID;
+    private String gender;
     private String donorBloodType;
-    private long contact;
+    private String contact;
     private String donorMedHist;
     private Date bloodDonatedDate;
     private Date donorDOB;
@@ -61,11 +62,11 @@ public class Donor {
         this.donorBloodType = donorBloodType;
     }
 
-    public long getContact() {
+    public String getContact() {
         return contact;
     }
 
-    public void setContact(long contact) {
+    public void setContact(String contact) {
         this.contact = contact;
     }
 
@@ -132,5 +133,30 @@ public class Donor {
     public static void setCount(int count) {
         Donor.count = count;
     }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getDonorDOB() {
+        return donorDOB;
+    }
+
+    public void setDonorDOB(Date donorDOB) {
+        this.donorDOB = donorDOB;
+    }
+
+    public Date getDonorRegisteredDate() {
+        return donorRegisteredDate;
+    }
+
+    public void setDonorRegisteredDate(Date donorRegisteredDate) {
+        this.donorRegisteredDate = donorRegisteredDate;
+    }
+    
    
 }
