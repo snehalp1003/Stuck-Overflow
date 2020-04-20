@@ -33,7 +33,7 @@ public class Patient {
     private Employee assignedDoctor;
     private Employee assignedStaff;
     private boolean transfusionNeeded;
-    private int wholeBloodUnits;
+    private int plateletUnits;
     private int redCellsUnits;
     private int plasmaUnits;
     private Date dateBloodRequired;
@@ -193,12 +193,12 @@ public class Patient {
         this.transfusionNeeded = transfusionNeeded;
     }
 
-    public int getWholeBloodUnits() {
-        return wholeBloodUnits;
+    public int getPlateletUnits() {
+        return plateletUnits;
     }
 
-    public void setWholeBloodUnits(int wholeBloodUnits) {
-        this.wholeBloodUnits = wholeBloodUnits;
+    public void setPlateletUnits(int plateletUnits) {
+        this.plateletUnits = plateletUnits;
     }
 
     public int getRedCellsUnits() {

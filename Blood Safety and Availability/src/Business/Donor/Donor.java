@@ -31,11 +31,9 @@ public class Donor {
     private Double donorHeartRate;
     private Double donortemp;
     private String donorstatus;
-     private Employee assignedLab;
+    private Employee assignedLab;
     private Employee assignedStaff;
-    private int RBCUnits;
-    private int PlasmaUnits;
-    private int PlatelettUnits;
+    private int unitsDonated;
     private Date expiry;
 
     public Donor() {
@@ -177,28 +175,12 @@ public class Donor {
         this.assignedStaff = assignedStaff;
     }
 
-    public int getRBCUnits() {
-        return RBCUnits;
+    public int getUnitsDonated() {
+        return unitsDonated;
     }
 
-    public void setRBCUnits(int RBCUnits) {
-        this.RBCUnits = RBCUnits;
-    }
-
-    public int getPlasmaUnits() {
-        return PlasmaUnits;
-    }
-
-    public void setPlasmaUnits(int PlasmaUnits) {
-        this.PlasmaUnits = PlasmaUnits;
-    }
-
-    public int getPlatelettUnits() {
-        return PlatelettUnits;
-    }
-
-    public void setPlatelettUnits(int PlatelettUnits) {
-        this.PlatelettUnits = PlatelettUnits;
+    public void setUnitsDonated(int unitsDonated) {
+        this.unitsDonated = unitsDonated;
     }
 
     public Date getExpiry() {

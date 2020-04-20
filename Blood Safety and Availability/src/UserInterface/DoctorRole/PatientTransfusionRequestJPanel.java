@@ -5,7 +5,6 @@
  */
 package UserInterface.DoctorRole;
 
-import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Patient.Patient;
@@ -29,7 +28,6 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
     private Patient patient;
     private Patient updatedPatient;
     private UserAccount updatedPatientUserAccount;
-    private Organization doctorOrg;
 
     /**
      * Creates new form PatientTransfusionRequestsJPanel
@@ -42,11 +40,6 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
         this.userAcc = userAcc;
         this.patient = patient;
         updatedPatient = this.patient;
-        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            if (org.getName().contains("Doctor")) {
-                doctorOrg = org;
-            }
-        }
         populateUserDetails();
     }
 
@@ -79,8 +72,8 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
             transfusionNeededjCheckBox.setSelected(false);
         }
 
-        if (patient.getWholeBloodUnits() != 0) {
-            plateletUnitsJComboBox.setSelectedItem(Integer.toString(patient.getWholeBloodUnits()));
+        if (patient.getPlateletUnits() != 0) {
+            plateletUnitsJComboBox.setSelectedItem(Integer.toString(patient.getPlateletUnits()));
         } else {
             plateletUnitsJComboBox.setSelectedItem(0);
         }
@@ -165,7 +158,7 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel6.setText("Patient Details & Vitals");
 
-        jLabel2.setText("Name");
+        jLabel2.setText("Patient Name");
 
         nameJTextField.setEditable(false);
 
@@ -227,13 +220,13 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
+                .addContainerGap(99, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(patientGenderJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,7 +299,7 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(902, Short.MAX_VALUE)))
+                    .addContainerGap(963, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,7 +380,7 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -475,7 +468,7 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
                 updatedPatient.setPatientDiagnosis(diagnosis);
                 updatedPatient.setPatientTreatment(treatment);
                 updatedPatient.setTransfusionNeeded(transfusionNeeded);
-                updatedPatient.setWholeBloodUnits(plateletUnits);
+                updatedPatient.setPlateletUnits(plateletUnits);
                 updatedPatient.setPlasmaUnits(plasmaBloodUnits);
                 updatedPatient.setRedCellsUnits(redCellsUnits);
                 updatedPatient.setDateBloodRequired(dateBloodRequired);
