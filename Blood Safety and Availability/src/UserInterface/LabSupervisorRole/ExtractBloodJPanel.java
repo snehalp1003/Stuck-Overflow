@@ -28,7 +28,7 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
     private Donor donor;
     private Donor updatedDonor;
     private UserAccount updatedDonorUserAccount;
-    private Organization LabOrg;
+    
     public ExtractBloodJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization donorOrg, UserAccount userAcc, Donor donor) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -37,32 +37,8 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
         this.userAcc = userAcc;
         this.donor = donor;
         updatedDonor = this.donor;
-        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList())
-        {
-            if(org.getName().contains("Lab Supervisor"))
-            {
-                LabOrg = org;
-            }
-           
-        }
-        populateUserDetails();
-        //UpdatejButton.setEnabled(false);
-        
-        
+        populateUserDetails();  
     }
-    
-  /* public void disableBtn()
-   {
-       String donorEligible = DonorEligibilityJTextField.getText();
-         if(donorEligible == "no"||donorEligible=="NO")
-        {
-            
-       
-            UpdatejButton.setEnabled(false);
-            return;
-        }
-        
-   }*/
     
     public void populateUserDetails()
     {
@@ -76,9 +52,9 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
         WeightJTextField.setText(donor.getDonorWeight().toString());
         HeartRateJTextField.setText(donor.getDonorHeartRate().toString());
         BloodPressJTextField.setText(donor.getDonorBP().toString());
-        TempJTextField.setText(donor.getDonortemp().toString());
+        TempJTextField.setText(donor.getDonorTemp().toString());
         AssStaffJTextField.setText(donor.getAssignedStaff().getName());
-        DonorEligibilityJTextField.setText(donor.getDonorstatus());
+        DonorEligibilityJTextField.setText(donor.getDonorEligibility());
 
         if (donor.getUnitsDonated() != 0) {
             unitsCollectedJComboBox.setSelectedItem(Integer.toString(donor.getUnitsDonated()));
@@ -90,12 +66,8 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
             ExpiryDatePicker.setDate(donor.getExpiry());
         } else {
             ExpiryDatePicker.setDate(null);
-        }
-        
+        } 
     }
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -143,7 +115,7 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel6.setText("Donor Details & Vitals");
 
-        jLabel2.setText("Name");
+        jLabel2.setText("Donor Name");
 
         nameJTextField.setEditable(false);
 
@@ -237,21 +209,24 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(bloodGroupJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel1)
                                             .addComponent(jLabel10)
-                                            .addComponent(jLabel12))
+                                            .addComponent(jLabel12)
+                                            .addComponent(jLabel16))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(HeartRateJTextField)
-                                            .addComponent(HeightJTextField)
-                                            .addComponent(contactNoJTextField)
-                                            .addComponent(TempJTextField)
-                                            .addComponent(AssStaffJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel13))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ExpiryDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(HeartRateJTextField)
+                                                .addComponent(HeightJTextField)
+                                                .addComponent(contactNoJTextField)
+                                                .addComponent(TempJTextField)
+                                                .addComponent(AssStaffJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel2))
                                 .addGap(198, 198, 198)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -260,8 +235,7 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel17)
-                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel16))))
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(unitsCollectedJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,8 +245,7 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
                                 .addComponent(WeightJTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(BloodPressJTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(DonorEligibilityJTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                                .addComponent(dateOfBirthJTextField))
-                            .addComponent(ExpiryDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(dateOfBirthJTextField)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -356,13 +329,10 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
 
     private void UpdatejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatejButtonActionPerformed
         // TODO add your handling code here:
-       
-        int plateletUnits = 0;
-        int plasmaBloodUnits = 0;
-        int redCellsUnits = 0;
+        int unitsDonated = 0;
         String donorEligible = DonorEligibilityJTextField.getText();
         Date dateBloodExpiry = new Date();
-        redCellsUnits = Integer.parseInt((String) unitsCollectedJComboBox.getSelectedItem());
+        unitsDonated = Integer.parseInt((String) unitsCollectedJComboBox.getSelectedItem());
         
         Date today = new Date();
         dateBloodExpiry= ExpiryDatePicker.getDate();
@@ -390,7 +360,7 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
                      donor.getDonorRegisteredDate().equals(donorUserAcc.getDonor().getDonorRegisteredDate())&&
                      donor.getDonorHeartRate().equals(donorUserAcc.getDonor().getDonorHeartRate())&&
                      donor.getDonorBP().equals(donorUserAcc.getDonor().getDonorBP())&&
-                     donor.getDonortemp().equals(donorUserAcc.getDonor().getDonortemp()))
+                     donor.getDonorTemp().equals(donorUserAcc.getDonor().getDonorTemp()))
              {
                  updatedDonorUserAccount = donorUserAcc;
              }
@@ -403,7 +373,7 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
                  org.getDonorDirectory().getDonorList().remove(updatedDonor);
                  org.getUserAccountDirectory().getUserAccountList().remove(updatedDonorUserAccount);
                  
-                updatedDonor.setUnitsDonated(redCellsUnits);
+                updatedDonor.setUnitsDonated(unitsDonated);
                 updatedDonor.setExpiry(dateBloodExpiry);
                 
                 updatedDonorUserAccount.setDonor(updatedDonor);

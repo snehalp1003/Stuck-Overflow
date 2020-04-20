@@ -5,10 +5,14 @@
  */
 package UserInterface.DoctorRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.OrderWorkRequest;
+import Business.WorkQueue.WorkQueue;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.Date;
@@ -22,19 +26,25 @@ import javax.swing.JPanel;
 public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private EcoSystem business;
     private Enterprise enterprise;
     private Organization patientOrg;
     private UserAccount userAcc;
     private Patient patient;
     private Patient updatedPatient;
     private UserAccount updatedPatientUserAccount;
+    boolean transfusionNeeded = false;
+    int plateletUnits = 0;
+    int plasmaBloodUnits = 0;
+    int redCellsUnits = 0;
 
     /**
      * Creates new form PatientTransfusionRequestsJPanel
      */
-    public PatientTransfusionRequestJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization patientOrg, UserAccount userAcc, Patient patient) {
+    public PatientTransfusionRequestJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, Organization patientOrg, UserAccount userAcc, Patient patient) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.business = business;
         this.enterprise = enterprise;
         this.patientOrg = patientOrg;
         this.userAcc = userAcc;
@@ -68,8 +78,14 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
 
         if (patient.isTransfusionNeeded() == true) {
             transfusionNeededjCheckBox.setSelected(true);
+            redCellsUnitsJComboBox.setEnabled(true);
+            plateletUnitsJComboBox.setEnabled(true);
+            plasmaUnitsJComboBox.setEnabled(true);
         } else {
             transfusionNeededjCheckBox.setSelected(false);
+            redCellsUnitsJComboBox.setEnabled(false);
+            plateletUnitsJComboBox.setEnabled(false);
+            plasmaUnitsJComboBox.setEnabled(false);
         }
 
         if (patient.getPlateletUnits() != 0) {
@@ -200,6 +216,11 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
 
         transfusionNeededjCheckBox.setBackground(new java.awt.Color(255, 255, 255));
         transfusionNeededjCheckBox.setText("Blood Transfusion Needed");
+        transfusionNeededjCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transfusionNeededjCheckBoxActionPerformed(evt);
+            }
+        });
 
         redCellsUnitsJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5" }));
 
@@ -431,16 +452,17 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
             return;
         }
 
-        boolean transfusionNeeded = false;
-        int plateletUnits = 0;
-        int plasmaBloodUnits = 0;
-        int redCellsUnits = 0;
+        
         Date dateBloodRequired = new Date();
         if (transfusionNeededjCheckBox.isSelected()) {
             transfusionNeeded = true;
             plateletUnits = Integer.parseInt((String) plateletUnitsJComboBox.getSelectedItem());
             plasmaBloodUnits = Integer.parseInt((String) plasmaUnitsJComboBox.getSelectedItem());
             redCellsUnits = Integer.parseInt((String) redCellsUnitsJComboBox.getSelectedItem());
+            if (redCellsUnits == 0 && plateletUnits == 0 && plasmaBloodUnits == 0) {
+                JOptionPane.showMessageDialog(null, "Please select number of blood units required !");
+                return;
+            }
             Date today = new Date();
             dateBloodRequired = dateBloodRequiredDatePicker.getDate();
             if (dateBloodRequired == null || dateBloodRequired.before(today)) {
@@ -479,13 +501,42 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
                 }              
 
                 updatedPatientUserAccount.setPatient(updatedPatient);
-
+                
                 org.getPatientDirectory().getPatientList().add(updatedPatient);
                 org.getUserAccountDirectory().getUserAccountList().add(updatedPatientUserAccount);
-                JOptionPane.showMessageDialog(null, "Updated patient details and history !");
+                
+                if (transfusionNeeded) {
+                    OrderWorkRequest workRequest = new OrderWorkRequest();
+                    workRequest.setPatient(updatedPatientUserAccount);
+                    workRequest.setDoctor(userAcc);
+                    workRequest.setRedCellUnits(updatedPatient.getRedCellsUnits());
+                    workRequest.setPlateletUnits(updatedPatient.getPlateletUnits());
+                    workRequest.setPlasmaUnits(updatedPatient.getPlasmaUnits());
+                    workRequest.setRequestStatus("Blood Transfusion Requested");
+                    if (business.getWorkQueue() == null) {
+                        WorkQueue workQueue = new WorkQueue();
+                        business.setWorkQueue(workQueue);
+                    }
+                    business.getWorkQueue().getWorkRequestList().add(workRequest);
+                    JOptionPane.showMessageDialog(null, "Saved patient diagnosis & treatment ! Placed a request for blood transfusion !");
+                    return;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Saved patient diagnosis & treatment !");
+                    return;
+                }
+                
             }
         }
     }//GEN-LAST:event_updateJButtonActionPerformed
+
+    private void transfusionNeededjCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transfusionNeededjCheckBoxActionPerformed
+        if(transfusionNeededjCheckBox.isSelected()) {
+            transfusionNeeded = true;
+            redCellsUnitsJComboBox.setEnabled(transfusionNeeded);
+            plateletUnitsJComboBox.setEnabled(transfusionNeeded);
+            plasmaUnitsJComboBox.setEnabled(transfusionNeeded);
+        }
+    }//GEN-LAST:event_transfusionNeededjCheckBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

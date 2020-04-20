@@ -29,8 +29,8 @@ public class Donor {
     private Double donorWeight;
     private Double donorBP;
     private Double donorHeartRate;
-    private Double donortemp;
-    private String donorstatus;
+    private Double donorTemp;
+    private String donorEligibility;
     private Employee assignedLab;
     private Employee assignedStaff;
     private int unitsDonated;
@@ -143,20 +143,20 @@ public class Donor {
         this.donorRegisteredDate = donorRegisteredDate;
     }
 
-    public String getDonorstatus() {
-        return donorstatus;
+    public String getDonorEligibility() {
+        return donorEligibility;
     }
 
-    public void setDonorstatus(String donorstatus) {
-        this.donorstatus = donorstatus;
+    public void setDonorEligibility(String donorEligibility) {
+        this.donorEligibility = donorEligibility;
     }
 
-    public Double getDonortemp() {
-        return donortemp;
+    public Double getDonorTemp() {
+        return donorTemp;
     }
 
-    public void setDonortemp(Double donortemp) {
-        this.donortemp = donortemp;
+    public void setDonorTemp(Double donorTemp) {
+        this.donorTemp = donorTemp;
     }
 
     public Employee getAssignedLab() {

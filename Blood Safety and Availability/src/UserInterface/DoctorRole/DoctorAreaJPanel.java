@@ -5,6 +5,7 @@
  */
 package UserInterface.DoctorRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
@@ -18,15 +19,17 @@ import javax.swing.JPanel;
 public class DoctorAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private EcoSystem business;
     private Enterprise enterprise;
     private Organization organization;
     private UserAccount userAcc;
     /**
      * Creates new form DoctorAreaJPanel
      */
-    public DoctorAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount userAcc) {
+    public DoctorAreaJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, Organization organization, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.business = business;
         this.enterprise = enterprise;
         this.organization = organization;
         this.userAcc = userAcc;
@@ -116,7 +119,7 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewPatientsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientsJButtonActionPerformed
-        ViewPatientsAssignedJPanel viewPatientsAssignedJPanel = new ViewPatientsAssignedJPanel(userProcessContainer, enterprise, organization, userAcc);
+        ViewPatientsAssignedJPanel viewPatientsAssignedJPanel = new ViewPatientsAssignedJPanel(userProcessContainer, business, enterprise, organization, userAcc);
         userProcessContainer.add("viewPatientsAssignedJPanel", viewPatientsAssignedJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

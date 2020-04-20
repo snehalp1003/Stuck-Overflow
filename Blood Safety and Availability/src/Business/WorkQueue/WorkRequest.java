@@ -5,6 +5,7 @@
  */
 package Business.WorkQueue;
 
+import Business.Donor.Donor;
 import Business.UserAccount.UserAccount;
 import java.util.Date;
 
@@ -13,27 +14,21 @@ import java.util.Date;
  * @author Snehal
  */
 public abstract class WorkRequest {
-    private String message;
     private UserAccount patient;
     private UserAccount doctor;
     private UserAccount hospitalStaff;
     private UserAccount bloodBankStaff;
     private UserAccount labSupervisor;
-    private UserAccount donor;
-    private String status;
+    private Donor donor;
+    private String requestStatus;
     private Date requestDate;
     private Date resolveDate;
+    private int redCellUnits;
+    private int plateletUnits;
+    private int plasmaUnits;
     
     public WorkRequest(){
         requestDate = new Date();
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public UserAccount getPatient() {
@@ -75,21 +70,22 @@ public abstract class WorkRequest {
     public void setLabSupervisor(UserAccount labSupervisor) {
         this.labSupervisor = labSupervisor;
     }
+ 
 
-    public UserAccount getDonor() {
+    public Donor getDonor() {
         return donor;
     }
 
-    public void setDonor(UserAccount donor) {
+    public void setDonor(Donor donor) {
         this.donor = donor;
     }
 
-    public String getStatus() {
-        return status;
+    public String getRequestStatus() {
+        return requestStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setRequestStatus(String requestStatus) {
+        this.requestStatus = requestStatus;
     }
 
     public Date getRequestDate() {
@@ -106,5 +102,34 @@ public abstract class WorkRequest {
 
     public void setResolveDate(Date resolveDate) {
         this.resolveDate = resolveDate;
+    }
+
+    public int getRedCellUnits() {
+        return redCellUnits;
+    }
+
+    public void setRedCellUnits(int redCellUnits) {
+        this.redCellUnits = redCellUnits;
+    }
+
+    public int getPlateletUnits() {
+        return plateletUnits;
+    }
+
+    public void setPlateletUnits(int plateletUnits) {
+        this.plateletUnits = plateletUnits;
+    }
+
+    public int getPlasmaUnits() {
+        return plasmaUnits;
+    }
+
+    public void setPlasmaUnits(int plasmaUnits) {
+        this.plasmaUnits = plasmaUnits;
+    }
+    
+    @Override
+    public String toString() {
+        return this.patient.getPatient().getPatientName();
     }
 }
