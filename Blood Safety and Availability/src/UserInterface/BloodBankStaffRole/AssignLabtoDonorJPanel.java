@@ -21,7 +21,7 @@ import javax.swing.JPanel;
  */
 public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
 
-   private JPanel userProcessContainer;
+    private JPanel userProcessContainer;
     private Enterprise enterprise;
     private Organization donorOrg;
     private UserAccount userAcc;
@@ -29,6 +29,7 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
     private Donor updateddonor;
     private UserAccount updatedDonorUserAccount;
     private Organization LabOrg;
+
     public AssignLabtoDonorJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization donorOrg, UserAccount userAcc, Donor donor) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -37,21 +38,18 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
         this.userAcc = userAcc;
         this.donor = donor;
         updateddonor = this.donor;
-        for(Organization org : enterprise.getOrganizationDirectory().getOrganizationList())
-        {
-            if(org.getName().contains("Lab Supervisor"))
-            {
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getName().contains("Lab Supervisor")) {
                 LabOrg = org;
             }
         }
         populateUserDetails();
         populateLab();
         assignStaffJTextField.setText(userAcc.getEmployee().toString());
-        
+
     }
-    
-    private void populateUserDetails()
-    {
+
+    private void populateUserDetails() {
         nameJTextField.setText(donor.getDonorName());
         contactNoJTextField.setText(donor.getContact());
         donorGenderJTextField.setText(donor.getGender());
@@ -60,57 +58,40 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
         dateOfregJTextField.setText(donor.getDonorRegisteredDate().toString());
         HeightJTextField.setText(donor.getDonorHeight().toString());
         WeightJTextField.setText(donor.getDonorWeight().toString());
-        
-        if(donor.getDonorHeartRate()!= null)
-        {
+
+        if (donor.getDonorHeartRate() != null) {
             heartRatejTextField.setText(donor.getDonorHeartRate().toString());
-        }
-        else
-        {
+        } else {
             heartRatejTextField.setText("");
         }
-        
-        if(donor.getDonorBP()!= null)
-        {
+
+        if (donor.getDonorBP() != null) {
             bloodPressjTextField.setText(donor.getDonorBP().toString());
-        }
-        else
-        {
+        } else {
             bloodPressjTextField.setText("");
         }
-        if(donor.getDonortemp() != null)
-        {
+        if (donor.getDonortemp() != null) {
             tempjTextField.setText(donor.getDonortemp().toString());
-        }
-        else
-        {
+        } else {
             tempjTextField.setText("");
         }
-        if(donor.getDonorstatus() != null)
-        {
+        if (donor.getDonorstatus() != null) {
             statusjTextField.setText(donor.getDonorstatus());
-        }
-        else
-        {
+        } else {
             statusjTextField.setText("");
         }
-        if(donor.getAssignedLab()!= null)
-        {
+        if (donor.getAssignedLab() != null) {
             assignLabJComboBox.setSelectedItem(donor.getAssignedLab());
-        }
-        else
-        {
+        } else {
             assignLabJComboBox.setSelectedItem("");
         }
     }
-    
+
     private void populateLab() {
         for (Employee lab : LabOrg.getEmployeeDirectory().getEmployeeList()) {
             assignLabJComboBox.addItem(lab);
         }
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,11 +162,11 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
 
         dateOfregJTextField.setEditable(false);
 
-        jLabel1.setText("Height(cms)");
+        jLabel1.setText("Height (cms)");
 
         contactNoJTextField.setEditable(false);
 
-        jLabel9.setText("Weight(Kgs)");
+        jLabel9.setText("Weight (lbs)");
 
         HeightJTextField.setEditable(false);
 
@@ -193,7 +174,7 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
 
         jLabel11.setText("Blood Pressure");
 
-        jLabel12.setText("Temparature");
+        jLabel12.setText("Temperature (F)");
 
         jLabel13.setText("Assign Staff");
 
@@ -222,68 +203,75 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(290, 290, 290)
+                        .addComponent(SavejButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BackjButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel10))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(heartRatejTextField)
-                                            .addComponent(HeightJTextField)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(bloodGroupJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(contactNoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(tempjTextField)))
-                                .addGap(50, 50, 50)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11))
+                                .addGap(24, 24, 24)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(heartRatejTextField)
+                                    .addComponent(HeightJTextField)
+                                    .addComponent(bloodPressjTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(assignStaffJTextField)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bloodGroupJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(contactNoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addGap(83, 83, 83)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel15))
-                                .addGap(69, 69, 69))
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(donorGenderJTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                        .addComponent(dateOfBirthJTextField, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(dateOfregJTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(SavejButton)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel15))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel14)
-                                        .addGap(17, 17, 17)
-                                        .addComponent(assignLabJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(BackjButton)
-                                    .addComponent(jLabel13))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(assignStaffJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                            .addComponent(donorGenderJTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dateOfBirthJTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dateOfregJTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(WeightJTextField)
-                            .addComponent(bloodPressjTextField)
-                            .addComponent(statusjTextField))))
-                .addGap(142, 142, 142))
+                                        .addGap(40, 40, 40)
+                                        .addComponent(tempjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(WeightJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(41, 41, 41)
+                                        .addComponent(statusjTextField))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(assignLabJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(46, 46, 46))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,59 +292,63 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(dateOfregJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
-                        .addComponent(dateOfregJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(contactNoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36)
+                        .addComponent(contactNoJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel9)
                     .addComponent(HeightJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(WeightJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
+                    .addComponent(jLabel1)
+                    .addComponent(WeightJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(heartRatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(heartRatejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(bloodPressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel12)
+                    .addComponent(tempjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(tempjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(statusjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                            .addComponent(bloodPressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
                             .addComponent(jLabel13)
-                            .addComponent(assignLabJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(assignStaffJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(SavejButton)
+                            .addComponent(BackjButton))
+                        .addGap(39, 39, 39))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(assignStaffJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SavejButton)
-                    .addComponent(BackjButton))
-                .addGap(39, 39, 39))
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(statusjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(assignLabJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -373,31 +365,27 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
 
     private void SavejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavejButtonActionPerformed
         // TODO add your handling code here:
-        
+
         Double BP = Double.parseDouble(bloodPressjTextField.getText());
-        if(BP == null || bloodPressjTextField.getText().isEmpty())
-        {
+        if (BP == null || bloodPressjTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter donor's  blood pressure !");
             return;
         }
-        
+
         Double HR = Double.parseDouble(heartRatejTextField.getText());
-        if(HR == null || heartRatejTextField.getText().isEmpty())
-        {
+        if (HR == null || heartRatejTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter donor's  heart rate !");
             return;
         }
-        
+
         Double temp = Double.parseDouble(tempjTextField.getText());
-        if(temp == null || tempjTextField.getText().isEmpty())
-        {
-             JOptionPane.showMessageDialog(null, "Please enter donor's temparature in Farenheit !");
+        if (temp == null || tempjTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter donor's temparature in Farenheit !");
             return;
         }
-        
+
         String status = statusjTextField.getText();
-        if(status == "yes"|| status == "YES"|| status == "no"|| status == "NO" || statusjTextField.getText().isEmpty() )
-        {
+        if (status == null || status.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter if donor is fit to donate blood or not in yes or no !");
             return;
         }
@@ -406,52 +394,44 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a Lab Supervisor !");
             return;
         }
-        
+
         Employee staff = userAcc.getEmployee();
         if (staff == null) {
             JOptionPane.showMessageDialog(null, "Please select a Blood Bank staff !");
             return;
         }
-        
-        for(UserAccount donorUserAcc : donorOrg.getUserAccountDirectory().getUserAccountList())
-        {
-            if(donor.getDonorName().equals(donorUserAcc.getDonor().getDonorName())&&
-                    donor.getGender().equals(donorUserAcc.getDonor().getGender())&&
-                    donor.getDonorBloodType().equals(donorUserAcc.getDonor().getDonorBloodType())&&
-                    donor.getDOB().equals(donorUserAcc.getDonor().getDOB())&&
-                    donor.getContact().equals(donorUserAcc.getDonor().getContact())&&
-                    donor.getDonorRegisteredDate().equals(donorUserAcc.getDonor().getDonorRegisteredDate())&&
-                    donor.getDonorWeight().equals(donorUserAcc.getDonor().getDonorWeight())&&
-                    donor.getDonorHeight().equals(donorUserAcc.getDonor().getDonorHeight()))
-            {
+
+        for (UserAccount donorUserAcc : donorOrg.getUserAccountDirectory().getUserAccountList()) {
+            if (donor.getDonorName().equals(donorUserAcc.getDonor().getDonorName())
+                    && donor.getGender().equals(donorUserAcc.getDonor().getGender())
+                    && donor.getDonorBloodType().equals(donorUserAcc.getDonor().getDonorBloodType())
+                    && donor.getDOB().equals(donorUserAcc.getDonor().getDOB())
+                    && donor.getContact().equals(donorUserAcc.getDonor().getContact())
+                    && donor.getDonorRegisteredDate().equals(donorUserAcc.getDonor().getDonorRegisteredDate())
+                    && donor.getDonorWeight().equals(donorUserAcc.getDonor().getDonorWeight())
+                    && donor.getDonorHeight().equals(donorUserAcc.getDonor().getDonorHeight())) {
                 updatedDonorUserAccount = donorUserAcc;
             }
         }
-        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) 
-        {
-             if (org.getDonorDirectory().getDonorList() != null && org.getDonorDirectory().getDonorList().contains(updateddonor))
-             {
-                 org.getDonorDirectory().getDonorList().remove(updateddonor);
-                 org.getUserAccountDirectory().getUserAccountList().remove(updatedDonorUserAccount);
-                 updateddonor.setDonorHeartRate(HR);
-                 updateddonor.setDonorBP(BP);
-                 updateddonor.setDonortemp(temp);
-                 updateddonor.setDonorstatus(status);
-                 updateddonor.setAssignedLab(lab);
-                 updateddonor.setAssignedStaff(staff);
-                 updatedDonorUserAccount.setDonor(updateddonor);
-                 
-                 org.getDonorDirectory().getDonorList().add(updateddonor);
-                 org.getUserAccountDirectory().getUserAccountList().add(updatedDonorUserAccount);
-                 
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getDonorDirectory().getDonorList() != null && org.getDonorDirectory().getDonorList().contains(updateddonor)) {
+                org.getDonorDirectory().getDonorList().remove(updateddonor);
+                org.getUserAccountDirectory().getUserAccountList().remove(updatedDonorUserAccount);
+                updateddonor.setDonorHeartRate(HR);
+                updateddonor.setDonorBP(BP);
+                updateddonor.setDonortemp(temp);
+                updateddonor.setDonorstatus(status.toUpperCase());
+                updateddonor.setAssignedLab(lab);
+                updateddonor.setAssignedStaff(staff);
+                updatedDonorUserAccount.setDonor(updateddonor);
+
+                org.getDonorDirectory().getDonorList().add(updateddonor);
+                org.getUserAccountDirectory().getUserAccountList().add(updatedDonorUserAccount);
+
                 JOptionPane.showMessageDialog(null, "Saved donor vitals !");
-                 
-             }
+
+            }
         }
-        
-        
-        
-        
     }//GEN-LAST:event_SavejButtonActionPerformed
 
 
