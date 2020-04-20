@@ -36,6 +36,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="viewPatientsJButton" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                                   <Component id="requestTransfusionJButton" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="changePasswordJButton" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -61,9 +62,11 @@
               </Group>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Component id="viewPatientsJButton" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="requestTransfusionJButton" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace pref="103" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="changePasswordJButton" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace pref="65" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,6 +116,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="requestTransfusionJButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="changePasswordJButton">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="0" red="33" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Change Password"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changePasswordJButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

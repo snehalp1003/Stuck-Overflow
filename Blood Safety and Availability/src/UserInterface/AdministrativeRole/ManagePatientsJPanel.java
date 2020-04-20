@@ -25,6 +25,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private OrganizationDirectory organizationDir;
+
     /**
      * Creates new form ManagePatientsJPanel
      */
@@ -241,7 +242,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
         organizationJComboBox.removeAllItems();
 
         for (Organization organization : organizationDir.getOrganizationList()) {
-            if(organization.getName().equals("Patient Organization")) {
+            if (organization.getName().equals("Patient Organization")) {
                 organizationJComboBox.addItem(organization);
             }
         }
@@ -272,7 +273,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
             }
         }
     }
-    
+
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         populateRoleComboBox((Organization) organizationJComboBox.getSelectedItem());
     }//GEN-LAST:event_organizationJComboBoxActionPerformed

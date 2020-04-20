@@ -48,6 +48,7 @@ public class HospitalStaffAreaJPanel extends javax.swing.JPanel {
         hospitalStaffNameLabel = new javax.swing.JLabel();
         viewPatientsJButton = new javax.swing.JButton();
         requestTransfusionJButton = new javax.swing.JButton();
+        changePasswordJButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 0, 51));
@@ -77,6 +78,14 @@ public class HospitalStaffAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        changePasswordJButton.setForeground(new java.awt.Color(51, 0, 51));
+        changePasswordJButton.setText("Change Password");
+        changePasswordJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePasswordJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,7 +101,8 @@ public class HospitalStaffAreaJPanel extends javax.swing.JPanel {
                                 .addGap(43, 43, 43)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(viewPatientsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(requestTransfusionJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(requestTransfusionJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(changePasswordJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(hospitalStaffNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -109,9 +119,11 @@ public class HospitalStaffAreaJPanel extends javax.swing.JPanel {
                     .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(viewPatientsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(requestTransfusionJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(changePasswordJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,14 +135,22 @@ public class HospitalStaffAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_viewPatientsJButtonActionPerformed
 
     private void requestTransfusionJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTransfusionJButtonActionPerformed
-        ViewPatientsJPanel patientBookAppointmentJPanel = new ViewPatientsJPanel(userProcessContainer, enterprise, organization, userAcc);
-        userProcessContainer.add("patientBookAppointmentJPanel", patientBookAppointmentJPanel);
+        ViewTransfusionRequestsJPanel viewTransfusionRequestsJPanel = new ViewTransfusionRequestsJPanel(userProcessContainer, enterprise, organization, userAcc);
+        userProcessContainer.add("viewTransfusionRequestsJPanel", viewTransfusionRequestsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_requestTransfusionJButtonActionPerformed
 
+    private void changePasswordJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordJButtonActionPerformed
+        HospitalStaffPasswordUpdateJPanel hospitalStaffPasswordUpdateJPanel = new HospitalStaffPasswordUpdateJPanel(userProcessContainer, organization, userAcc);
+        userProcessContainer.add("hospitalStaffPasswordUpdateJPanel", hospitalStaffPasswordUpdateJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_changePasswordJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton changePasswordJButton;
     private javax.swing.JLabel helloLabel;
     private javax.swing.JLabel hospitalNameLabel;
     private javax.swing.JLabel hospitalStaffNameLabel;

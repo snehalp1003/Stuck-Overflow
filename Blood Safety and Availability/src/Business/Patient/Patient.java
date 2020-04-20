@@ -17,7 +17,8 @@ public class Patient {
     private String patientName;
     private String patientBloodType;
     private Long patientContact;
-    private String patientMedHist;
+    private String patientDiagnosis;
+    private String patientTreatment;
     private Date patientAdmitDate;
     private Date patientDischargeDate;
     private Date patientDOB;
@@ -31,6 +32,11 @@ public class Patient {
     private Double patientTemperature;
     private Employee assignedDoctor;
     private Employee assignedStaff;
+    private boolean transfusionNeeded;
+    private int wholeBloodUnits;
+    private int redCellsUnits;
+    private int plasmaUnits;
+    private Date dateBloodRequired;
 
     public Patient() {
     }
@@ -59,12 +65,20 @@ public class Patient {
         this.patientContact = patientContact;
     }
 
-    public String getPatientMedHist() {
-        return patientMedHist;
+    public String getPatientDiagnosis() {
+        return patientDiagnosis;
     }
 
-    public void setPatientMedHist(String patientMedHist) {
-        this.patientMedHist = patientMedHist;
+    public void setPatientDiagnosis(String patientDiagnosis) {
+        this.patientDiagnosis = patientDiagnosis;
+    }
+
+    public String getPatientTreatment() {
+        return patientTreatment;
+    }
+
+    public void setPatientTreatment(String patientTreatment) {
+        this.patientTreatment = patientTreatment;
     }
 
     public Date getPatientAdmitDate() {
@@ -169,6 +183,46 @@ public class Patient {
 
     public void setAssignedStaff(Employee assignedStaff) {
         this.assignedStaff = assignedStaff;
+    }
+
+    public boolean isTransfusionNeeded() {
+        return transfusionNeeded;
+    }
+
+    public void setTransfusionNeeded(boolean transfusionNeeded) {
+        this.transfusionNeeded = transfusionNeeded;
+    }
+
+    public int getWholeBloodUnits() {
+        return wholeBloodUnits;
+    }
+
+    public void setWholeBloodUnits(int wholeBloodUnits) {
+        this.wholeBloodUnits = wholeBloodUnits;
+    }
+
+    public int getRedCellsUnits() {
+        return redCellsUnits;
+    }
+
+    public void setRedCellsUnits(int redCellsUnits) {
+        this.redCellsUnits = redCellsUnits;
+    }
+
+    public int getPlasmaUnits() {
+        return plasmaUnits;
+    }
+
+    public void setPlasmaUnits(int plasmaUnits) {
+        this.plasmaUnits = plasmaUnits;
+    }
+
+    public Date getDateBloodRequired() {
+        return dateBloodRequired;
+    }
+
+    public void setDateBloodRequired(Date dateBloodRequired) {
+        this.dateBloodRequired = dateBloodRequired;
     }
 
     @Override

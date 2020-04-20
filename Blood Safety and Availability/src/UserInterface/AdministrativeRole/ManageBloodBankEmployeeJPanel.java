@@ -22,13 +22,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
 
-    
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private OrganizationDirectory organizationDir;
-   
-    
-    public ManageBloodBankEmployeeJPanel(JPanel userProcessContainer,Enterprise enterprise,OrganizationDirectory organizationDir) {
+
+    public ManageBloodBankEmployeeJPanel(JPanel userProcessContainer, Enterprise enterprise, OrganizationDirectory organizationDir) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -36,18 +34,17 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
         populateOrganizationComboBox();
         populateTable();
     }
-    
-     public void populateOrganizationComboBox(){
+
+    public void populateOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
-        
-        for (Organization organization : organizationDir.getOrganizationList()){
-            if(!organization.getName().equals("Donor Organization"))
-           {
+
+        for (Organization organization : organizationDir.getOrganizationList()) {
+            if (!organization.getName().equals("Donor Organization")) {
                 organizationJComboBox.addItem(organization);
-           }
+            }
         }
-    }   
-     
+    }
+
     private void populateRoleComboBox(Organization organization) {
         roleJComboBox.removeAllItems();
         if (organization != null) {
@@ -56,25 +53,22 @@ public class ManageBloodBankEmployeeJPanel extends javax.swing.JPanel {
             }
         }
     }
-    
-    private void populateTable(){
+
+    private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) employeeJTable.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (Organization organization : organizationDir.getOrganizationList())
-        {
-            for(UserAccount userAcc : organization.getUserAccountDirectory().getUserAccountList())
-            {
-                if(userAcc.getEmployee()!= null)
-                {
+
+        for (Organization organization : organizationDir.getOrganizationList()) {
+            for (UserAccount userAcc : organization.getUserAccountDirectory().getUserAccountList()) {
+                if (userAcc.getEmployee() != null) {
                     Object[] row = new Object[3];
                     row[0] = userAcc.getEmployee().getId();
                     row[1] = userAcc.getEmployee().getName();
                     row[2] = userAcc.getRole();
                     model.addRow(row);
                 }
-            }   
+            }
         }
     }
 
