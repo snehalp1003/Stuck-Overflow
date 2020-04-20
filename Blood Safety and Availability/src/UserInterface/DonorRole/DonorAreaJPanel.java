@@ -44,7 +44,6 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
         helloLabel = new javax.swing.JLabel();
         donorNameLabel = new javax.swing.JLabel();
         PersonalDetailsJButton = new javax.swing.JButton();
-        bloodDonJBtn = new javax.swing.JButton();
 
         bloodbankNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         bloodbankNameLabel.setText("<value>");
@@ -63,8 +62,6 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        bloodDonJBtn.setText("Schedule Blood Donation");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,9 +78,8 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
                                 .addComponent(donorNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(43, 43, 43)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bloodDonJBtn)
-                                    .addComponent(PersonalDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(PersonalDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(15, 15, 15)))
                 .addContainerGap(436, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,9 +93,7 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
                     .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(PersonalDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(bloodDonJBtn)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -113,7 +107,6 @@ public class DonorAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton PersonalDetailsJButton;
-    private javax.swing.JButton bloodDonJBtn;
     private javax.swing.JLabel bloodbankNameLabel;
     private javax.swing.JLabel donorNameLabel;
     private javax.swing.JLabel helloLabel;

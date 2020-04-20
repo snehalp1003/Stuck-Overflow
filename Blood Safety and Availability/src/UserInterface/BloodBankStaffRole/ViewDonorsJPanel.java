@@ -54,7 +54,7 @@ public class ViewDonorsJPanel extends javax.swing.JPanel {
             for (Donor donor : donorOrg.getDonorDirectory().getDonorList()) {
                 Object[] row = new Object[6];
                 row[0] = donor;
-                row[1] = donor.getDonorName();
+                row[1] = donor.getContact();
                 row[2] = donor.getDonorRegisteredDate();
                 if(donor.getAssignedLab() == null)
                 {
@@ -111,7 +111,7 @@ public class ViewDonorsJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Registered Date", "Assigned Staff", "Assigned Lab Supervisor", "Donor Eligibility"
+                "Name", "Contact Number", "Registered Date", "Assigned Staff", "Assigned Lab Supervisor", "Donor Eligibility"
             }
         ));
         jScrollPane1.setViewportView(DonorjTable);

@@ -43,7 +43,8 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
         bloodbankNameLabel = new javax.swing.JLabel();
         helloLabel = new javax.swing.JLabel();
         bloodBankStaffNameLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        BloodDonationjButton = new javax.swing.JButton();
+        updatePswdjBtn = new javax.swing.JButton();
 
         bloodbankNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         bloodbankNameLabel.setText("<value>");
@@ -54,10 +55,17 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
         bloodBankStaffNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         bloodBankStaffNameLabel.setText("<value>");
 
-        jButton1.setText("View Donors");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BloodDonationjButton.setText("View Donors and Schedule Blood Donation");
+        BloodDonationjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BloodDonationjButtonActionPerformed(evt);
+            }
+        });
+
+        updatePswdjBtn.setText("Update Password");
+        updatePswdjBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePswdjBtnActionPerformed(evt);
             }
         });
 
@@ -66,16 +74,23 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bloodbankNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(bloodBankStaffNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(310, Short.MAX_VALUE))
+                        .addGap(150, 150, 150)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bloodbankNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bloodBankStaffNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(276, 276, 276))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(BloodDonationjButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(219, 219, 219)
+                        .addComponent(updatePswdjBtn)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,26 +101,37 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bloodBankStaffNameLabel)
                     .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
-                .addComponent(jButton1)
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addComponent(BloodDonationjButton)
+                .addGap(38, 38, 38)
+                .addComponent(updatePswdjBtn)
+                .addContainerGap(175, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BloodDonationjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BloodDonationjButtonActionPerformed
         // TODO add your handling code here:
         ViewDonorsJPanel viewDonorJPanel = new ViewDonorsJPanel(userProcessContainer, enterprise, organization, userAcc);
         userProcessContainer.add("viewDonorJPanel",viewDonorJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BloodDonationjButtonActionPerformed
+
+    private void updatePswdjBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePswdjBtnActionPerformed
+        // TODO add your handling code here:
+        BloodBankStaffPswdUpdateJPanel bloodBankStaffPswdUpdateJPanel = new BloodBankStaffPswdUpdateJPanel(userProcessContainer, organization, userAcc);
+        userProcessContainer.add("bloodBankStaffPswdUpdateJPanel", bloodBankStaffPswdUpdateJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_updatePswdjBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BloodDonationjButton;
     private javax.swing.JLabel bloodBankStaffNameLabel;
     private javax.swing.JLabel bloodbankNameLabel;
     private javax.swing.JLabel helloLabel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton updatePswdjBtn;
     // End of variables declaration//GEN-END:variables
 }

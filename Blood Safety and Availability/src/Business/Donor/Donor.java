@@ -33,6 +33,10 @@ public class Donor {
     private String donorstatus;
      private Employee assignedLab;
     private Employee assignedStaff;
+    private int RBCUnits;
+    private int PlasmaUnits;
+    private int PlatelettUnits;
+    private Date expiry;
 
     public Donor() {
     }  
@@ -171,6 +175,38 @@ public class Donor {
 
     public void setAssignedStaff(Employee assignedStaff) {
         this.assignedStaff = assignedStaff;
+    }
+
+    public int getRBCUnits() {
+        return RBCUnits;
+    }
+
+    public void setRBCUnits(int RBCUnits) {
+        this.RBCUnits = RBCUnits;
+    }
+
+    public int getPlasmaUnits() {
+        return PlasmaUnits;
+    }
+
+    public void setPlasmaUnits(int PlasmaUnits) {
+        this.PlasmaUnits = PlasmaUnits;
+    }
+
+    public int getPlatelettUnits() {
+        return PlatelettUnits;
+    }
+
+    public void setPlatelettUnits(int PlatelettUnits) {
+        this.PlatelettUnits = PlatelettUnits;
+    }
+
+    public Date getExpiry() {
+        return expiry;
+    }
+
+    public void setExpiry(Date expiry) {
+        this.expiry = expiry;
     }
     
     @Override
