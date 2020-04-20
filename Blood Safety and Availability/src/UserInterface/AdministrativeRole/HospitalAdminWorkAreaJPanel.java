@@ -92,7 +92,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jPanel1.add(ManageOrganizationjBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 260, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\16173\\Downloads\\Untitled-2 (1).jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/Untitled-2 (1).jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(3350, 3885));
         jLabel1.setMinimumSize(new java.awt.Dimension(3350, 3885));
         jLabel1.setPreferredSize(new java.awt.Dimension(3350, 3885));
