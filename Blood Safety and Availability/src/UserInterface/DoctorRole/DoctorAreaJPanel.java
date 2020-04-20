@@ -5,17 +5,33 @@
  */
 package UserInterface.DoctorRole;
 
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Snehal
  */
 public class DoctorAreaJPanel extends javax.swing.JPanel {
 
+    private JPanel userProcessContainer;
+    private Enterprise enterprise;
+    private Organization organization;
+    private UserAccount userAcc;
     /**
      * Creates new form DoctorAreaJPanel
      */
-    public DoctorAreaJPanel() {
+    public DoctorAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount userAcc) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.organization = organization;
+        this.userAcc = userAcc;
+        hospitalNameLabel.setText(enterprise.getName());
+        doctorNameLabel.setText(userAcc.getEmployee().getName());
     }
 
     /**
@@ -27,22 +43,98 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        hospitalNameLabel = new javax.swing.JLabel();
+        helloLabel = new javax.swing.JLabel();
+        doctorNameLabel = new javax.swing.JLabel();
+        viewPatientsJButton = new javax.swing.JButton();
+        changePasswordJButton = new javax.swing.JButton();
+
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 0, 51));
+
+        hospitalNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        hospitalNameLabel.setText("<value>");
+
+        helloLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        helloLabel.setText("Hello,");
+
+        doctorNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        doctorNameLabel.setText("<value>");
+
+        viewPatientsJButton.setForeground(new java.awt.Color(51, 0, 51));
+        viewPatientsJButton.setText("View Assigned Patients");
+        viewPatientsJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPatientsJButtonActionPerformed(evt);
+            }
+        });
+
+        changePasswordJButton.setForeground(new java.awt.Color(51, 0, 51));
+        changePasswordJButton.setText("Change Password");
+        changePasswordJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changePasswordJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(doctorNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(hospitalNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(changePasswordJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewPatientsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(hospitalNameLabel)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(doctorNameLabel))
+                .addGap(36, 36, 36)
+                .addComponent(viewPatientsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(changePasswordJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(150, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void viewPatientsJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientsJButtonActionPerformed
+        ViewPatientsAssignedJPanel viewPatientsAssignedJPanel = new ViewPatientsAssignedJPanel(userProcessContainer, enterprise, organization, userAcc);
+        userProcessContainer.add("viewPatientsAssignedJPanel", viewPatientsAssignedJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_viewPatientsJButtonActionPerformed
+
+    private void changePasswordJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordJButtonActionPerformed
+        DoctorPasswordUpdateJPanel doctorPasswordUpdateJPanel = new DoctorPasswordUpdateJPanel(userProcessContainer, organization, userAcc);
+        userProcessContainer.add("doctorPasswordUpdateJPanel", doctorPasswordUpdateJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_changePasswordJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton changePasswordJButton;
+    private javax.swing.JLabel doctorNameLabel;
+    private javax.swing.JLabel helloLabel;
+    private javax.swing.JLabel hospitalNameLabel;
+    private javax.swing.JButton viewPatientsJButton;
     // End of variables declaration//GEN-END:variables
 }
