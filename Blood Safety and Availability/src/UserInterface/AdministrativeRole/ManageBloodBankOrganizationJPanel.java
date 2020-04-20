@@ -118,7 +118,7 @@ public class ManageBloodBankOrganizationJPanel extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Organization Type ");
 
-        backJButton.setBackground(new java.awt.Color(255, 255, 255));
+        backJButton.setBackground(new java.awt.Color(204, 204, 204));
         backJButton.setForeground(new java.awt.Color(51, 0, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
