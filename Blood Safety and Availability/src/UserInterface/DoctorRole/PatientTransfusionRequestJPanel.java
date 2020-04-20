@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  *
  * @author Snehal
  */
-public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
+public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private Enterprise enterprise;
@@ -34,7 +34,7 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PatientTransfusionRequestsJPanel
      */
-    public PatientTransfusionRequestsJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization patientOrg, UserAccount userAcc, Patient patient) {
+    public PatientTransfusionRequestJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization patientOrg, UserAccount userAcc, Patient patient) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -48,7 +48,6 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
             }
         }
         populateUserDetails();
-        populateDoctors();
     }
 
     private void populateUserDetails() {
@@ -81,9 +80,9 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
         }
 
         if (patient.getWholeBloodUnits() != 0) {
-            wholeBloodUnitsJComboBox.setSelectedItem(Integer.toString(patient.getWholeBloodUnits()));
+            plateletUnitsJComboBox.setSelectedItem(Integer.toString(patient.getWholeBloodUnits()));
         } else {
-            wholeBloodUnitsJComboBox.setSelectedItem(0);
+            plateletUnitsJComboBox.setSelectedItem(0);
         }
 
         if (patient.getPlasmaUnits() != 0) {
@@ -104,12 +103,6 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
             dateBloodRequiredDatePicker.setDate(null);
         }
 
-    }
-
-    private void populateDoctors() {
-        for (Employee doctor : doctorOrg.getEmployeeDirectory().getEmployeeList()) {
-            redCellsUnitsJComboBox.addItem(doctor);
-        }
     }
 
     /**
@@ -150,7 +143,7 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
         transfusionNeededjCheckBox = new javax.swing.JCheckBox();
         redCellsUnitsJComboBox = new javax.swing.JComboBox();
         plasmaUnitsJComboBox = new javax.swing.JComboBox();
-        wholeBloodUnitsJComboBox = new javax.swing.JComboBox();
+        plateletUnitsJComboBox = new javax.swing.JComboBox();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -219,9 +212,9 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
 
         plasmaUnitsJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5" }));
 
-        wholeBloodUnitsJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5" }));
+        plateletUnitsJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5" }));
 
-        jLabel17.setText("Whole Blood Units");
+        jLabel17.setText("Platelet Units");
 
         jLabel19.setText("Date Required");
 
@@ -252,20 +245,20 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
                                             .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(dateOfBirthJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(52, 52, 52)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(27, 27, 27)
                                                 .addComponent(diagnosisJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(wholeBloodUnitsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(27, 27, 27)
+                                                .addComponent(redCellsUnitsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(transfusionNeededjCheckBox, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(redCellsUnitsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(plateletUnitsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(56, 56, 56)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -354,10 +347,10 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(patientHighBPJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(wholeBloodUnitsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17)
                     .addComponent(plasmaUnitsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21))
+                    .addComponent(jLabel21)
+                    .addComponent(redCellsUnitsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
@@ -367,10 +360,10 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(redCellsUnitsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20)
                             .addComponent(jLabel19)
-                            .addComponent(dateBloodRequiredDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(dateBloodRequiredDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(plateletUnitsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
@@ -446,13 +439,13 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
         }
 
         boolean transfusionNeeded = false;
-        int wholeBloodUnits = 0;
+        int plateletUnits = 0;
         int plasmaBloodUnits = 0;
         int redCellsUnits = 0;
         Date dateBloodRequired = new Date();
         if (transfusionNeededjCheckBox.isSelected()) {
             transfusionNeeded = true;
-            wholeBloodUnits = Integer.parseInt((String) wholeBloodUnitsJComboBox.getSelectedItem());
+            plateletUnits = Integer.parseInt((String) plateletUnitsJComboBox.getSelectedItem());
             plasmaBloodUnits = Integer.parseInt((String) plasmaUnitsJComboBox.getSelectedItem());
             redCellsUnits = Integer.parseInt((String) redCellsUnitsJComboBox.getSelectedItem());
             Date today = new Date();
@@ -482,7 +475,7 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
                 updatedPatient.setPatientDiagnosis(diagnosis);
                 updatedPatient.setPatientTreatment(treatment);
                 updatedPatient.setTransfusionNeeded(transfusionNeeded);
-                updatedPatient.setWholeBloodUnits(wholeBloodUnits);
+                updatedPatient.setWholeBloodUnits(plateletUnits);
                 updatedPatient.setPlasmaUnits(plasmaBloodUnits);
                 updatedPatient.setRedCellsUnits(redCellsUnits);
                 updatedPatient.setDateBloodRequired(dateBloodRequired);
@@ -533,10 +526,10 @@ public class PatientTransfusionRequestsJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField patientLowBPJTextField;
     private javax.swing.JTextField patientTemperatureJTextField;
     private javax.swing.JComboBox plasmaUnitsJComboBox;
+    private javax.swing.JComboBox plateletUnitsJComboBox;
     private javax.swing.JComboBox redCellsUnitsJComboBox;
     private javax.swing.JCheckBox transfusionNeededjCheckBox;
     private javax.swing.JTextField treatmentJTextField;
     private javax.swing.JButton updateJButton;
-    private javax.swing.JComboBox wholeBloodUnitsJComboBox;
     // End of variables declaration//GEN-END:variables
 }

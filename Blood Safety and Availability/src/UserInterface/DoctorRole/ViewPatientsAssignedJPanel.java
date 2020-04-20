@@ -183,7 +183,7 @@ public class ViewPatientsAssignedJPanel extends javax.swing.JPanel {
         int selectedRow = patientJTable.getSelectedRow();
         if (selectedRow >= 0) {
             Patient patient = (Patient) patientJTable.getValueAt(selectedRow, 0);
-            PatientTransfusionRequestsJPanel patientTransfusionRequestsJPanel = new PatientTransfusionRequestsJPanel(userProcessContainer, enterprise, patientOrg, userAcc, patient);
+            PatientTransfusionRequestJPanel patientTransfusionRequestsJPanel = new PatientTransfusionRequestJPanel(userProcessContainer, enterprise, patientOrg, userAcc, patient);
             userProcessContainer.add("patientTransfusionRequestsJPanel", patientTransfusionRequestsJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);

@@ -65,22 +65,22 @@
                                               <Component id="dateOfBirthJTextField" min="-2" pref="225" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
                                               <Group type="102" attributes="0">
                                                   <Component id="jLabel15" min="-2" pref="85" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                                   <Component id="diagnosisJTextField" min="-2" pref="225" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel17" min="-2" pref="94" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="wholeBloodUnitsJComboBox" min="-2" pref="225" max="-2" attributes="0"/>
+                                                  <Component id="jLabel20" min="-2" pref="85" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                                  <Component id="redCellsUnitsJComboBox" min="-2" pref="225" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="transfusionNeededjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jLabel20" min="-2" pref="85" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="redCellsUnitsJComboBox" min="-2" pref="225" max="-2" attributes="0"/>
+                                                  <Component id="jLabel17" min="-2" pref="94" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="plateletUnitsJComboBox" min="-2" pref="225" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -205,10 +205,10 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="patientHighBPJTextField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="wholeBloodUnitsJComboBox" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="plasmaUnitsJComboBox" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="redCellsUnitsJComboBox" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -221,10 +221,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="redCellsUnitsJComboBox" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="dateBloodRequiredDatePicker" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="plateletUnitsJComboBox" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -411,7 +411,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="wholeBloodUnitsJComboBox">
+        <Component class="javax.swing.JComboBox" name="plateletUnitsJComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="6">
@@ -427,7 +427,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Whole Blood Units"/>
+            <Property name="text" type="java.lang.String" value="Platelet Units"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
