@@ -5,6 +5,7 @@
  */
 package UserInterface.HospitalStaffRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
@@ -18,15 +19,17 @@ import javax.swing.JPanel;
 public class HospitalStaffAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private EcoSystem business;
     private Enterprise enterprise;
     private Organization organization;
     private UserAccount userAcc;
     /**
      * Creates new form HospitalStaffAreaJPanel
      */
-    public HospitalStaffAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount userAcc) {
+    public HospitalStaffAreaJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, Organization organization, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.business = business;
         this.enterprise = enterprise;
         this.organization = organization;
         this.userAcc = userAcc;
@@ -135,7 +138,7 @@ public class HospitalStaffAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_viewPatientsJButtonActionPerformed
 
     private void requestTransfusionJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTransfusionJButtonActionPerformed
-        ViewTransfusionRequestsJPanel viewTransfusionRequestsJPanel = new ViewTransfusionRequestsJPanel(userProcessContainer, enterprise, organization, userAcc);
+        ViewTransfusionRequestsJPanel viewTransfusionRequestsJPanel = new ViewTransfusionRequestsJPanel(userProcessContainer, business, enterprise, organization, userAcc);
         userProcessContainer.add("viewTransfusionRequestsJPanel", viewTransfusionRequestsJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

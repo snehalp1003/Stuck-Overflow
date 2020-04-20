@@ -46,7 +46,6 @@ public class LabSupervisorAreaJPanel extends javax.swing.JPanel {
         LabSuperNameLabel = new javax.swing.JLabel();
         ViewDonorsjButton = new javax.swing.JButton();
         UpdatePswjButton = new javax.swing.JButton();
-        processExtractedBloodjButton = new javax.swing.JButton();
 
         BloodbankNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         BloodbankNameLabel.setText("<value>");
@@ -57,7 +56,7 @@ public class LabSupervisorAreaJPanel extends javax.swing.JPanel {
         LabSuperNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         LabSuperNameLabel.setText("<value>");
 
-        ViewDonorsjButton.setText("View Assigned Donors to extract blood");
+        ViewDonorsjButton.setText("View Assigned Donors");
         ViewDonorsjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewDonorsjButtonActionPerformed(evt);
@@ -68,13 +67,6 @@ public class LabSupervisorAreaJPanel extends javax.swing.JPanel {
         UpdatePswjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdatePswjButtonActionPerformed(evt);
-            }
-        });
-
-        processExtractedBloodjButton.setText("Process extracted blood");
-        processExtractedBloodjButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                processExtractedBloodjButtonActionPerformed(evt);
             }
         });
 
@@ -94,10 +86,9 @@ public class LabSupervisorAreaJPanel extends javax.swing.JPanel {
                             .addComponent(BloodbankNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(196, 196, 196)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(processExtractedBloodjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ViewDonorsjButton)
-                            .addComponent(UpdatePswjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(UpdatePswjButton, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(ViewDonorsjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(203, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -111,11 +102,9 @@ public class LabSupervisorAreaJPanel extends javax.swing.JPanel {
                     .addComponent(LabSuperNameLabel))
                 .addGap(54, 54, 54)
                 .addComponent(ViewDonorsjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(processExtractedBloodjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(41, 41, 41)
                 .addComponent(UpdatePswjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(276, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -148,10 +137,6 @@ public class LabSupervisorAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_UpdatePswjButtonActionPerformed
 
-    private void processExtractedBloodjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processExtractedBloodjButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_processExtractedBloodjButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BloodbankNameLabel;
@@ -160,6 +145,5 @@ public class LabSupervisorAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton ViewDonorsjButton;
     private javax.swing.JLabel helloLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton processExtractedBloodjButton;
     // End of variables declaration//GEN-END:variables
 }

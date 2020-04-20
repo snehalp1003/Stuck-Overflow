@@ -72,13 +72,13 @@ public class ViewDonorsJPanel extends javax.swing.JPanel {
                 {
                     row[4] = donor.getAssignedStaff().toString();
                 }
-                if(donor.getDonorstatus() == null)
+                if(donor.getDonorEligibility() == null)
                 {
                     row[5]="";
                 }
                 else
                 {
-                    row[5] = donor.getDonorstatus();
+                    row[5] = donor.getDonorEligibility();
                 }
                 model.addRow(row);
             }

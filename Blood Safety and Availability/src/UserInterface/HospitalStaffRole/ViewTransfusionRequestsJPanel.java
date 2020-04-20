@@ -5,10 +5,13 @@
  */
 package UserInterface.HospitalStaffRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.OrderWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,16 +24,19 @@ import javax.swing.table.DefaultTableModel;
 public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private EcoSystem business;
     private Enterprise enterprise;
     private Organization organization;
     private UserAccount userAcc;
     private Organization patientOrg;
+
     /**
      * Creates new form ViewTransfusionRequestsJPanel
      */
-    public ViewTransfusionRequestsJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount userAcc) {
+    public ViewTransfusionRequestsJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, Organization organization, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.business = business;
         this.enterprise = enterprise;
         this.organization = organization;
         this.userAcc = userAcc;
@@ -41,25 +47,24 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
         }
         populateTranfusionRequestsTable();
     }
-    
+
     public void populateTranfusionRequestsTable() {
         DefaultTableModel model = (DefaultTableModel) patientJTable.getModel();
 
         model.setRowCount(0);
-
-        if (patientOrg != null) {
-            for (Patient patient : patientOrg.getPatientDirectory().getPatientList()) {
-                if (patient.getPatientStatus().equals("Blood Transfusion Requested")) {
-                    Object[] row = new Object[4];
-                    row[0] = patient;
-                    row[1] = patient.getAssignedDoctor().toString();
-                    row[2] = patient.getDateBloodRequired();
-                    row[3] = patient.getPatientStatus();
-                    model.addRow(row);
-                }
-            }
+        for (WorkRequest workRequest : business.getWorkQueue().getWorkRequestList()) {
+            if (workRequest.getPatient().getPatient().getAssignedStaff().equals(userAcc.getEmployee())) {
+                Object[] row = new Object[5];
+                row[0] = workRequest;
+                row[1] = workRequest.getDoctor().getEmployee().getName();
+                row[2] = workRequest.getRequestDate();
+                row[3] = workRequest.getPatient().getPatient().getDateBloodRequired();
+                row[4] = workRequest.getRequestStatus();
+                model.addRow(row);
+            } 
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,20 +97,20 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
 
         patientJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Name", "Assigned Doctor", "Date Blood Needed", "Status"
+                "Patient Name", "Assigned Doctor", "Date Request Created", "Date Blood Needed", "Request Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -182,8 +187,8 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
     private void processRequestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processRequestJButtonActionPerformed
         int selectedRow = patientJTable.getSelectedRow();
         if (selectedRow >= 0) {
-            Patient patient = (Patient) patientJTable.getValueAt(selectedRow, 0);
-            PlaceTransfusionRequestJPanel placeTransfusionRequestJPanel = new PlaceTransfusionRequestJPanel(userProcessContainer, enterprise, patientOrg, userAcc, patient);
+            OrderWorkRequest workRequest = (OrderWorkRequest) patientJTable.getValueAt(selectedRow, 0);
+            PlaceTransfusionRequestJPanel placeTransfusionRequestJPanel = new PlaceTransfusionRequestJPanel(userProcessContainer, business, enterprise, patientOrg, userAcc, workRequest);
             userProcessContainer.add("placeTransfusionRequestJPanel", placeTransfusionRequestJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);

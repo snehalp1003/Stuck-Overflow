@@ -46,10 +46,9 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="processExtractedBloodjButton" min="-2" pref="217" max="-2" attributes="0"/>
-                              <Component id="ViewDonorsjButton" min="-2" max="-2" attributes="0"/>
-                              <Component id="UpdatePswjButton" alignment="0" min="-2" pref="217" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="UpdatePswjButton" pref="217" max="32767" attributes="0"/>
+                              <Component id="ViewDonorsjButton" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -69,11 +68,9 @@
                   </Group>
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   <Component id="ViewDonorsjButton" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="processExtractedBloodjButton" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="UpdatePswjButton" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace pref="276" max="32767" attributes="0"/>
+                  <EmptySpace pref="301" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -105,7 +102,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="ViewDonorsjButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="View Assigned Donors to extract blood"/>
+            <Property name="text" type="java.lang.String" value="View Assigned Donors"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewDonorsjButtonActionPerformed"/>
@@ -117,14 +114,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdatePswjButtonActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="processExtractedBloodjButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Process extracted blood"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="processExtractedBloodjButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

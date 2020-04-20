@@ -5,11 +5,20 @@
  */
 package UserInterface.HospitalStaffRole;
 
+import Business.EcoSystem;
+import Business.Enterprise.BloodBankEnterprise;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.OrderWorkRequest;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,23 +27,24 @@ import javax.swing.JPanel;
 public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private EcoSystem business;
     private Enterprise enterprise;
     private Organization patientOrg;
     private UserAccount userAcc;
+    private OrderWorkRequest workRequest;
     private Patient patient;
-    private Patient updatedPatient;
-    private UserAccount updatedPatientUserAccount;
     /**
      * Creates new form PlaceTransfusionRequestJPanel
      */
-    public PlaceTransfusionRequestJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization patientOrg, UserAccount userAcc, Patient patient) {
+    public PlaceTransfusionRequestJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, Organization patientOrg, UserAccount userAcc, OrderWorkRequest workRequest) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.business = business;
         this.enterprise = enterprise;
         this.patientOrg = patientOrg;
         this.userAcc = userAcc;
-        this.patient = patient;
-        updatedPatient = this.patient;
+        this.workRequest = workRequest;
+        this.patient = workRequest.getPatient().getPatient();
         populatePatientDetails();
     }
 
@@ -52,40 +62,40 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     
     private void populateCompatibleBloodGroup(String patientBloodGroup) {
         if (patientBloodGroup.equals("A RhD positive (A+)")) {
-            bloodGroupJComboBox.addItem("A RhD positive (A+)");
-            bloodGroupJComboBox.addItem("A RhD negative (A-)");
-            bloodGroupJComboBox.addItem("O RhD positive (O+)");
-            bloodGroupJComboBox.addItem("O RhD negative (O-)");
+            compatibleBloodGroupJComboBox.addItem("A RhD positive (A+)");
+            compatibleBloodGroupJComboBox.addItem("A RhD negative (A-)");
+            compatibleBloodGroupJComboBox.addItem("O RhD positive (O+)");
+            compatibleBloodGroupJComboBox.addItem("O RhD negative (O-)");
         } else if (patientBloodGroup.equals("A RhD negative (A-)")) {
-            bloodGroupJComboBox.addItem("A RhD negative (A-)");
-            bloodGroupJComboBox.addItem("O RhD negative (O-)");
+            compatibleBloodGroupJComboBox.addItem("A RhD negative (A-)");
+            compatibleBloodGroupJComboBox.addItem("O RhD negative (O-)");
         } else if (patientBloodGroup.equals("B RhD positive (B+)")) {
-            bloodGroupJComboBox.addItem("B RhD positive (B+)");
-            bloodGroupJComboBox.addItem("B RhD negative (B-)");
-            bloodGroupJComboBox.addItem("O RhD positive (O+)");
-            bloodGroupJComboBox.addItem("O RhD negative (O-)");
+            compatibleBloodGroupJComboBox.addItem("B RhD positive (B+)");
+            compatibleBloodGroupJComboBox.addItem("B RhD negative (B-)");
+            compatibleBloodGroupJComboBox.addItem("O RhD positive (O+)");
+            compatibleBloodGroupJComboBox.addItem("O RhD negative (O-)");
         } else if (patientBloodGroup.equals("B RhD negative (B-)")) {
-            bloodGroupJComboBox.addItem("B RhD negative (B-)");
-            bloodGroupJComboBox.addItem("O RhD negative (O-)");
+            compatibleBloodGroupJComboBox.addItem("B RhD negative (B-)");
+            compatibleBloodGroupJComboBox.addItem("O RhD negative (O-)");
         } else if (patientBloodGroup.equals("O RhD positive (O+)")) {
-            bloodGroupJComboBox.addItem("O RhD positive (O+)");
-            bloodGroupJComboBox.addItem("O RhD negative (O-)");
+            compatibleBloodGroupJComboBox.addItem("O RhD positive (O+)");
+            compatibleBloodGroupJComboBox.addItem("O RhD negative (O-)");
         } else if (patientBloodGroup.equals("O RhD negative (O-)")) {
-            bloodGroupJComboBox.addItem("O RhD negative (O-)");
+            compatibleBloodGroupJComboBox.addItem("O RhD negative (O-)");
         } else if (patientBloodGroup.equals("AB RhD positive (AB+)")) {
-            bloodGroupJComboBox.addItem("AB RhD positive (AB+)");
-            bloodGroupJComboBox.addItem("AB RhD negative (AB-)");
-            bloodGroupJComboBox.addItem("A RhD positive (A+)");
-            bloodGroupJComboBox.addItem("A RhD negative (A-)");
-            bloodGroupJComboBox.addItem("B RhD positive (B+)");
-            bloodGroupJComboBox.addItem("B RhD negative (B-)");
-            bloodGroupJComboBox.addItem("O RhD positive (O+)");
-            bloodGroupJComboBox.addItem("O RhD negative (O-)");
+            compatibleBloodGroupJComboBox.addItem("AB RhD positive (AB+)");
+            compatibleBloodGroupJComboBox.addItem("AB RhD negative (AB-)");
+            compatibleBloodGroupJComboBox.addItem("A RhD positive (A+)");
+            compatibleBloodGroupJComboBox.addItem("A RhD negative (A-)");
+            compatibleBloodGroupJComboBox.addItem("B RhD positive (B+)");
+            compatibleBloodGroupJComboBox.addItem("B RhD negative (B-)");
+            compatibleBloodGroupJComboBox.addItem("O RhD positive (O+)");
+            compatibleBloodGroupJComboBox.addItem("O RhD negative (O-)");
         } else if (patientBloodGroup.equals("AB RhD negative (AB-)")) {
-            bloodGroupJComboBox.addItem("AB RhD negative (AB-)");
-            bloodGroupJComboBox.addItem("A RhD negative (A-)");
-            bloodGroupJComboBox.addItem("B RhD negative (B-)");
-            bloodGroupJComboBox.addItem("O RhD negative (O-)");
+            compatibleBloodGroupJComboBox.addItem("AB RhD negative (AB-)");
+            compatibleBloodGroupJComboBox.addItem("A RhD negative (A-)");
+            compatibleBloodGroupJComboBox.addItem("B RhD negative (B-)");
+            compatibleBloodGroupJComboBox.addItem("O RhD negative (O-)");
         }
     }
     
@@ -118,12 +128,12 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
         treatmentJTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        bloodGroupJComboBox = new javax.swing.JComboBox();
+        compatibleBloodGroupJComboBox = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
-        patientJTable = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        patientJTable1 = new javax.swing.JTable();
+        bloodBanksJTable = new javax.swing.JTable();
         searchJButton = new javax.swing.JButton();
+        placeOrderJButton = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel6.setText("Blood Request");
@@ -164,7 +174,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
 
         jScrollPane2.setForeground(new java.awt.Color(51, 0, 51));
 
-        patientJTable.setModel(new javax.swing.table.DefaultTableModel(
+        bloodBanksJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -190,43 +200,29 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(patientJTable);
-
-        jScrollPane3.setForeground(new java.awt.Color(51, 0, 51));
-
-        patientJTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Blood Bank", "City", "Red Cell Units", "Platelet Unts", "Plasma Units"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(patientJTable1);
+        jScrollPane2.setViewportView(bloodBanksJTable);
 
         searchJButton.setForeground(new java.awt.Color(51, 0, 51));
         searchJButton.setText("Search");
         searchJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchJButtonActionPerformed(evt);
+            }
+        });
+
+        placeOrderJButton.setForeground(new java.awt.Color(51, 0, 51));
+        placeOrderJButton.setText("Place Order");
+        placeOrderJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeOrderJButtonActionPerformed(evt);
+            }
+        });
+
+        backJButton.setForeground(new java.awt.Color(51, 0, 51));
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
             }
         });
 
@@ -237,7 +233,6 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1086, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,12 +279,18 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(dateBloodRequiredJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(bloodGroupJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(compatibleBloodGroupJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(searchJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 207, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(194, 194, 194)
+                .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(placeOrderJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(207, 207, 207))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,13 +330,15 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
                 .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bloodGroupJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(compatibleBloodGroupJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(96, 96, 96)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(61, 61, 61)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(placeOrderJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -357,13 +360,67 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
+        String bloodGroup = compatibleBloodGroupJComboBox.getSelectedItem().toString();
         
+        DefaultTableModel model = (DefaultTableModel) bloodBanksJTable.getModel();
+        model.setRowCount(0);
+        
+        for(Network network : business.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise.getEnterpriseType().getValue().equals(Enterprise.EnterpriseType.BloodBank.toString())) {
+                    BloodBankEnterprise bloodBank = (BloodBankEnterprise) enterprise;
+                    HashMap<String, Integer> bloodBankDir = new HashMap<>();
+                    bloodBankDir = bloodBank.getBloodBankDirectory();
+                    int redCellUnits;
+                    int plateletUnits;
+                    int plasmaUnits;
+                    redCellUnits = bloodBankDir.get("Red Cells - "+bloodGroup);
+                    plateletUnits = bloodBankDir.get("Platelet - "+bloodGroup);
+                    plasmaUnits = bloodBankDir.get("Plasma - "+bloodGroup);
+                    Object[] row = new Object[6];
+                    row[0] = enterprise;
+                    row[1] = network;
+                    row[2] = redCellUnits;
+                    row[3] = plateletUnits;
+                    row[4] = plasmaUnits;
+                    model.addRow(row);
+                }
+            }
+        }
     }//GEN-LAST:event_searchJButtonActionPerformed
+
+    private void placeOrderJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderJButtonActionPerformed
+        int selectedRow = bloodBanksJTable.getSelectedRow();
+        if (selectedRow >= 0) {
+            BloodBankEnterprise bloodBankEnterprise = (BloodBankEnterprise) bloodBanksJTable.getValueAt(selectedRow, 0);
+            if ((Integer)bloodBanksJTable.getValueAt(selectedRow, 2) >= Integer.parseInt(redCellUnitsJTextField.getText()) && (Integer)bloodBanksJTable.getValueAt(selectedRow, 3) >= Integer.parseInt(plateletUnitsJTextField.getText()) && (Integer)bloodBanksJTable.getValueAt(selectedRow, 4) >= Integer.parseInt(plasmaUnitsJTextField.getText())) {
+//                PlaceOrderJPanel placeOrderJPanel = new PlaceOrderJPanel(userProcessContainer, business, enterprise, patientOrg, userAcc, patient);
+//                userProcessContainer.add("placeOrderJPanel", placeOrderJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_placeOrderJButtonActionPerformed
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ViewTransfusionRequestsJPanel vtrjp = (ViewTransfusionRequestsJPanel) component;
+        vtrjp.populateTranfusionRequestsTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_backJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox bloodGroupJComboBox;
+    private javax.swing.JButton backJButton;
+    private javax.swing.JTable bloodBanksJTable;
     private javax.swing.JTextField bloodGroupJTextField;
+    private javax.swing.JComboBox compatibleBloodGroupJComboBox;
     private javax.swing.JTextField dateBloodRequiredJTextField;
     private javax.swing.JTextField diagnosisJTextField;
     private javax.swing.JLabel jLabel15;
@@ -379,10 +436,8 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField nameJTextField;
-    private javax.swing.JTable patientJTable;
-    private javax.swing.JTable patientJTable1;
+    private javax.swing.JButton placeOrderJButton;
     private javax.swing.JTextField plasmaUnitsJTextField;
     private javax.swing.JTextField plateletUnitsJTextField;
     private javax.swing.JTextField redCellUnitsJTextField;

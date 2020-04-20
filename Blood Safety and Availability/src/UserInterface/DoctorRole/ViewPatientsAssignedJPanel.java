@@ -5,6 +5,7 @@
  */
 package UserInterface.DoctorRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Patient.Patient;
@@ -21,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class ViewPatientsAssignedJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private EcoSystem business;
     private Enterprise enterprise;
     private Organization organization;
     private UserAccount userAcc;
@@ -29,9 +31,10 @@ public class ViewPatientsAssignedJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewPatientsAssignedJPanel
      */
-    public ViewPatientsAssignedJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount userAcc) {
+    public ViewPatientsAssignedJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, Organization organization, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.business = business;
         this.enterprise = enterprise;
         this.organization = organization;
         this.userAcc = userAcc;
@@ -183,7 +186,7 @@ public class ViewPatientsAssignedJPanel extends javax.swing.JPanel {
         int selectedRow = patientJTable.getSelectedRow();
         if (selectedRow >= 0) {
             Patient patient = (Patient) patientJTable.getValueAt(selectedRow, 0);
-            PatientTransfusionRequestJPanel patientTransfusionRequestsJPanel = new PatientTransfusionRequestJPanel(userProcessContainer, enterprise, patientOrg, userAcc, patient);
+            PatientTransfusionRequestJPanel patientTransfusionRequestsJPanel = new PatientTransfusionRequestJPanel(userProcessContainer, business, enterprise, patientOrg, userAcc, patient);
             userProcessContainer.add("patientTransfusionRequestsJPanel", patientTransfusionRequestsJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);

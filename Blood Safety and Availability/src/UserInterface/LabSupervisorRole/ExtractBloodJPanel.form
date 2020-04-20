@@ -52,24 +52,28 @@
                                               <Component id="bloodGroupJTextField" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="jLabel2" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
+                                      <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel7" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
                                               <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="HeartRateJTextField" max="32767" attributes="0"/>
-                                              <Component id="HeightJTextField" max="32767" attributes="0"/>
-                                              <Component id="contactNoJTextField" max="32767" attributes="0"/>
-                                              <Component id="TempJTextField" max="32767" attributes="0"/>
-                                              <Component id="AssStaffJTextField" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="ExpiryDatePicker" min="-2" pref="225" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="HeartRateJTextField" max="32767" attributes="0"/>
+                                                  <Component id="HeightJTextField" max="32767" attributes="0"/>
+                                                  <Component id="contactNoJTextField" max="32767" attributes="0"/>
+                                                  <Component id="TempJTextField" max="32767" attributes="0"/>
+                                                  <Component id="AssStaffJTextField" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
-                                      <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -80,7 +84,6 @@
                                       <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel21" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
-                                      <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -95,7 +98,6 @@
                                   <Component id="DonorEligibilityJTextField" alignment="0" pref="225" max="32767" attributes="0"/>
                                   <Component id="dateOfBirthJTextField" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="ExpiryDatePicker" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -198,7 +200,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Name"/>
+            <Property name="text" type="java.lang.String" value="Donor Name"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="nameJTextField">
