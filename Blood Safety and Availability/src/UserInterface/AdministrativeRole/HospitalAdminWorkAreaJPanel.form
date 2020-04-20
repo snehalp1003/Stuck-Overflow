@@ -149,7 +149,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\16173\Downloads\Untitled-2 (1).jpg"/>
+              <Image iconType="3" name="/UserInterface/Images/Untitled-2 (1).jpg"/>
             </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[3350, 3885]"/>
