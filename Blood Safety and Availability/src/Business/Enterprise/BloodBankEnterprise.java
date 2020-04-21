@@ -16,10 +16,12 @@ import java.util.HashMap;
 public class BloodBankEnterprise extends Enterprise {
     
     private HashMap<String,Integer> bloodBankDirectory;
+    private HashMap<String,Double> bloodBankPrices;
     
     public BloodBankEnterprise(String name){
         super(name,EnterpriseType.BloodBank);
         bloodBankDirectory = new HashMap<>();
+        bloodBankPrices = new HashMap<>();
         initializeBloodBankDirectory();
     }
     
@@ -58,6 +60,14 @@ public class BloodBankEnterprise extends Enterprise {
 
     public void setBloodBankDirectory(HashMap<String, Integer> bloodBankDirectory) {
         this.bloodBankDirectory = bloodBankDirectory;
+    }
+
+    public HashMap<String, Double> getBloodBankPrices() {
+        return bloodBankPrices;
+    }
+
+    public void setBloodBankPrices(HashMap<String, Double> bloodBankPrices) {
+        this.bloodBankPrices = bloodBankPrices;
     }
     
     @Override

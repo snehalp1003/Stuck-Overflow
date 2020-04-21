@@ -512,7 +512,7 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
                     workRequest.setRedCellUnits(updatedPatient.getRedCellsUnits());
                     workRequest.setPlateletUnits(updatedPatient.getPlateletUnits());
                     workRequest.setPlasmaUnits(updatedPatient.getPlasmaUnits());
-                    workRequest.setRequestStatus("Blood Transfusion Requested");
+                    workRequest.setRequestStatusForPlateletUnits("Blood Transfusion Requested");
                     if (business.getWorkQueue() == null) {
                         WorkQueue workQueue = new WorkQueue();
                         business.setWorkQueue(workQueue);
