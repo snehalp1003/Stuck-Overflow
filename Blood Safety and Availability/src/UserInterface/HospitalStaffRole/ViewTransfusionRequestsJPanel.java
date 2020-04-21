@@ -59,7 +59,7 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
                 row[1] = workRequest.getDoctor().getEmployee().getName();
                 row[2] = workRequest.getRequestDate();
                 row[3] = workRequest.getPatient().getPatient().getDateBloodRequired();
-                row[4] = workRequest.getRequestStatus();
+                row[4] = workRequest.getRequestStatusForPlateletUnits();
                 model.addRow(row);
             } 
         }

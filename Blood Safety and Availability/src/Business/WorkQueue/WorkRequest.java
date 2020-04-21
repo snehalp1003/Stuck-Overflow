@@ -6,6 +6,7 @@
 package Business.WorkQueue;
 
 import Business.Donor.Donor;
+import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 import java.util.Date;
 
@@ -17,12 +18,20 @@ public abstract class WorkRequest {
     private UserAccount patient;
     private UserAccount doctor;
     private UserAccount hospitalStaff;
-    private UserAccount bloodBankStaff;
-    private UserAccount labSupervisor;
     private Donor donor;
-    private String requestStatus;
     private Date requestDate;
-    private Date resolveDate;
+    private Enterprise enterpriseForRedCellUnits;
+    private Enterprise enterpriseForPlateletUnits;
+    private Enterprise enterpriseForPlasmaUnits;
+    private UserAccount bloodBankStaffForRedCellUnits;
+    private UserAccount bloodBankStaffForPlasmaUnits;
+    private UserAccount bloodBankStaffForPlateletUnits;
+    private String requestStatusForPlateletUnits;
+    private String requestStatusForPlasmaUnits;
+    private String requestStatusForRedCellUnits;
+    private Date resolveDateForPlateletUnits;
+    private Date resolveDateForPlasmaUnits;
+    private Date resolveDateForRedCellUnits;
     private int redCellUnits;
     private int plateletUnits;
     private int plasmaUnits;
@@ -55,20 +64,20 @@ public abstract class WorkRequest {
         this.hospitalStaff = hospitalStaff;
     }
 
-    public UserAccount getBloodBankStaff() {
-        return bloodBankStaff;
+    public UserAccount getBloodBankStaffForRedCellUnits() {
+        return bloodBankStaffForRedCellUnits;
     }
 
-    public void setBloodBankStaff(UserAccount bloodBankStaff) {
-        this.bloodBankStaff = bloodBankStaff;
+    public void setBloodBankStaffForRedCellUnits(UserAccount bloodBankStaffForRedCellUnits) {
+        this.bloodBankStaffForRedCellUnits = bloodBankStaffForRedCellUnits;
     }
 
-    public UserAccount getLabSupervisor() {
-        return labSupervisor;
+    public UserAccount getBloodBankStaffForPlasmaUnits() {
+        return bloodBankStaffForPlasmaUnits;
     }
 
-    public void setLabSupervisor(UserAccount labSupervisor) {
-        this.labSupervisor = labSupervisor;
+    public void setBloodBankStaffForPlasmaUnits(UserAccount bloodBankStaffForPlasmaUnits) {
+        this.bloodBankStaffForPlasmaUnits = bloodBankStaffForPlasmaUnits;
     }
  
 
@@ -80,12 +89,12 @@ public abstract class WorkRequest {
         this.donor = donor;
     }
 
-    public String getRequestStatus() {
-        return requestStatus;
+    public String getRequestStatusForPlateletUnits() {
+        return requestStatusForPlateletUnits;
     }
 
-    public void setRequestStatus(String requestStatus) {
-        this.requestStatus = requestStatus;
+    public void setRequestStatusForPlateletUnits(String requestStatusForPlateletUnits) {
+        this.requestStatusForPlateletUnits = requestStatusForPlateletUnits;
     }
 
     public Date getRequestDate() {
@@ -96,12 +105,12 @@ public abstract class WorkRequest {
         this.requestDate = requestDate;
     }
 
-    public Date getResolveDate() {
-        return resolveDate;
+    public Date getResolveDateForPlateletUnits() {
+        return resolveDateForPlateletUnits;
     }
 
-    public void setResolveDate(Date resolveDate) {
-        this.resolveDate = resolveDate;
+    public void setResolveDateForPlateletUnits(Date resolveDateForPlateletUnits) {
+        this.resolveDateForPlateletUnits = resolveDateForPlateletUnits;
     }
 
     public int getRedCellUnits() {
@@ -127,6 +136,72 @@ public abstract class WorkRequest {
     public void setPlasmaUnits(int plasmaUnits) {
         this.plasmaUnits = plasmaUnits;
     }
+
+    public Enterprise getEnterpriseForRedCellUnits() {
+        return enterpriseForRedCellUnits;
+    }
+
+    public void setEnterpriseForRedCellUnits(Enterprise enterpriseForRedCellUnits) {
+        this.enterpriseForRedCellUnits = enterpriseForRedCellUnits;
+    }
+
+    public Enterprise getEnterpriseForPlateletUnits() {
+        return enterpriseForPlateletUnits;
+    }
+
+    public void setEnterpriseForPlateletUnits(Enterprise enterpriseForPlateletUnits) {
+        this.enterpriseForPlateletUnits = enterpriseForPlateletUnits;
+    }
+
+    public Enterprise getEnterpriseForPlasmaUnits() {
+        return enterpriseForPlasmaUnits;
+    }
+
+    public void setEnterpriseForPlasmaUnits(Enterprise enterpriseForPlasmaUnits) {
+        this.enterpriseForPlasmaUnits = enterpriseForPlasmaUnits;
+    }
+
+    public UserAccount getBloodBankStaffForPlateletUnits() {
+        return bloodBankStaffForPlateletUnits;
+    }
+
+    public void setBloodBankStaffForPlateletUnits(UserAccount bloodBankStaffForPlateletUnits) {
+        this.bloodBankStaffForPlateletUnits = bloodBankStaffForPlateletUnits;
+    }
+
+    public String getRequestStatusForPlasmaUnits() {
+        return requestStatusForPlasmaUnits;
+    }
+
+    public void setRequestStatusForPlasmaUnits(String requestStatusForPlasmaUnits) {
+        this.requestStatusForPlasmaUnits = requestStatusForPlasmaUnits;
+    }
+
+    public String getRequestStatusForRedCellUnits() {
+        return requestStatusForRedCellUnits;
+    }
+
+    public void setRequestStatusForRedCellUnits(String requestStatusForRedCellUnits) {
+        this.requestStatusForRedCellUnits = requestStatusForRedCellUnits;
+    }
+
+    public Date getResolveDateForPlasmaUnits() {
+        return resolveDateForPlasmaUnits;
+    }
+
+    public void setResolveDateForPlasmaUnits(Date resolveDateForPlasmaUnits) {
+        this.resolveDateForPlasmaUnits = resolveDateForPlasmaUnits;
+    }
+
+    public Date getResolveDateForRedCellUnits() {
+        return resolveDateForRedCellUnits;
+    }
+
+    public void setResolveDateForRedCellUnits(Date resolveDateForRedCellUnits) {
+        this.resolveDateForRedCellUnits = resolveDateForRedCellUnits;
+    }
+    
+    
     
     @Override
     public String toString() {
