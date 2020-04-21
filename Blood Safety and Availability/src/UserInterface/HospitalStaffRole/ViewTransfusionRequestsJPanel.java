@@ -59,7 +59,7 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
                 row[1] = workRequest.getDoctor().getEmployee().getName();
                 row[2] = workRequest.getRequestDate();
                 row[3] = workRequest.getPatient().getPatient().getDateBloodRequired();
-                row[4] = workRequest.getRequestStatusForPlateletUnits();
+                row[4] = workRequest.getOrderStatus();
                 model.addRow(row);
             } 
         }
@@ -80,6 +80,7 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         patientJTable = new javax.swing.JTable();
         processRequestJButton = new javax.swing.JButton();
+        orderProgressJButton = new javax.swing.JButton();
 
         backJButton.setForeground(new java.awt.Color(51, 0, 51));
         backJButton.setText("<< Back");
@@ -131,6 +132,14 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
             }
         });
 
+        orderProgressJButton.setForeground(new java.awt.Color(51, 0, 51));
+        orderProgressJButton.setText("View Order Progress");
+        orderProgressJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderProgressJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -146,7 +155,9 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(92, 92, 92)
                 .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
+                .addGap(92, 92, 92)
+                .addComponent(orderProgressJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addComponent(processRequestJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(125, 125, 125))
         );
@@ -160,7 +171,8 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(processRequestJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(orderProgressJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(108, 108, 108))
         );
 
@@ -185,17 +197,22 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void processRequestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processRequestJButtonActionPerformed
+        DefaultTableModel model = (DefaultTableModel) patientJTable.getModel();
         int selectedRow = patientJTable.getSelectedRow();
-        if (selectedRow >= 0) {
+        if (selectedRow >= 0 && model.getValueAt(selectedRow, 4).toString().equals("Blood Transfusion Requested")) {
             OrderWorkRequest workRequest = (OrderWorkRequest) patientJTable.getValueAt(selectedRow, 0);
-            PlaceTransfusionRequestJPanel placeTransfusionRequestJPanel = new PlaceTransfusionRequestJPanel(userProcessContainer, business, enterprise, patientOrg, userAcc, workRequest);
+            PlaceTransfusionRequestJPanel placeTransfusionRequestJPanel = new PlaceTransfusionRequestJPanel(userProcessContainer, business, enterprise, workRequest);
             userProcessContainer.add("placeTransfusionRequestJPanel", placeTransfusionRequestJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a Row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select a row where Blood Transfusion is Requested!!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_processRequestJButtonActionPerformed
+
+    private void orderProgressJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderProgressJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderProgressJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -203,6 +220,7 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton orderProgressJButton;
     private javax.swing.JTable patientJTable;
     private javax.swing.JButton processRequestJButton;
     // End of variables declaration//GEN-END:variables

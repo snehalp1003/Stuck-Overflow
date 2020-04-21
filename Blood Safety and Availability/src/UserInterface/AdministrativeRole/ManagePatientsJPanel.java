@@ -303,7 +303,7 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
 
             populateTable();
         
-             nameJTextField.setText("");
+            nameJTextField.setText("");
             usernameJTextField.setText("");
             passwordJPasswordField.setText("");
         }

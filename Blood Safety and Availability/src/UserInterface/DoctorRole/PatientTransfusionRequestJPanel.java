@@ -12,7 +12,6 @@ import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.OrderWorkRequest;
 import Business.WorkQueue.WorkQueue;
-import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.Date;
@@ -528,10 +527,11 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
                     OrderWorkRequest workRequest = new OrderWorkRequest();
                     workRequest.setPatient(updatedPatientUserAccount);
                     workRequest.setDoctor(userAcc);
-                    workRequest.setRedCellUnits(updatedPatient.getRedCellsUnits());
+                    workRequest.setHospitalEnterprise(enterprise);
+                    workRequest.setRedCellsUnits(updatedPatient.getRedCellsUnits());
                     workRequest.setPlateletUnits(updatedPatient.getPlateletUnits());
                     workRequest.setPlasmaUnits(updatedPatient.getPlasmaUnits());
-                    workRequest.setRequestStatusForPlateletUnits("Blood Transfusion Requested");
+                    workRequest.setOrderStatus("Blood Transfusion Requested");
                     if (business.getWorkQueue() == null) {
                         WorkQueue workQueue = new WorkQueue();
                         business.setWorkQueue(workQueue);
