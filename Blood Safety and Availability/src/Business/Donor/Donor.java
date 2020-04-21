@@ -28,6 +28,7 @@ public class Donor {
     private Double donorHeight;
     private Double donorWeight;
     private Double donorBP;
+    private Double highDonorBP;
     private Double donorHeartRate;
     private Double donorTemp;
     private String donorEligibility;
@@ -199,6 +200,16 @@ public class Donor {
     public void setBloodProcessed(boolean bloodProcessed) {
         this.bloodProcessed = bloodProcessed;
     }
+
+    public Double getHighDonorBP() {
+        return highDonorBP;
+    }
+
+    public void setHighDonorBP(Double highDonorBP) {
+        this.highDonorBP = highDonorBP;
+    }
+    
+    
     
     @Override
     public String toString() {
