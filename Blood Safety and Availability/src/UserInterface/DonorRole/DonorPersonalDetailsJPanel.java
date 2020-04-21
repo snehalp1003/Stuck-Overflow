@@ -280,6 +280,21 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
             return;
         }
         
+         Double height = Double.parseDouble(HtjTextField.getText());
+        if (height == null || HtjTextField.getText().isEmpty()||height>39.00&&height<200.00) {
+            JOptionPane.showMessageDialog(null, "Please enter valid donor's height !");
+            return;
+        }
+        
+        Double weight = Double.parseDouble(WeightjTextField.getText());
+        if (weight == null || WeightjTextField.getText().isEmpty()||weight>40&&weight<150) {
+            JOptionPane.showMessageDialog(null, "Please enter valid patient's weight !");
+            return;
+        }
+        
+        
+        
+        
         String donorGender = genderJComboBox.getSelectedItem().toString();
         if (donorGender == null || donorGender.equals("")) {
             JOptionPane.showMessageDialog(null, "Please select donor's gender !");
@@ -331,6 +346,10 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
         organization.getDonorDirectory().getDonorList().add(updatedDonor);
         organization.getUserAccountDirectory().getUserAccountList().add(updatedUserAccount);
          JOptionPane.showMessageDialog(null, "Saved Donor information !");
+         
+         contactNoJTextField.setText("");
+         HtjTextField.setText("");
+         WeightjTextField.setText("");
 
        
         

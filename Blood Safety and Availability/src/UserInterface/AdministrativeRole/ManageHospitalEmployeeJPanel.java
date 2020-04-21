@@ -13,6 +13,7 @@ import Business.Organization.OrganizationDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -283,11 +284,23 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         String password = String.valueOf(passwordJPasswordField.getPassword());
 
         EmployeeDirectory empDir = new EmployeeDirectory();
-        Employee employee = empDir.createEmployee(name);
-        organization.getEmployeeDirectory().getEmployeeList().add(employee);
-        organization.getUserAccountDirectory().createUserAccount(username, password, employee, null, null, role);
+        if(organization.getUserAccountDirectory().checkIfUsernameIsUnique(username))
+        {
+            Employee employee = empDir.createEmployee(name);
+            organization.getEmployeeDirectory().getEmployeeList().add(employee);
+            organization.getUserAccountDirectory().createUserAccount(username, password, employee, null, null, role);
 
-        populateTable();
+             populateTable();
+        
+            nameJTextField.setText("");
+            usernameJTextField.setText("");
+            passwordJPasswordField.setText("");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, " Hospital Staff or Doctor Username must be unique ");
+        }
+        
     }//GEN-LAST:event_createEmployeeJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

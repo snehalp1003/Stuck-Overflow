@@ -278,6 +278,10 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
 
         populateTable();
         
+        nameJTextField.setText("");
+        usernameJTextField.setText("");
+        passwordJPasswordField.setText("");
+        
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
