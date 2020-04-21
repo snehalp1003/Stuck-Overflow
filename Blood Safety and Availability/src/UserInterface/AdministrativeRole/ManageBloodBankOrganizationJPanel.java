@@ -112,13 +112,13 @@ public class ManageBloodBankOrganizationJPanel extends javax.swing.JPanel {
             }
         });
 
+        organizationJComboBox.setForeground(new java.awt.Color(51, 0, 51));
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Organization Type ");
 
-        backJButton.setBackground(new java.awt.Color(204, 204, 204));
         backJButton.setForeground(new java.awt.Color(51, 0, 51));
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
