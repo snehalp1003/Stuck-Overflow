@@ -403,33 +403,33 @@ public class AssignDoctorToPatientJPanel extends javax.swing.JPanel {
 
     private void SaveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveJButtonActionPerformed
         Double height = Double.parseDouble(patientHeightJTextField.getText());
-        if (height == null || patientHeightJTextField.getText().isEmpty()||height>39.00&&height<200.00) {
+        if (height == null || patientHeightJTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter valid patient's height !");
             return;
         }
         
         Double weight = Double.parseDouble(patientWeightJTextField.getText());
-        if (weight == null || patientWeightJTextField.getText().isEmpty()||weight>40&&weight<150) {
+        if (weight == null || patientWeightJTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter valid patient's weight !");
             return;
         }
         Double lowBP = Double.parseDouble(patientLowBPJTextField.getText());
-        if (lowBP == null || patientLowBPJTextField.getText().isEmpty()||lowBP<100) {
+        if (lowBP == null || patientLowBPJTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter patient's valid low blood pressure !");
             return;
         }
         Double highBP = Double.parseDouble(patientHighBPJTextField.getText());
-        if (highBP == null || patientHighBPJTextField.getText().isEmpty()||highBP>100&&highBP<180) {
+        if (highBP == null || patientHighBPJTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter patient's high blood pressure !");
             return;
         }
         Double heartRate = Double.parseDouble(patientHeartRateJTextField.getText());
-        if (heartRate == null || patientHeartRateJTextField.getText().isEmpty()||heartRate>50&&heartRate<90) {
+        if (heartRate == null || patientHeartRateJTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter patient's valid heart rate !");
             return;
         }
         Double temperature = Double.parseDouble(patientTemperatureJTextField.getText());
-        if (temperature == null || patientTemperatureJTextField.getText().isEmpty()||temperature>71&&temperature<100) {
+        if (temperature == null || patientTemperatureJTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter patient's valid temperature !");
             return;
         }
