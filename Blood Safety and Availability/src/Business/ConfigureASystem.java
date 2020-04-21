@@ -25,7 +25,7 @@ public class ConfigureASystem {
         //create user account
         
         
-        Employee employee = system.getEmployeeDirectory().createEmployee("RRH");
+        Employee employee = system.getEmployeeDirectory().createEmployee("RRH","RRH","RRH");
         
         // create later
         

@@ -13,6 +13,8 @@ import Business.Organization.OrganizationDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -76,6 +78,14 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         }
 
     }
+    
+    private boolean emailPatternCorrect(){
+     
+        Pattern p = Pattern.compile("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$");
+        Matcher m=p.matcher(EmailjTextField.getText());
+        boolean b = m.matches();
+        return b;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,6 +113,10 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         passwordJPasswordField = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        EmailjTextField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        AddressjTextField = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -184,6 +198,10 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/hospital.jpg"))); // NOI18N
         jLabel8.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(51, 0, 51)));
 
+        jLabel7.setText("E-mail:");
+
+        jLabel9.setText("Address:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -220,8 +238,19 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(19, 19, 19)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
-                .addComponent(jLabel8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EmailjTextField)
+                            .addComponent(AddressjTextField))))
                 .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
@@ -237,11 +266,15 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
                 .addGap(85, 85, 85)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel7)
+                    .addComponent(EmailjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel9)
+                    .addComponent(AddressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,19 +315,31 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
         String name = nameJTextField.getText();
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
+        String email = EmailjTextField.getText();
+        String address = AddressjTextField.getText();
 
         EmployeeDirectory empDir = new EmployeeDirectory();
         if(organization.getUserAccountDirectory().checkIfUsernameIsUnique(username))
         {
-            Employee employee = empDir.createEmployee(name);
-            organization.getEmployeeDirectory().getEmployeeList().add(employee);
-            organization.getUserAccountDirectory().createUserAccount(username, password, employee, null, null, role);
+            if(email == null || email.equals("") || !emailPatternCorrect() || address == null || address.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid email or address ");
+            }
+            else
+            {
+                Employee employee = empDir.createEmployee(name,email,address);
+                organization.getEmployeeDirectory().getEmployeeList().add(employee);
+                organization.getUserAccountDirectory().createUserAccount(username, password, employee, null, null, role);
 
-             populateTable();
+                populateTable();
         
-            nameJTextField.setText("");
-            usernameJTextField.setText("");
-            passwordJPasswordField.setText("");
+                nameJTextField.setText("");
+                usernameJTextField.setText("");
+                passwordJPasswordField.setText("");
+                EmailjTextField.setText("");
+                AddressjTextField.setText("");
+            }
+            
         }
         else
         {
@@ -316,6 +361,8 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AddressjTextField;
+    private javax.swing.JTextField EmailjTextField;
     private javax.swing.JButton backJButton;
     private javax.swing.JButton createEmployeeJButton;
     private javax.swing.JTable employeeJTable;
@@ -325,7 +372,9 @@ public class ManageHospitalEmployeeJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
