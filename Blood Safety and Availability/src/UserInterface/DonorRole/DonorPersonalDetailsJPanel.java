@@ -292,9 +292,6 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
             return;
         }
         
-        
-        
-        
         String donorGender = genderJComboBox.getSelectedItem().toString();
         if (donorGender == null || donorGender.equals("")) {
             JOptionPane.showMessageDialog(null, "Please select donor's gender !");
@@ -347,9 +344,6 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
         organization.getUserAccountDirectory().getUserAccountList().add(updatedUserAccount);
          JOptionPane.showMessageDialog(null, "Saved Donor information !");
          
-         contactNoJTextField.setText("");
-         HtjTextField.setText("");
-         WeightjTextField.setText("");
 
        
         

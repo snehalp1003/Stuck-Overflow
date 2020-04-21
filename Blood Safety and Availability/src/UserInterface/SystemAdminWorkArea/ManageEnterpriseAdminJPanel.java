@@ -79,7 +79,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     
     private boolean emailPatternCorrect(){
      
-        Pattern p = Pattern.compile("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$");
+        Pattern p = Pattern.compile("[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+$");
         Matcher m=p.matcher(EmailjTextField.getText());
         boolean b = m.matches();
         return b;
