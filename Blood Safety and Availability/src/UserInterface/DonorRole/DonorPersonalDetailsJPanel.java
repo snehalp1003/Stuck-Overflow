@@ -11,6 +11,8 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -86,6 +88,35 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
             WeightjTextField.setText("");
         }
     }
+    
+    private boolean ContactPatternCorrect() {
+
+        Pattern p = Pattern.compile("^[0][1-9]\\d{9}$|^[1-9]\\d{9}$");
+        Matcher m = p.matcher(contactNoJTextField.getText());
+        boolean b = m.matches();
+        return b;
+    }
+    
+    private boolean HeightPatternCorrect() {
+
+        String ht = HtjTextField.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
+        boolean b = m.matches();
+        return b;
+    }
+    
+    private boolean WeightPatternCorrect() {
+
+        String ht = HtjTextField.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
+        boolean b = m.matches();
+        return b;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,6 +167,8 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
 
         jLabel7.setText("Contact No.");
 
+        contactNoJTextField.setToolTipText("enter numeric value");
+
         jLabel8.setText("Blood Group");
 
         bloodGroupJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "A RhD positive (A+)", "A RhD negative (A-)", "B RhD positive (B+)", "B RhD negative (B-)", "O RhD positive (O+)", "O RhD negative (O-)", "AB RhD positive (AB+)", "AB RhD negative (AB-)" }));
@@ -166,7 +199,11 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Height (cms)");
 
+        HtjTextField.setToolTipText("Enter numeric value");
+
         jLabel9.setText("Weight(Kgs)");
+
+        WeightjTextField.setToolTipText("Enter numeric value");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -275,22 +312,61 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
      
         String donorNo = contactNoJTextField.getText();
         
-        if (donorNo == null || contactNoJTextField.getText().length() != 10) {
+        if (donorNo == null || !ContactPatternCorrect()) {
             JOptionPane.showMessageDialog(null, "Please enter a valid 10 digit contact number !");
             return;
         }
         
-         Double height = Double.parseDouble(HtjTextField.getText());
+        if (HeightPatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(HtjTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid donor's height in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid donor's height in numbers !");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid donor's height !");
+        }
+         /*Double height = Double.parseDouble(HtjTextField.getText());
         if (height == null || HtjTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter valid donor's height !");
             return;
+        }*/
+         
+         if (WeightPatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(WeightjTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid donor's weight in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid donor's weight in numbers !");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid donor's weight !");
         }
         
-        Double weight = Double.parseDouble(WeightjTextField.getText());
+       /* Double weight = Double.parseDouble(WeightjTextField.getText());
         if (weight == null || WeightjTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter valid patient's weight !");
             return;
-        }
+        }*/
         
         String donorGender = genderJComboBox.getSelectedItem().toString();
         if (donorGender == null || donorGender.equals("")) {
@@ -316,7 +392,7 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
         for (Donor donor: organization.getDonorDirectory().getDonorList())
         {
             if(donor.getDonorName().equals(oldDonor.getDonorName())&&
-                    donor.getDonorRegisteredDate()==null||  (donor.getDonorRegisteredDate().equals(oldDonor.getDonorRegisteredDate()))&&
+                    //donor.getDonorRegisteredDate()==null||  (donor.getDonorRegisteredDate().equals(oldDonor.getDonorRegisteredDate()))&&
                     oldDonor.getDOB() == null || (donor.getDOB().equals(oldDonor.getDOB()))&&
                     oldDonor.getGender()== null || (donor.getGender().equals(oldDonor.getGender()))&&
                     donor.getDonorBloodType()== null || (donor.getDonorBloodType().equals(oldDonor.getDonorBloodType()))&&

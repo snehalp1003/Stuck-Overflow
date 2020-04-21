@@ -57,7 +57,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel3" alignment="0" pref="100" max="32767" attributes="0"/>
+                                      <Component id="jLabel3" alignment="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
                                   </Group>
@@ -152,10 +152,19 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="plateletPriceJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Enter numeric value"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="plasmaPriceJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Enter numeric value"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="redCellPriceJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Enter Numeric value"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="saveJButton">
           <Properties>

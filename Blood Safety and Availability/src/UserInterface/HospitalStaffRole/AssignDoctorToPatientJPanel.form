@@ -282,6 +282,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="patientHeightJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Enter numeric value"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -289,6 +292,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="patientWeightJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Enter numeric value"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -306,10 +312,19 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="patientHighBPJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Enter numeric value"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="patientLowBPJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Enter numeric value"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="patientHeartRateJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Enter numeric value"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
@@ -322,6 +337,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="patientTemperatureJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Enter numeric value"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="assignDoctorJComboBox">
           <Properties>

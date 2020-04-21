@@ -79,6 +79,12 @@ public class ViewBloodUnitPricesJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Platelet Unit ($)");
 
+        plateletPriceJTextField.setToolTipText("Enter numeric value");
+
+        plasmaPriceJTextField.setToolTipText("Enter numeric value");
+
+        redCellPriceJTextField.setToolTipText("Enter Numeric value");
+
         saveJButton.setForeground(new java.awt.Color(51, 0, 51));
         saveJButton.setText("Save");
         saveJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +125,7 @@ public class ViewBloodUnitPricesJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)

@@ -194,6 +194,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="contactNoJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Enter numeric value"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>

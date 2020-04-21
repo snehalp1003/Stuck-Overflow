@@ -185,6 +185,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="contactNoJTextField">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="enter numeric value"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -247,6 +250,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="HtjTextField">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Enter numeric value"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
@@ -254,6 +260,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="WeightjTextField">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Enter numeric value"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
