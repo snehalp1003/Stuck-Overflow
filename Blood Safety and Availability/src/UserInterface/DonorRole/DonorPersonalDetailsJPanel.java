@@ -281,13 +281,13 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
         }
         
          Double height = Double.parseDouble(HtjTextField.getText());
-        if (height == null || HtjTextField.getText().isEmpty()||height>39.00&&height<200.00) {
+        if (height == null || HtjTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter valid donor's height !");
             return;
         }
         
         Double weight = Double.parseDouble(WeightjTextField.getText());
-        if (weight == null || WeightjTextField.getText().isEmpty()||weight>40&&weight<150) {
+        if (weight == null || WeightjTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter valid patient's weight !");
             return;
         }

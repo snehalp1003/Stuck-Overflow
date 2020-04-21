@@ -360,20 +360,20 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         Double BP = Double.parseDouble(bloodPressjTextField.getText());
-        if (BP == null || bloodPressjTextField.getText().isEmpty()||BP>100&&BP<180) {
+        if (BP == null || bloodPressjTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter donor's  blood pressure !");
             return;
         }
         
 
         Double HR = Double.parseDouble(heartRatejTextField.getText());
-        if (HR == null || heartRatejTextField.getText().isEmpty()||HR>50&&HR<90) {
+        if (HR == null || heartRatejTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter donor's  heart rate !");
             return;
         }
 
         Double temp = Double.parseDouble(tempjTextField.getText());
-        if (temp == null || tempjTextField.getText().isEmpty()||temp>71&&temp<100) {
+        if (temp == null || tempjTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter donor's temparature in Farenheit !");
             return;
         }
