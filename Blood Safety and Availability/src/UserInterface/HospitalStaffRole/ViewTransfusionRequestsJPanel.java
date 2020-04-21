@@ -196,7 +196,7 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
         int selectedRow = patientJTable.getSelectedRow();
         if (selectedRow >= 0 && model.getValueAt(selectedRow, 4).toString().equals("Blood Transfusion Requested")) {
             OrderWorkRequest workRequest = (OrderWorkRequest) patientJTable.getValueAt(selectedRow, 0);
-            PlaceTransfusionRequestJPanel placeTransfusionRequestJPanel = new PlaceTransfusionRequestJPanel(userProcessContainer, business, enterprise, workRequest);
+            PlaceTransfusionRequestJPanel placeTransfusionRequestJPanel = new PlaceTransfusionRequestJPanel(userProcessContainer, business, enterprise, workRequest, userAcc);
             userProcessContainer.add("placeTransfusionRequestJPanel", placeTransfusionRequestJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -210,7 +210,7 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
         int selectedRow = patientJTable.getSelectedRow();
         if (selectedRow >= 0 && model.getValueAt(selectedRow, 4).toString().equals("Placed Order")) {
             OrderWorkRequest workRequest = (OrderWorkRequest) patientJTable.getValueAt(selectedRow, 0);
-            ViewOrderProgressJPanel viewOrderProgressJPanel = new ViewOrderProgressJPanel(userProcessContainer, business, enterprise, workRequest);
+            ViewOrderProgressJPanel viewOrderProgressJPanel = new ViewOrderProgressJPanel(userProcessContainer, business, enterprise, workRequest, userAcc);
             userProcessContainer.add("viewOrderProgressJPanel", viewOrderProgressJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
