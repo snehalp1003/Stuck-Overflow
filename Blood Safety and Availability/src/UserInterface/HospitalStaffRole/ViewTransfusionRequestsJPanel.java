@@ -61,7 +61,7 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
                 row[3] = workRequest.getPatient().getPatient().getDateBloodRequired();
                 row[4] = workRequest.getOrderStatus();
                 model.addRow(row);
-            } 
+            }
         }
     }
 
@@ -156,8 +156,8 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
                 .addGap(92, 92, 92)
                 .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(92, 92, 92)
-                .addComponent(orderProgressJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addComponent(orderProgressJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(processRequestJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(125, 125, 125))
         );
@@ -211,7 +211,15 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_processRequestJButtonActionPerformed
 
     private void orderProgressJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderProgressJButtonActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) patientJTable.getModel();
+        int selectedRow = patientJTable.getSelectedRow();
+        if (selectedRow >= 0 && model.getValueAt(selectedRow, 4).toString().equals("Placed Order")) {
+            OrderWorkRequest workRequest = (OrderWorkRequest) patientJTable.getValueAt(selectedRow, 0);
+            ViewOrderProgressJPanel viewOrderProgressJPanel = new ViewOrderProgressJPanel(userProcessContainer, business, enterprise, workRequest);
+            userProcessContainer.add("viewOrderProgressJPanel", viewOrderProgressJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        }
     }//GEN-LAST:event_orderProgressJButtonActionPerformed
 
 

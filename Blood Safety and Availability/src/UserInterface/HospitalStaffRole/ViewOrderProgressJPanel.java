@@ -10,7 +10,6 @@ import Business.Enterprise.BloodBankEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Patient.Patient;
 import Business.WorkQueue.OrderWorkRequest;
-import java.util.HashMap;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,7 +35,6 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.workRequest = workRequest;
         this.patient = workRequest.getPatient().getPatient();
-        bloodBank = (BloodBankEnterprise) enterprise;
         populatePatientDetails();
         populateOrderTable();
     }
@@ -57,28 +55,34 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         if(workRequest.getRedCellsComponent() != null) {
+            bloodBank = (BloodBankEnterprise) workRequest.getEnterpriseForRedCellUnits();
             Object[] row = new Object[5];
             row[0] = workRequest.getRedCellsComponent();
             row[1] = workRequest.getEnterpriseForRedCellUnits();
             row[2] = bloodBank.getBloodBankPrices().get("Red Cells Unit Price");
             row[3] = workRequest.getRedCellsUnits();
             row[4] = workRequest.getRedCellsPrice();
+            model.addRow(row);
         }
         if(workRequest.getPlateletComponent()!= null) {
+            bloodBank = (BloodBankEnterprise) workRequest.getEnterpriseForPlateletUnits();
             Object[] row = new Object[5];
             row[0] = workRequest.getPlateletComponent();
             row[1] = workRequest.getEnterpriseForPlateletUnits();
             row[2] = bloodBank.getBloodBankPrices().get("Platelet Unit Price");
             row[3] = workRequest.getPlateletUnits();
             row[4] = workRequest.getPlateletPrice();
+            model.addRow(row);
         }
         if(workRequest.getRequestStatusForPlasmaUnits()!= null) {
+            bloodBank = (BloodBankEnterprise) workRequest.getEnterpriseForPlasmaUnits();
             Object[] row = new Object[5];
             row[0] = workRequest.getPlasmaComponent();
             row[1] = workRequest.getEnterpriseForPlasmaUnits();
             row[2] = bloodBank.getBloodBankPrices().get("Plasma Unit Price");
             row[3] = workRequest.getPlasmaUnits();
             row[4] = workRequest.getPlasmaPrice();
+            model.addRow(row);
         }
     }
     
@@ -221,12 +225,12 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(dateBloodRequiredJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(17, 17, 17)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(18, Short.MAX_VALUE)))
+                    .addContainerGap(189, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,12 +267,12 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(plasmaUnitsJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel18)))
-                .addContainerGap(401, Short.MAX_VALUE))
+                .addContainerGap(309, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(261, 261, 261)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(262, Short.MAX_VALUE)))
+                    .addContainerGap(170, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -276,16 +280,16 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(167, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(133, 133, 133))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
