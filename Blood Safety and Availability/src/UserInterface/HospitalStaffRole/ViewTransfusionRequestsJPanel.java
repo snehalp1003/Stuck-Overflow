@@ -28,7 +28,6 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Organization organization;
     private UserAccount userAcc;
-    private Organization patientOrg;
 
     /**
      * Creates new form ViewTransfusionRequestsJPanel
@@ -40,11 +39,7 @@ public class ViewTransfusionRequestsJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.organization = organization;
         this.userAcc = userAcc;
-        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            if (org.getName().contains("Patient")) {
-                patientOrg = org;
-            }
-        }
+
         populateTranfusionRequestsTable();
     }
 
