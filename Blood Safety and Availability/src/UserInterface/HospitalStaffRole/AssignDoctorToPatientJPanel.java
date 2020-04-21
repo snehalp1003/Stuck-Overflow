@@ -236,7 +236,11 @@ public class AssignDoctorToPatientJPanel extends javax.swing.JPanel {
 
         patientGenderJTextField.setEditable(false);
 
+        patientHeightJTextField.setToolTipText("Enter numeric value");
+
         jLabel9.setText("Height (cms)");
+
+        patientWeightJTextField.setToolTipText("Enter numeric value");
 
         jLabel10.setText("Weight (lbs)");
 
@@ -244,9 +248,17 @@ public class AssignDoctorToPatientJPanel extends javax.swing.JPanel {
 
         jLabel12.setText("High BP");
 
+        patientHighBPJTextField.setToolTipText("Enter numeric value");
+
+        patientLowBPJTextField.setToolTipText("Enter numeric value");
+
+        patientHeartRateJTextField.setToolTipText("Enter numeric value");
+
         jLabel13.setText("Heart Rate");
 
         jLabel14.setText("Temperature (F)");
+
+        patientTemperatureJTextField.setToolTipText("Enter numeric value");
 
         jLabel15.setText("Assign Doctor");
 

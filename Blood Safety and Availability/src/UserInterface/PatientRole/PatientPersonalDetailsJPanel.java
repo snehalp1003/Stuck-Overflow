@@ -74,6 +74,16 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
             bloodGroupJComboBox.setSelectedItem("");
         }
     }
+    
+    private boolean ContactPatternCorrect() {
+
+        String Contact = contactNoJTextField.getText();
+        Pattern p = Pattern.compile("^[0][1-9]\\d{9}$|^[1-9]\\d{9}$");
+        Matcher m = p.matcher(contactNoJTextField.getText());
+        boolean b = m.matches();
+        return b;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -128,6 +138,8 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
         genderJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Male", "Female", "Other" }));
 
         jLabel5.setText("Date of Birth");
+
+        contactNoJTextField.setToolTipText("Enter numeric value");
 
         jLabel7.setText("Contact No.");
 
@@ -240,11 +252,32 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SaveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveJButtonActionPerformed
-        Long patientContactNo = Long.parseLong(contactNoJTextField.getText());
-        if (patientContactNo == null || contactNoJTextField.getText().length() != 10) {
+        
+        if(ContactPatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(contactNoJTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid patients's contact number !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid patients's contact number !");
+            }
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid patients's contact number !");
+        }
+        
+       /* if (patientContactNo == null || contactNoJTextField.getText().length() != 10) {
             JOptionPane.showMessageDialog(null, "Please enter a valid 10 digit contact number !");
             return;
-        }
+        }*/
         
         String patientGender = genderJComboBox.getSelectedItem().toString();
         if (patientGender == null || patientGender.equals("")) {
@@ -264,6 +297,8 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select valid date of birth !");
             return;
         }
+        
+        Long patientContactNo = Long.parseLong(contactNoJTextField.getText());
 
         for (Patient patient : organization.getPatientDirectory().getPatientList()) {
             if (patient.getPatientName().equals(oldPatient.getPatientName()) && (oldPatient.getPatientDOB() == null || patient.getPatientDOB().equals(oldPatient.getPatientDOB())) && ((oldPatient.getPatientGender() == null) || (patient.getPatientGender().equals(oldPatient.getPatientGender()))) && ((patient.getPatientBloodType() == null) || (patient.getPatientBloodType().equals(oldPatient.getPatientBloodType()))) && ((patient.getPatientContact() == null) || (patient.getPatientContact().equals(oldPatient.getPatientContact())))) {

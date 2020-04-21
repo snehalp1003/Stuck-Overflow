@@ -201,15 +201,25 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
 
         jLabel12.setText("High BP");
 
+        patientHighBPJTextField.setToolTipText("Enter numeric value");
+
+        patientLowBPJTextField.setToolTipText("Enter numeric value");
+
+        patientHeartRateJTextField.setToolTipText("Enter numeric value");
+
         jLabel13.setText("Heart Rate");
 
         jLabel14.setText("Temperature (F)");
+
+        patientTemperatureJTextField.setToolTipText("Enter numeric value");
 
         jLabel16.setText("Assigned Staff");
 
         assignStaffJTextField.setEditable(false);
 
         jLabel15.setText("Diagnosis");
+
+        diagnosisJTextField.setToolTipText("enter numeric value");
 
         jLabel18.setText("Treatment");
 
