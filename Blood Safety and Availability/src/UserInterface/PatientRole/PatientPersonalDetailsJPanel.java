@@ -44,16 +44,7 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
         oldPatient = userAcc.getPatient();
         updatedUserAccount = this.userAcc;
         populateUserDetails();
-    }
-    
-    private boolean phonePatternCorrect(){
-     
-        Pattern p = Pattern.compile("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$");
-        Matcher m=p.matcher(contactNoJTextField.getText());
-        boolean b = m.matches();
-        return b;
-    }
-    
+    }    
 
     private void populateUserDetails() {
         nameJTextField.setText(oldPatient.getPatientName());
@@ -254,13 +245,6 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter a valid 10 digit contact number !");
             return;
         }
-       
-        
-      /*  if(!phonePatternCorrect()){
-            JOptionPane.showMessageDialog(null,"Please insert a valid phone number");
-            contactNoJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            return;
-        }*/
         
         String patientGender = genderJComboBox.getSelectedItem().toString();
         if (patientGender == null || patientGender.equals("")) {
@@ -282,7 +266,7 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
         }
 
         for (Patient patient : organization.getPatientDirectory().getPatientList()) {
-            if (patient.getPatientName().equals(oldPatient.getPatientName()) && patient.getPatientAdmitDate().equals(oldPatient.getPatientAdmitDate()) && (oldPatient.getPatientDOB() == null || patient.getPatientDOB().equals(oldPatient.getPatientDOB())) && ((oldPatient.getPatientGender() == null) || (patient.getPatientGender().equals(oldPatient.getPatientGender()))) && ((patient.getPatientBloodType() == null) || (patient.getPatientBloodType().equals(oldPatient.getPatientBloodType()))) && ((patient.getPatientContact() == null) || (patient.getPatientContact().equals(oldPatient.getPatientContact())))) {
+            if (patient.getPatientName().equals(oldPatient.getPatientName()) && (oldPatient.getPatientDOB() == null || patient.getPatientDOB().equals(oldPatient.getPatientDOB())) && ((oldPatient.getPatientGender() == null) || (patient.getPatientGender().equals(oldPatient.getPatientGender()))) && ((patient.getPatientBloodType() == null) || (patient.getPatientBloodType().equals(oldPatient.getPatientBloodType()))) && ((patient.getPatientContact() == null) || (patient.getPatientContact().equals(oldPatient.getPatientContact())))) {
                 updatedPatient = patient;
             }
         }
