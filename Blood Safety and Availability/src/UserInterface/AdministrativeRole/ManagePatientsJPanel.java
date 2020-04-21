@@ -13,6 +13,7 @@ import Business.Patient.PatientDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -294,11 +295,23 @@ public class ManagePatientsJPanel extends javax.swing.JPanel {
         String password = String.valueOf(passwordJPasswordField.getPassword());
 
         PatientDirectory patientDir = new PatientDirectory();
-        Patient patient = patientDir.createPatient(name);
-        organization.getPatientDirectory().createPatient(name);
-        organization.getUserAccountDirectory().createUserAccount(username, password, null, patient, null, role);
+        if(organization.getUserAccountDirectory().checkIfUsernameIsUnique(username))
+        {
+             Patient patient = patientDir.createPatient(name);
+            organization.getPatientDirectory().createPatient(name);
+            organization.getUserAccountDirectory().createUserAccount(username, password, null, patient, null, role);
 
-        populateTable();
+            populateTable();
+        
+             nameJTextField.setText("");
+            usernameJTextField.setText("");
+            passwordJPasswordField.setText("");
+        }
+        else
+        {
+             JOptionPane.showMessageDialog(null, " Patient Username must be unique ");
+        }
+       
     }//GEN-LAST:event_createPatientJButtonActionPerformed
 
 

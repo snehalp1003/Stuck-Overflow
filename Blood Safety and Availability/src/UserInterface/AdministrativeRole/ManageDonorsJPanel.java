@@ -13,6 +13,7 @@ import Business.Organization.OrganizationDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -232,13 +233,27 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
             String userName = dUserNameJTextFeild.getText();
             String password = String.valueOf(passwordJPasswordField.getPassword());
 
-            DonorDirectory donorDir = new DonorDirectory();
-            Donor donor = donorDir.createDonor(name);
-            organization.getDonorDirectory().createDonor(name);
-            organization.getUserAccountDirectory().createUserAccount(userName, password, null, null, donor, role);
-             
+            if(organization.getUserAccountDirectory().checkIfUsernameIsUnique(userName))
+            {
+                DonorDirectory donorDir = new DonorDirectory();
+                Donor donor = donorDir.createDonor(name);
+                organization.getDonorDirectory().createDonor(name);
+                organization.getUserAccountDirectory().createUserAccount(userName, password, null, null, donor, role);
+                populateTable();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, " Donor Username must be unique ");
+                //return;
+            }
+            
+            //organization.getUserAccountDirectory().changeUserPassword(username, oldPassword, newPassword);
 
-            populateTable();
+            
+            
+            dNameJTestFeild.setText("");
+            dUserNameJTextFeild.setText("");
+            passwordJPasswordField.setText("");
         
     }//GEN-LAST:event_CreateDJBtnActionPerformed
 

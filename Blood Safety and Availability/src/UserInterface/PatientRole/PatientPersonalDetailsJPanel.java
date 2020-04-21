@@ -10,7 +10,11 @@ import Business.Organization.Organization;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -41,6 +45,15 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
         updatedUserAccount = this.userAcc;
         populateUserDetails();
     }
+    
+    private boolean phonePatternCorrect(){
+     
+        Pattern p = Pattern.compile("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$");
+        Matcher m=p.matcher(contactNoJTextField.getText());
+        boolean b = m.matches();
+        return b;
+    }
+    
 
     private void populateUserDetails() {
         nameJTextField.setText(oldPatient.getPatientName());
@@ -241,7 +254,14 @@ public class PatientPersonalDetailsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter a valid 10 digit contact number !");
             return;
         }
-
+       
+        
+      /*  if(!phonePatternCorrect()){
+            JOptionPane.showMessageDialog(null,"Please insert a valid phone number");
+            contactNoJTextField.setBorder(BorderFactory.createLineBorder(Color.RED));
+            return;
+        }*/
+        
         String patientGender = genderJComboBox.getSelectedItem().toString();
         if (patientGender == null || patientGender.equals("")) {
             JOptionPane.showMessageDialog(null, "Please select patient's gender !");

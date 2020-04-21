@@ -11,7 +11,11 @@ import Business.Organization.Organization;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -50,6 +54,49 @@ public class AssignDoctorToPatientJPanel extends javax.swing.JPanel {
         populateDoctors();
         assignStaffJTextField.setText(userAcc.getEmployee().toString());
     }
+    
+    
+   /*  private boolean HeightPatternCorrect(){
+     
+        Pattern p = Pattern.compile("\\d{2,3}\\.\\d{,2}");
+        Matcher m=p.matcher(patientHeightJTextField.getText());
+        boolean b = m.matches();
+        return b;
+    }
+     
+     private boolean WeightPatternCorrect(){
+     
+        Pattern p = Pattern.compile("\\d{2,3}\\.\\d{,3}");
+        Matcher m=p.matcher(patientWeightJTextField.getText());
+        boolean b = m.matches();
+        return b;
+    }
+     
+      private boolean LowBPPatternCorrect(){
+     
+        Pattern p = Pattern.compile("^\\d+$");
+        Matcher m=p.matcher(patientLowBPJTextField.getText());
+        boolean b = m.matches();
+        return b;
+    }
+     
+      private boolean HighBPPatternCorrect(){
+     
+        Pattern p = Pattern.compile("^\\d+$");
+        Matcher m=p.matcher(patientHighBPJTextField.getText());
+        boolean b = m.matches();
+        return b;
+    }
+       private boolean TempPatternCorrect(){
+     
+        Pattern p = Pattern.compile("\\d{2,3}\\.\\d{,2}");
+        Matcher m=p.matcher(patientTemperatureJTextField.getText());
+        boolean b = m.matches();
+        return b;
+    }*/
+      
+     
+    
 
     private void populateUserDetails() {
         nameJTextField.setText(patient.getPatientName());
@@ -356,33 +403,34 @@ public class AssignDoctorToPatientJPanel extends javax.swing.JPanel {
 
     private void SaveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveJButtonActionPerformed
         Double height = Double.parseDouble(patientHeightJTextField.getText());
-        if (height == null || patientHeightJTextField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter patient's height !");
+        if (height == null || patientHeightJTextField.getText().isEmpty()||height>39.00&&height<200.00) {
+            JOptionPane.showMessageDialog(null, "Please enter valid patient's height !");
             return;
         }
+        
         Double weight = Double.parseDouble(patientWeightJTextField.getText());
-        if (weight == null || patientWeightJTextField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter patient's weight !");
+        if (weight == null || patientWeightJTextField.getText().isEmpty()||weight>40&&weight<150) {
+            JOptionPane.showMessageDialog(null, "Please enter valid patient's weight !");
             return;
         }
         Double lowBP = Double.parseDouble(patientLowBPJTextField.getText());
-        if (lowBP == null || patientLowBPJTextField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter patient's low blood pressure !");
+        if (lowBP == null || patientLowBPJTextField.getText().isEmpty()||lowBP<100) {
+            JOptionPane.showMessageDialog(null, "Please enter patient's valid low blood pressure !");
             return;
         }
         Double highBP = Double.parseDouble(patientHighBPJTextField.getText());
-        if (highBP == null || patientHighBPJTextField.getText().isEmpty()) {
+        if (highBP == null || patientHighBPJTextField.getText().isEmpty()||highBP>100&&highBP<180) {
             JOptionPane.showMessageDialog(null, "Please enter patient's high blood pressure !");
             return;
         }
         Double heartRate = Double.parseDouble(patientHeartRateJTextField.getText());
-        if (heartRate == null || patientHeartRateJTextField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter patient's heart rate !");
+        if (heartRate == null || patientHeartRateJTextField.getText().isEmpty()||heartRate>50&&heartRate<90) {
+            JOptionPane.showMessageDialog(null, "Please enter patient's valid heart rate !");
             return;
         }
         Double temperature = Double.parseDouble(patientTemperatureJTextField.getText());
-        if (temperature == null || patientTemperatureJTextField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter patient's temperature !");
+        if (temperature == null || patientTemperatureJTextField.getText().isEmpty()||temperature>71&&temperature<100) {
+            JOptionPane.showMessageDialog(null, "Please enter patient's valid temperature !");
             return;
         }
         Employee doctor = (Employee) assignDoctorJComboBox.getSelectedItem();
@@ -424,6 +472,14 @@ public class AssignDoctorToPatientJPanel extends javax.swing.JPanel {
                 org.getPatientDirectory().getPatientList().add(updatedPatient);
                 org.getUserAccountDirectory().getUserAccountList().add(updatedPatientUserAccount);
                 JOptionPane.showMessageDialog(null, "Saved patient vitals !");
+                
+                patientHeightJTextField.setText("");
+                patientWeightJTextField.setText("");
+                patientLowBPJTextField.setText("");
+                patientHighBPJTextField.setText("");
+                patientHeartRateJTextField.setText("");
+                patientTemperatureJTextField.setText("");
+                
             }
         }
     }//GEN-LAST:event_SaveJButtonActionPerformed
