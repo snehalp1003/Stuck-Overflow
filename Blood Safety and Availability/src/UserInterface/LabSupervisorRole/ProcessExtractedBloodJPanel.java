@@ -13,6 +13,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.HashMap;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,6 +25,9 @@ public class ProcessExtractedBloodJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAcc;
     private Donor donor;
+    BloodBankEnterprise bloodBank;
+    HashMap<String,Integer> bloodBankDir;
+    private Enterprise updatedEnterprise;
     
     /**
      * Creates new form ProcessExtractedBloodJPanel
@@ -34,17 +38,34 @@ public class ProcessExtractedBloodJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAcc = userAcc;
         this.donor = donor;
-        populateBloodBankDirectoryTable();
+        this.updatedEnterprise = enterprise;
+        
+        bloodBank = (BloodBankEnterprise) enterprise;
+        bloodBankDir = bloodBank.getBloodBankDirectory();
+        
         nameJTextField.setText(donor.getDonorName());
         bloodGroupJTextField.setText(donor.getDonorBloodType());
         expiryJTextField.setText(donor.getExpiry().toString());
         unitsCollectedJTextField.setText(String.valueOf(donor.getUnitsDonated()));
+        populateBloodBankDirectoryTable();
     }
     
     private void populateBloodBankDirectoryTable() {
-        BloodBankEnterprise bloodBank = (BloodBankEnterprise) enterprise;
-        HashMap<String,Integer> bloodBankDir = bloodBank.getBloodBankDirectory();
-        
+        if(donor.isBloodProcessed()) {
+            processJButton.setEnabled(false);
+        }
+        String bloodGroups[] = {"AB RhD positive (AB+)","AB RhD negative (AB-)", "A RhD positive (A+)","A RhD negative (A-)","B RhD positive (B+)","B RhD negative (B-)","O RhD positive (O+)","O RhD negative (O-)"};
+        DefaultTableModel model = (DefaultTableModel) bloodBankDirJTable.getModel();
+
+        model.setRowCount(0);
+        for (int i = 0; i < bloodGroups.length; i++) {
+            Object[] row = new Object[4];
+            row[0] = bloodGroups[i];
+            row[1] = bloodBankDir.get("Red Cells - "+bloodGroups[i]);
+            row[2] = bloodBankDir.get("Platelet - "+bloodGroups[i]);
+            row[3] = bloodBankDir.get("Plasma - "+bloodGroups[i]);
+            model.addRow(row);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,9 +77,8 @@ public class ProcessExtractedBloodJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        donorJTable1 = new javax.swing.JTable();
+        bloodBankDirJTable = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         nameJTextField = new javax.swing.JTextField();
@@ -71,14 +91,14 @@ public class ProcessExtractedBloodJPanel extends javax.swing.JPanel {
         processJButton = new javax.swing.JButton();
         BackjButton = new javax.swing.JButton();
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 0, 51));
-        jLabel6.setText("Process Blood");
-
         jScrollPane2.setForeground(new java.awt.Color(51, 0, 51));
 
-        donorJTable1.setModel(new javax.swing.table.DefaultTableModel(
+        bloodBankDirJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -103,7 +123,7 @@ public class ProcessExtractedBloodJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(donorJTable1);
+        jScrollPane2.setViewportView(bloodBankDirJTable);
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 0, 51));
@@ -153,17 +173,11 @@ public class ProcessExtractedBloodJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel6))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
+                                .addGap(31, 31, 31)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(unitsCollectedJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,43 +185,43 @@ public class ProcessExtractedBloodJPanel extends javax.swing.JPanel {
                                 .addGap(81, 81, 81)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel16))
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(expiryJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(bloodGroupJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(processJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 77, Short.MAX_VALUE)))
+                                    .addComponent(processJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel16)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 134, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addGap(30, 30, 30)
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bloodGroupJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(29, 29, 29)
+                    .addComponent(jLabel8)
+                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(expiryJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(unitsCollectedJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
-                .addGap(63, 63, 63)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BackjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(processJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                    .addComponent(processJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BackjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(110, 110, 110))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -215,21 +229,31 @@ public class ProcessExtractedBloodJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
-        // TODO add your handling code here:
+        int redCellUnits = bloodBankDir.get("Red Cells - "+donor.getDonorBloodType());
+        int plateletUnits = bloodBankDir.get("Platelet - "+donor.getDonorBloodType());
+        int plasmaUnits = bloodBankDir.get("Plasma - "+donor.getDonorBloodType());
+        
+        bloodBankDir.put("Red Cells - "+donor.getDonorBloodType(),redCellUnits+1);
+        bloodBankDir.put("Platelet - "+donor.getDonorBloodType(),plateletUnits+1);
+        bloodBankDir.put("Plasma - "+donor.getDonorBloodType(),plasmaUnits+1);
+        
+        donor.setBloodProcessed(true);
+        processJButton.setEnabled(false);
+        populateBloodBankDirectoryTable();
     }//GEN-LAST:event_processJButtonActionPerformed
 
     private void BackjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackjButtonActionPerformed
@@ -246,13 +270,12 @@ public class ProcessExtractedBloodJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackjButton;
+    private javax.swing.JTable bloodBankDirJTable;
     private javax.swing.JTextField bloodGroupJTextField;
-    private javax.swing.JTable donorJTable1;
     private javax.swing.JTextField expiryJTextField;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;

@@ -56,8 +56,10 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
         AssStaffJTextField.setText(donor.getAssignedStaff().getName());
         DonorEligibilityJTextField.setText(donor.getDonorEligibility());
 
-        if (donor.getUnitsDonated() != 0) {
+        if (donor.getUnitsDonated() == 1) {
             unitsCollectedJComboBox.setSelectedItem(Integer.toString(donor.getUnitsDonated()));
+            unitsCollectedJComboBox.setEnabled(false);
+            UpdatejButton.setEnabled(false);
         } else {
             unitsCollectedJComboBox.setSelectedItem(0);
         }
@@ -379,7 +381,8 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
                 updatedDonorUserAccount.setDonor(updatedDonor);
                 org.getDonorDirectory().getDonorList().add(updatedDonor);
                 org.getUserAccountDirectory().getUserAccountList().add(updatedDonorUserAccount);
-                JOptionPane.showMessageDialog(null, "Extracted Blood");
+                JOptionPane.showMessageDialog(null, "Blood donation completed !");
+                UpdatejButton.setEnabled(false);
              }
          }
          
