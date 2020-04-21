@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.BloodBankEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Patient.Patient;
+import Business.UserAccount.UserAccount;
 import Business.WorkQueue.OrderWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -22,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class ViewOrderProgressJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private UserAccount userAcc;
     private EcoSystem business;
     private Enterprise enterprise;
     private OrderWorkRequest workRequest;
@@ -30,9 +32,10 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewOrderProgressJPanel
      */
-    public ViewOrderProgressJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, OrderWorkRequest workRequest) {
+    public ViewOrderProgressJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, OrderWorkRequest workRequest, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.userAcc = userAcc;
         this.business = business;
         this.enterprise = enterprise;
         this.workRequest = workRequest;
@@ -55,8 +58,8 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
     private void populateOrderTable() {
         DefaultTableModel model = (DefaultTableModel) orderJTable.getModel();
         model.setRowCount(0);
-        
-        if(workRequest.getRedCellsComponent() != null) {
+        if(workRequest.getHospitalStaff().equals(userAcc)) {
+            if(workRequest.getRedCellsComponent() != null) {
             bloodBank = (BloodBankEnterprise) workRequest.getEnterpriseForRedCellUnits();
             Object[] row = new Object[6];
             row[0] = workRequest.getRedCellsComponent();
@@ -88,6 +91,7 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
             row[4] = workRequest.getPlasmaPrice();
             row[5] = workRequest.getRequestStatusForPlasmaUnits();
             model.addRow(row);
+        }
         }
     }
     

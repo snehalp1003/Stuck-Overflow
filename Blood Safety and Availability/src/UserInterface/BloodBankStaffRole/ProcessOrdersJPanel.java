@@ -12,6 +12,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -67,7 +68,7 @@ public class ProcessOrdersJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) orderJTable.getModel();
         model.setRowCount(0);
         for (WorkRequest workRequest : business.getWorkQueue().getWorkRequestList()) {
-            if (workRequest.getEnterpriseForRedCellUnits() != null && workRequest.getEnterpriseForRedCellUnits().equals(bloodBank) && (workRequest.getBloodBankStaffForRedCellUnits().equals(userAcc) || workRequest.getBloodBankStaffForRedCellUnits() == null)) {
+            if (workRequest.getEnterpriseForRedCellUnits() != null && workRequest.getEnterpriseForRedCellUnits().equals(bloodBank) && (workRequest.getBloodBankStaffForRedCellUnits() == null || workRequest.getBloodBankStaffForRedCellUnits().equals(userAcc))) {
                 Object[] row = new Object[7];
                 row[0] = workRequest.getHospitalEnterprise();
                 row[1] = workRequest;
@@ -78,7 +79,7 @@ public class ProcessOrdersJPanel extends javax.swing.JPanel {
                 row[6] = workRequest.getRequestStatusForRedCellUnits();
                 model.addRow(row);
             }
-            if (workRequest.getEnterpriseForPlateletUnits() != null && workRequest.getEnterpriseForPlateletUnits().equals(bloodBank) && (workRequest.getBloodBankStaffForPlateletUnits().equals(userAcc) || workRequest.getBloodBankStaffForPlateletUnits()== null)) {
+            if (workRequest.getEnterpriseForPlateletUnits() != null && workRequest.getEnterpriseForPlateletUnits().equals(bloodBank) && (workRequest.getBloodBankStaffForPlateletUnits() == null || workRequest.getBloodBankStaffForPlateletUnits().equals(userAcc))) {
                 Object[] row = new Object[7];
                 row[0] = workRequest.getHospitalEnterprise();
                 row[1] = workRequest;
@@ -89,7 +90,7 @@ public class ProcessOrdersJPanel extends javax.swing.JPanel {
                 row[6] = workRequest.getRequestStatusForPlateletUnits();
                 model.addRow(row);
             }
-            if (workRequest.getEnterpriseForPlasmaUnits()!= null && workRequest.getEnterpriseForPlasmaUnits().equals(bloodBank) && (workRequest.getBloodBankStaffForPlasmaUnits().equals(userAcc) || workRequest.getBloodBankStaffForPlasmaUnits()== null)) {
+            if (workRequest.getEnterpriseForPlasmaUnits() != null && workRequest.getEnterpriseForPlasmaUnits().equals(bloodBank) && (workRequest.getBloodBankStaffForPlasmaUnits() == null || workRequest.getBloodBankStaffForPlasmaUnits().equals(userAcc))) {
                 Object[] row = new Object[7];
                 row[0] = workRequest.getHospitalEnterprise();
                 row[1] = workRequest;
@@ -283,11 +284,50 @@ public class ProcessOrdersJPanel extends javax.swing.JPanel {
     private void processOrderJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processOrderJButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel) orderJTable.getModel();
         int selectedRow = orderJTable.getSelectedRow();
-        if (selectedRow >= 0 && model.getValueAt(selectedRow, 5).toString().contains("Order placed for")) {
-            WorkRequest selectedWorkRequest = (WorkRequest) orderJTable.getValueAt(selectedRow, 1);
-            if(selectedWorkRequest.getBloodBankStaffForRedCellUnits() == null) {
-                
-            } 
+        if (selectedRow >= 0 && model.getValueAt(selectedRow, 6).toString().contains("Order placed for")) {
+            if (model.getValueAt(selectedRow, 2).toString().contains("Red Cells")) {
+                WorkRequest selectedWorkRequest = (WorkRequest) orderJTable.getValueAt(selectedRow, 1);
+
+                if (selectedWorkRequest.getEnterpriseForRedCellUnits().equals(bloodBank) && selectedWorkRequest.getOrderStatus().equals("Placed Order") && selectedWorkRequest.getBloodBankStaffForRedCellUnits() == null) {
+                    if (bloodBankDir.get(selectedWorkRequest.getRedCellsComponent()) >= selectedWorkRequest.getRedCellsUnits()) {
+                        selectedWorkRequest.setBloodBankStaffForRedCellUnits(userAcc);
+                        selectedWorkRequest.setRequestStatusForRedCellUnits("Order processed for Red Cells Units");
+                        selectedWorkRequest.setResolveDateForRedCellUnits(new Date());
+                        int updatedRedCellComponent = bloodBankDir.get(selectedWorkRequest.getRedCellsComponent()) - selectedWorkRequest.getRedCellsUnits();
+                        bloodBankDir.put(selectedWorkRequest.getRedCellsComponent(), updatedRedCellComponent);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Not enough quantity in blood bank !!", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+            } else if (model.getValueAt(selectedRow, 2).toString().contains("Platelet")) {
+                WorkRequest selectedWorkRequest = (WorkRequest) orderJTable.getValueAt(selectedRow, 1);
+                if (selectedWorkRequest.getEnterpriseForPlateletUnits().equals(bloodBank) && selectedWorkRequest.getOrderStatus().equals("Placed Order") && selectedWorkRequest.getBloodBankStaffForPlateletUnits() == null) {
+                    if (bloodBankDir.get(selectedWorkRequest.getPlateletComponent()) >= selectedWorkRequest.getPlateletUnits()) {
+                        selectedWorkRequest.setBloodBankStaffForPlateletUnits(userAcc);
+                        selectedWorkRequest.setRequestStatusForPlateletUnits("Order processed for Platelet Units");
+                        selectedWorkRequest.setResolveDateForPlateletUnits(new Date());
+                        int updatedPlateletComponent = bloodBankDir.get(selectedWorkRequest.getPlateletComponent()) - selectedWorkRequest.getPlateletUnits();
+                        bloodBankDir.put(selectedWorkRequest.getPlateletComponent(), updatedPlateletComponent);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Not enough quantity in blood bank !!", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+            } else if (model.getValueAt(selectedRow, 2).toString().contains("Plasma")) {
+                WorkRequest selectedWorkRequest = (WorkRequest) orderJTable.getValueAt(selectedRow, 1);
+                if (selectedWorkRequest.getEnterpriseForPlasmaUnits().equals(bloodBank) && selectedWorkRequest.getOrderStatus().equals("Placed Order") && selectedWorkRequest.getBloodBankStaffForPlasmaUnits() == null) {
+                    if (bloodBankDir.get(selectedWorkRequest.getPlasmaComponent()) >= selectedWorkRequest.getPlasmaUnits()) {
+                        selectedWorkRequest.setBloodBankStaffForPlasmaUnits(userAcc);
+                        selectedWorkRequest.setRequestStatusForPlasmaUnits("Order processed for Plasma Units");
+                        selectedWorkRequest.setResolveDateForPlasmaUnits(new Date());
+                        int updatedPlasmaComponent = bloodBankDir.get(selectedWorkRequest.getPlasmaComponent()) - selectedWorkRequest.getPlasmaUnits();
+                        bloodBankDir.put(selectedWorkRequest.getPlasmaComponent(), updatedPlasmaComponent);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Not enough quantity in blood bank !!", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+            }
+            populateBloodBankDirectoryTable();
+            populateOrderTable();
         } else {
             JOptionPane.showMessageDialog(null, "Please select an order which is not processed!!", "Warning", JOptionPane.WARNING_MESSAGE);
         }

@@ -10,6 +10,7 @@ import Business.Enterprise.BloodBankEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Patient.Patient;
+import Business.UserAccount.UserAccount;
 import Business.WorkQueue.OrderWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -25,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private UserAccount userAcc;
     private EcoSystem business;
     private Enterprise enterprise;
     private OrderWorkRequest workRequest;
@@ -37,9 +39,10 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PlaceTransfusionRequestJPanel
      */
-    public PlaceTransfusionRequestJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, OrderWorkRequest workRequest) {
+    public PlaceTransfusionRequestJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, OrderWorkRequest workRequest, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.userAcc = userAcc;
         this.business = business;
         this.enterprise = enterprise;
         this.workRequest = workRequest;
@@ -621,6 +624,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
                         workRequest.setPlasmaPrice(plasmaPrice);
                     }
                 }
+                workRequest.setHospitalStaff(userAcc);
                 workRequest.setOrderStatus("Placed Order");
                 JOptionPane.showMessageDialog(null, "Order placed successfully !");
             }
