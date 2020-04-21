@@ -51,16 +51,24 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
         updatePswdjBtn = new javax.swing.JButton();
         viewUnitPricesBtn = new javax.swing.JButton();
         viewOrdersBtn = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(51, 0, 51));
 
         bloodbankNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        bloodbankNameLabel.setForeground(new java.awt.Color(51, 0, 51));
         bloodbankNameLabel.setText("<value>");
 
         helloLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        helloLabel.setForeground(new java.awt.Color(51, 0, 51));
         helloLabel.setText("Hello,");
 
         bloodBankStaffNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        bloodBankStaffNameLabel.setForeground(new java.awt.Color(51, 0, 0));
         bloodBankStaffNameLabel.setText("<value>");
 
+        BloodDonationjButton.setForeground(new java.awt.Color(51, 0, 51));
         BloodDonationjButton.setText("View Donors and Schedule Blood Donation");
         BloodDonationjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +76,7 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        updatePswdjBtn.setForeground(new java.awt.Color(51, 0, 51));
         updatePswdjBtn.setText("Update Password");
         updatePswdjBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +84,7 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewUnitPricesBtn.setForeground(new java.awt.Color(51, 0, 51));
         viewUnitPricesBtn.setText("Add/View Blood Unit Prices");
         viewUnitPricesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,12 +92,16 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewOrdersBtn.setForeground(new java.awt.Color(51, 0, 51));
         viewOrdersBtn.setText("View Orders");
         viewOrdersBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewOrdersBtnActionPerformed(evt);
             }
         });
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/drop (1) (1) (1).jpg"))); // NOI18N
+        jLabel10.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(51, 0, 51)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -110,19 +124,26 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
                             .addComponent(BloodDonationjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(viewUnitPricesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(viewOrdersBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(bloodbankNameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bloodBankStaffNameLabel))
-                .addGap(31, 31, 31)
-                .addComponent(BloodDonationjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(bloodbankNameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bloodBankStaffNameLabel))
+                        .addGap(31, 31, 31)
+                        .addComponent(BloodDonationjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel10)))
                 .addGap(18, 18, 18)
                 .addComponent(viewUnitPricesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -170,6 +191,7 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel bloodBankStaffNameLabel;
     private javax.swing.JLabel bloodbankNameLabel;
     private javax.swing.JLabel helloLabel;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JButton updatePswdjBtn;
     private javax.swing.JButton viewOrdersBtn;
     private javax.swing.JButton viewUnitPricesBtn;
