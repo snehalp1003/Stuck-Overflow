@@ -13,6 +13,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.OrderWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -126,7 +127,6 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         orderJTable = new javax.swing.JTable();
         backJButton = new javax.swing.JButton();
-        orderLineCompletedJButton = new javax.swing.JButton();
         orderCompletedJButton = new javax.swing.JButton();
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
@@ -209,14 +209,6 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
             }
         });
 
-        orderLineCompletedJButton.setForeground(new java.awt.Color(51, 0, 51));
-        orderLineCompletedJButton.setText("Mark Order Line Completed");
-        orderLineCompletedJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderLineCompletedJButtonActionPerformed(evt);
-            }
-        });
-
         orderCompletedJButton.setForeground(new java.awt.Color(51, 0, 51));
         orderCompletedJButton.setText("Order Completed");
         orderCompletedJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -272,9 +264,7 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
                         .addGap(0, 180, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                        .addComponent(orderLineCompletedJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(135, 135, 135)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(orderCompletedJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,7 +311,6 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(orderLineCompletedJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(orderCompletedJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(80, 80, 80))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,12 +348,46 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void orderLineCompletedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderLineCompletedJButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_orderLineCompletedJButtonActionPerformed
-
     private void orderCompletedJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderCompletedJButtonActionPerformed
-        // TODO add your handling code here:
+        int canOrderBeMarkedComplete = 0;
+        if(workRequest.getRedCellsComponent() != null) {
+            if(workRequest.getResolveDateForRedCellUnits() != null) {
+                canOrderBeMarkedComplete = canOrderBeMarkedComplete + 1;
+            } else {
+                canOrderBeMarkedComplete = 0;
+            }
+        } else {
+            canOrderBeMarkedComplete = canOrderBeMarkedComplete + 1;
+        }
+        
+        if(workRequest.getPlateletComponent() != null) {
+            if(workRequest.getResolveDateForPlateletUnits() != null) {
+                canOrderBeMarkedComplete = canOrderBeMarkedComplete + 1;
+            } else {
+                canOrderBeMarkedComplete = 0;
+            }
+        } else {
+            canOrderBeMarkedComplete = canOrderBeMarkedComplete + 1;
+        }
+        
+        if(workRequest.getPlasmaComponent() != null) {
+            if(workRequest.getResolveDateForPlasmaUnits() != null) {
+                canOrderBeMarkedComplete = canOrderBeMarkedComplete + 1;
+            } else {
+                canOrderBeMarkedComplete = 0;
+            }
+        } else {
+            canOrderBeMarkedComplete = canOrderBeMarkedComplete + 1;
+        }
+        
+        if (canOrderBeMarkedComplete == 3) {
+            workRequest.setOrderStatus("Completed");
+            populateOrderTable();
+            JOptionPane.showMessageDialog(null, "Order completed!");
+        }
+        
+        
+        
     }//GEN-LAST:event_orderCompletedJButtonActionPerformed
 
 
@@ -387,7 +410,6 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JButton orderCompletedJButton;
     private javax.swing.JTable orderJTable;
-    private javax.swing.JButton orderLineCompletedJButton;
     private javax.swing.JTextField plasmaUnitsJTextField;
     private javax.swing.JTextField plateletUnitsJTextField;
     private javax.swing.JTextField redCellUnitsJTextField;
