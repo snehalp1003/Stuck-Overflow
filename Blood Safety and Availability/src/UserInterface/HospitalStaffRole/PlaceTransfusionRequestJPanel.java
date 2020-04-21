@@ -9,9 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.BloodBankEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import Business.Organization.Organization;
 import Business.Patient.Patient;
-import Business.UserAccount.UserAccount;
 import Business.WorkQueue.OrderWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -29,8 +27,6 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private EcoSystem business;
     private Enterprise enterprise;
-    private Organization patientOrg;
-    private UserAccount userAcc;
     private OrderWorkRequest workRequest;
     private Patient patient;
     BloodBankEnterprise bloodBank;
@@ -41,17 +37,15 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PlaceTransfusionRequestJPanel
      */
-    public PlaceTransfusionRequestJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, Organization patientOrg, UserAccount userAcc, OrderWorkRequest workRequest) {
+    public PlaceTransfusionRequestJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, OrderWorkRequest workRequest) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.business = business;
         this.enterprise = enterprise;
-        this.patientOrg = patientOrg;
-        this.userAcc = userAcc;
         this.workRequest = workRequest;
         this.patient = workRequest.getPatient().getPatient();
         bloodBankDir = new HashMap<>();
-        if (workRequest.getTestResult() == null || workRequest.getTestResult().equals("Placed Order")) {
+        if (workRequest.getOrderStatus()== null || workRequest.getOrderStatus().equals("Placed Order")) {
             placeOrderJButton.setEnabled(false);
         }
         populatePatientDetails();
@@ -156,6 +150,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
         placeOrderJButton = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         totalAmountJTextField = new javax.swing.JTextField();
+        deleteRowJButton = new javax.swing.JButton();
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel6.setText("Blood Request");
@@ -314,6 +309,14 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
 
         totalAmountJTextField.setEditable(false);
 
+        deleteRowJButton.setForeground(new java.awt.Color(51, 0, 51));
+        deleteRowJButton.setText("Delete Row");
+        deleteRowJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteRowJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -366,6 +369,33 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
                                         .addComponent(compatibleBloodGroupJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel22))
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bloodBankJComboBox, 0, 247, Short.MAX_VALUE)
+                            .addComponent(pricePerUnitJTextField))
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel23))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(noOfUnitsJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(componentNeededJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addGap(37, 37, 37)
+                                .addComponent(totalAmountJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(deleteRowJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(placeOrderJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,35 +403,8 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
                             .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(230, 230, 230))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel22))
-                            .addGap(49, 49, 49)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(bloodBankJComboBox, 0, 247, Short.MAX_VALUE)
-                                .addComponent(pricePerUnitJTextField))
-                            .addGap(48, 48, 48)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel21)
-                                .addComponent(jLabel23))
-                            .addGap(36, 36, 36)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(noOfUnitsJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(componentNeededJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
-                                .addComponent(jLabel24)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(totalAmountJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(placeOrderJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(217, Short.MAX_VALUE))
+                            .addGap(230, 230, 230))))
+                .addContainerGap(326, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,15 +467,19 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
                     .addComponent(noOfUnitsJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(deleteRowJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
                             .addComponent(totalAmountJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(placeOrderJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31))
+                        .addGap(18, 18, 18)
+                        .addComponent(placeOrderJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -523,7 +530,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-        if (workRequest.getTestResult() == null || !workRequest.getTestResult().equals("Placed Order")) {
+        if (workRequest.getOrderStatus()== null || !workRequest.getOrderStatus().equals("Placed Order")) {
             BloodBankEnterprise bloodBankWithOrder = (BloodBankEnterprise) bloodBankJComboBox.getSelectedItem();
             String componentNeeded = componentNeededJComboBox.getSelectedItem().toString();
             Double pricePerUnit = Double.parseDouble(pricePerUnitJTextField.getText());
@@ -532,7 +539,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Cannot add a component which is not required !!", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
                 DefaultTableModel model = (DefaultTableModel) orderJTable.getModel();
-                for (int i=0; i< model.getRowCount() ; i++) {
+                for (int i = 0; i < model.getRowCount(); i++) {
                     if (model.getValueAt(i, 0) == null) {
                         model.setRowCount(i);
                     }
@@ -551,7 +558,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Cannot add item as order placed already !", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
-        if ((workRequest.getTestResult() == null || !workRequest.getTestResult().equals("Placed Order")) && totalAmount > 0.0) {
+        if ((workRequest.getOrderStatus()== null || !workRequest.getOrderStatus().equals("Placed Order")) && totalAmount > 0.0) {
             placeOrderJButton.setEnabled(true);
         }
     }//GEN-LAST:event_addJButtonActionPerformed
@@ -568,13 +575,57 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
 
     private void placeOrderJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderJButtonActionPerformed
 
-        if ((workRequest.getTestResult() == null || !workRequest.getTestResult().equals("Placed Order")) && totalAmount > 0.0) {
+        if ((workRequest.getOrderStatus()== null || !workRequest.getOrderStatus().equals("Placed Order")) && totalAmount > 0.0) {
+            int totalUnits = patient.getRedCellsUnits() + patient.getPlateletUnits() + patient.getPlasmaUnits();
+            int unitsPlaced = 0;
             DefaultTableModel model = (DefaultTableModel) orderJTable.getModel();
             for (int row = 0; row < model.getRowCount(); row++) {
-//                if(row[1] )
+                unitsPlaced = unitsPlaced + Integer.parseInt(model.getValueAt(row, 3).toString());
+            }
+            if (unitsPlaced > totalUnits) {
+                JOptionPane.showMessageDialog(null, "Order Quantity more than stated in patient request !!", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                for (int row = 0; row < model.getRowCount(); row++) {
+                    if (model.getValueAt(row, 1).toString().contains("Red Cell")) {
+                        String redCellsComponent = model.getValueAt(row, 1).toString();
+                        Enterprise enterpriseForRedCellUnits = (Enterprise) model.getValueAt(row, 0);
+                        String requestStatusForRedCellUnits = "Order placed for Red Cells Units";
+                        int redCellsUnits = Integer.parseInt(model.getValueAt(row, 3).toString());
+                        Double redCellsPrice = Double.parseDouble(model.getValueAt(row, 4).toString());
+                        workRequest.setRedCellsComponent(redCellsComponent);
+                        workRequest.setEnterpriseForRedCellUnits(enterpriseForRedCellUnits);
+                        workRequest.setRequestStatusForRedCellUnits(requestStatusForRedCellUnits);
+                        workRequest.setRedCellsUnits(redCellsUnits);
+                        workRequest.setRedCellsPrice(redCellsPrice);
+                    } else if (model.getValueAt(row, 1).toString().contains("Platelet")) {
+                        String plateletComponent = model.getValueAt(row, 1).toString();
+                        Enterprise enterpriseForPlateletUnits = (Enterprise) model.getValueAt(row, 0);
+                        String requestStatusForPlateletUnits = "Order placed for Platelet Units";
+                        int plateletUnits = Integer.parseInt(model.getValueAt(row, 3).toString());
+                        Double plateletPrice = Double.parseDouble(model.getValueAt(row, 4).toString());
+                        workRequest.setPlateletComponent(plateletComponent);
+                        workRequest.setEnterpriseForPlateletUnits(enterpriseForPlateletUnits);
+                        workRequest.setRequestStatusForPlateletUnits(requestStatusForPlateletUnits);
+                        workRequest.setPlateletUnits(plateletUnits);
+                        workRequest.setPlateletPrice(plateletPrice);
+                    } else if (model.getValueAt(row, 1).toString().contains("Plasma")) {
+                        String plasmaComponent = model.getValueAt(row, 1).toString();
+                        Enterprise enterpriseForPlasmaUnits = (Enterprise) model.getValueAt(row, 0);
+                        String requestStatusForPlasmaUnits = "Order placed for Plasma Units";
+                        int plasmaUnits = Integer.parseInt(model.getValueAt(row, 3).toString());
+                        Double plasmaPrice = Double.parseDouble(model.getValueAt(row, 4).toString());
+                        workRequest.setPlasmaComponent(plasmaComponent);
+                        workRequest.setEnterpriseForPlasmaUnits(enterpriseForPlasmaUnits);
+                        workRequest.setRequestStatusForPlasmaUnits(requestStatusForPlasmaUnits);
+                        workRequest.setPlasmaUnits(plasmaUnits);
+                        workRequest.setPlasmaPrice(plasmaPrice);
+                    }
+                }
+                workRequest.setOrderStatus("Placed Order");
+                JOptionPane.showMessageDialog(null, "Order placed successfully !");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a Row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Order cart empty !", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_placeOrderJButtonActionPerformed
 
@@ -605,6 +656,18 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_componentNeededJComboBoxActionPerformed
 
+    private void deleteRowJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRowJButtonActionPerformed
+        DefaultTableModel model = (DefaultTableModel) orderJTable.getModel();
+        int selectedRow = orderJTable.getSelectedRow();
+        if (selectedRow >= 0) {
+            totalAmount = totalAmount - Double.parseDouble(model.getValueAt(selectedRow, 4).toString());
+            totalAmountJTextField.setText(totalAmount.toString());
+            model.removeRow(selectedRow);
+        } else {
+            JOptionPane.showMessageDialog(null, "Select a row !");
+        }
+    }//GEN-LAST:event_deleteRowJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
@@ -615,6 +678,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox compatibleBloodGroupJComboBox;
     private javax.swing.JComboBox componentNeededJComboBox;
     private javax.swing.JTextField dateBloodRequiredJTextField;
+    private javax.swing.JButton deleteRowJButton;
     private javax.swing.JTextField diagnosisJTextField;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
