@@ -471,15 +471,7 @@ public class AssignDoctorToPatientJPanel extends javax.swing.JPanel {
 
                 org.getPatientDirectory().getPatientList().add(updatedPatient);
                 org.getUserAccountDirectory().getUserAccountList().add(updatedPatientUserAccount);
-                JOptionPane.showMessageDialog(null, "Saved patient vitals !");
-                
-                patientHeightJTextField.setText("");
-                patientWeightJTextField.setText("");
-                patientLowBPJTextField.setText("");
-                patientHighBPJTextField.setText("");
-                patientHeartRateJTextField.setText("");
-                patientTemperatureJTextField.setText("");
-                
+                JOptionPane.showMessageDialog(null, "Saved patient vitals !");                    
             }
         }
     }//GEN-LAST:event_SaveJButtonActionPerformed

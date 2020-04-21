@@ -45,6 +45,7 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
         bloodBankStaffNameLabel = new javax.swing.JLabel();
         BloodDonationjButton = new javax.swing.JButton();
         updatePswdjBtn = new javax.swing.JButton();
+        viewUnitPricesBtn = new javax.swing.JButton();
 
         bloodbankNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         bloodbankNameLabel.setText("<value>");
@@ -69,6 +70,13 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewUnitPricesBtn.setText("Add/View Blood Unit Prices");
+        viewUnitPricesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewUnitPricesBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,7 +95,8 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
                         .addGap(158, 158, 158)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(updatePswdjBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BloodDonationjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(BloodDonationjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(viewUnitPricesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,8 +111,10 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addComponent(BloodDonationjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(viewUnitPricesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(updatePswdjBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addContainerGap(218, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -124,6 +135,13 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_updatePswdjBtnActionPerformed
 
+    private void viewUnitPricesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUnitPricesBtnActionPerformed
+        ViewBloodUnitPricesJPanel viewBloodUnitPricesJPanel = new ViewBloodUnitPricesJPanel(userProcessContainer, enterprise, organization, userAcc);
+        userProcessContainer.add("viewBloodUnitPricesJPanel", viewBloodUnitPricesJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_viewUnitPricesBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BloodDonationjButton;
@@ -131,5 +149,6 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel bloodbankNameLabel;
     private javax.swing.JLabel helloLabel;
     private javax.swing.JButton updatePswdjBtn;
+    private javax.swing.JButton viewUnitPricesBtn;
     // End of variables declaration//GEN-END:variables
 }

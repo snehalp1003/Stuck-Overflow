@@ -34,6 +34,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="updatePswdjBtn" max="32767" attributes="0"/>
                           <Component id="BloodDonationjButton" max="32767" attributes="0"/>
+                          <Component id="viewUnitPricesBtn" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -54,8 +55,10 @@
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="BloodDonationjButton" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="viewUnitPricesBtn" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="updatePswdjBtn" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace pref="266" max="32767" attributes="0"/>
+              <EmptySpace pref="218" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -99,6 +102,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updatePswdjBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="viewUnitPricesBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add/View Blood Unit Prices"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewUnitPricesBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
