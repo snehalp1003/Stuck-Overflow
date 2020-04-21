@@ -45,7 +45,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
         this.workRequest = workRequest;
         this.patient = workRequest.getPatient().getPatient();
         bloodBankDir = new HashMap<>();
-        if (workRequest.getOrderStatus()== null || workRequest.getOrderStatus().equals("Placed Order")) {
+        if (workRequest.getOrderStatus()== null || !workRequest.getOrderStatus().equals("Blood Transfusion Requested")) {
             placeOrderJButton.setEnabled(false);
         }
         populatePatientDetails();
@@ -530,7 +530,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-        if (workRequest.getOrderStatus()== null || !workRequest.getOrderStatus().equals("Placed Order")) {
+        if (workRequest.getOrderStatus()== null || workRequest.getOrderStatus().equals("Blood Transfusion Requested")) {
             BloodBankEnterprise bloodBankWithOrder = (BloodBankEnterprise) bloodBankJComboBox.getSelectedItem();
             String componentNeeded = componentNeededJComboBox.getSelectedItem().toString();
             Double pricePerUnit = Double.parseDouble(pricePerUnitJTextField.getText());
@@ -558,7 +558,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Cannot add item as order placed already !", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
-        if ((workRequest.getOrderStatus()== null || !workRequest.getOrderStatus().equals("Placed Order")) && totalAmount > 0.0) {
+        if ((workRequest.getOrderStatus()== null || workRequest.getOrderStatus().equals("Blood Transfusion Requested")) && totalAmount > 0.0) {
             placeOrderJButton.setEnabled(true);
         }
     }//GEN-LAST:event_addJButtonActionPerformed

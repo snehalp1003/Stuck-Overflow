@@ -19,6 +19,6 @@ import javax.swing.JPanel;
 public class BloodBankStaffRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-    return new BloodBankStaffAreaJPanel(userProcessContainer, enterprise, organization, account);
+    return new BloodBankStaffAreaJPanel(userProcessContainer, business, enterprise, organization, account);
     }
 }

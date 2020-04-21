@@ -5,6 +5,7 @@
  */
 package UserInterface.BloodBankStaffRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
@@ -18,12 +19,15 @@ import javax.swing.JPanel;
 public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
+    private EcoSystem business;
     private Enterprise enterprise;
     private Organization organization;
     private UserAccount userAcc;
-    public BloodBankStaffAreaJPanel(JPanel userProcessContainer, Enterprise enterprise, Organization organization, UserAccount userAcc) {
+    
+    public BloodBankStaffAreaJPanel(JPanel userProcessContainer, EcoSystem business, Enterprise enterprise, Organization organization, UserAccount userAcc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
+        this.business = business;
         this.enterprise = enterprise;
         this.organization = organization;
         this.userAcc = userAcc;
@@ -46,6 +50,7 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
         BloodDonationjButton = new javax.swing.JButton();
         updatePswdjBtn = new javax.swing.JButton();
         viewUnitPricesBtn = new javax.swing.JButton();
+        viewOrdersBtn = new javax.swing.JButton();
 
         bloodbankNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         bloodbankNameLabel.setText("<value>");
@@ -77,6 +82,13 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewOrdersBtn.setText("View Orders");
+        viewOrdersBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewOrdersBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,7 +108,8 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(updatePswdjBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BloodDonationjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(viewUnitPricesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(viewUnitPricesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(viewOrdersBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,8 +126,10 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(viewUnitPricesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(viewOrdersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(updatePswdjBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -142,6 +157,13 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_viewUnitPricesBtnActionPerformed
 
+    private void viewOrdersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewOrdersBtnActionPerformed
+        ProcessOrdersJPanel processOrdersJPanel = new ProcessOrdersJPanel(userProcessContainer, business, enterprise, organization, userAcc);
+        userProcessContainer.add("processOrdersJPanel",processOrdersJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_viewOrdersBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BloodDonationjButton;
@@ -149,6 +171,7 @@ public class BloodBankStaffAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel bloodbankNameLabel;
     private javax.swing.JLabel helloLabel;
     private javax.swing.JButton updatePswdjBtn;
+    private javax.swing.JButton viewOrdersBtn;
     private javax.swing.JButton viewUnitPricesBtn;
     // End of variables declaration//GEN-END:variables
 }
