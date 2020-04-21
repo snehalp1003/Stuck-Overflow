@@ -35,6 +35,7 @@ public class Donor {
     private Employee assignedStaff;
     private int unitsDonated;
     private Date expiry;
+    private boolean bloodProcessed;
 
     public Donor() {
     }  
@@ -189,6 +190,14 @@ public class Donor {
 
     public void setExpiry(Date expiry) {
         this.expiry = expiry;
+    }
+
+    public boolean isBloodProcessed() {
+        return bloodProcessed;
+    }
+
+    public void setBloodProcessed(boolean bloodProcessed) {
+        this.bloodProcessed = bloodProcessed;
     }
     
     @Override
