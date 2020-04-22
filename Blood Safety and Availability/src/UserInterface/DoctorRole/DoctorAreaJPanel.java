@@ -51,17 +51,21 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
         doctorNameLabel = new javax.swing.JLabel();
         viewPatientsJButton = new javax.swing.JButton();
         changePasswordJButton = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 0, 51));
 
         hospitalNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        hospitalNameLabel.setForeground(new java.awt.Color(51, 0, 51));
         hospitalNameLabel.setText("<value>");
 
         helloLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        helloLabel.setForeground(new java.awt.Color(51, 0, 51));
         helloLabel.setText("Hello,");
 
         doctorNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        doctorNameLabel.setForeground(new java.awt.Color(51, 0, 51));
         doctorNameLabel.setText("<value>");
 
         viewPatientsJButton.setForeground(new java.awt.Color(51, 0, 51));
@@ -79,6 +83,9 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
                 changePasswordJButtonActionPerformed(evt);
             }
         });
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/hospital.jpg"))); // NOI18N
+        jLabel8.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(51, 0, 51)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -99,22 +106,27 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(changePasswordJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(viewPatientsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(hospitalNameLabel)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(doctorNameLabel))
-                .addGap(36, 36, 36)
-                .addComponent(viewPatientsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(hospitalNameLabel)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(doctorNameLabel))
+                        .addGap(36, 36, 36)
+                        .addComponent(viewPatientsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(changePasswordJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -138,6 +150,7 @@ public class DoctorAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel doctorNameLabel;
     private javax.swing.JLabel helloLabel;
     private javax.swing.JLabel hospitalNameLabel;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JButton viewPatientsJButton;
     // End of variables declaration//GEN-END:variables
 }
