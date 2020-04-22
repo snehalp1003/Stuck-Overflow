@@ -47,6 +47,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         patientNameLabel = new javax.swing.JLabel();
         helloLabel = new javax.swing.JLabel();
         hospitalNameLabel = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(51, 0, 51));
@@ -60,13 +61,19 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         });
 
         patientNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        patientNameLabel.setForeground(new java.awt.Color(51, 0, 51));
         patientNameLabel.setText("<value>");
 
         helloLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        helloLabel.setForeground(new java.awt.Color(51, 0, 51));
         helloLabel.setText("Hello,");
 
         hospitalNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        hospitalNameLabel.setForeground(new java.awt.Color(51, 0, 51));
         hospitalNameLabel.setText("<value>");
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/hospital.jpg"))); // NOI18N
+        jLabel8.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(51, 0, 51)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -85,19 +92,26 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(patientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(hospitalNameLabel)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(patientNameLabel)
-                    .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(viewPersonalDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(hospitalNameLabel)
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(patientNameLabel)
+                            .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(viewPersonalDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)))
                 .addContainerGap(194, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -113,6 +127,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel helloLabel;
     private javax.swing.JLabel hospitalNameLabel;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel patientNameLabel;
     private javax.swing.JButton viewPersonalDetailsJButton;
     // End of variables declaration//GEN-END:variables
