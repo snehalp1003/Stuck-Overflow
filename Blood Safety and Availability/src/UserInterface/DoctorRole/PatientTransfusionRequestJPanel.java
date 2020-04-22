@@ -49,6 +49,10 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
         this.userAcc = userAcc;
         this.patient = patient;
         updatedPatient = this.patient;
+
+        if (patient.getPatientDiagnosis() != null && !patient.getPatientDiagnosis().isEmpty()) {
+            updateJButton.setEnabled(false);
+        }
         populateUserDetails();
     }
 
@@ -548,9 +552,11 @@ public class PatientTransfusionRequestJPanel extends javax.swing.JPanel {
                     }
                     business.getWorkQueue().getWorkRequestList().add(workRequest);
                     JOptionPane.showMessageDialog(null, "Saved patient diagnosis & treatment ! Placed a request for blood transfusion !");
+                    updateJButton.setEnabled(false);
                     return;
                 } else {
                     JOptionPane.showMessageDialog(null, "Saved patient diagnosis & treatment !");
+                    updateJButton.setEnabled(false);
                     return;
                 }
                 

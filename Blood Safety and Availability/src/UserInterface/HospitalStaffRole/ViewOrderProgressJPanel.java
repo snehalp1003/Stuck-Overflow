@@ -398,6 +398,8 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
             //from,password,to,subject,message
             Mailer.send("bloodb290@gmail.com","Husky@2020",workRequest.getDoctor().getEmployee().getEmail(),"Blood Order Request Completed","Please login to your portal or contact your staff for more details !");
             JOptionPane.showMessageDialog(null, "Order completed!");
+        } else {
+            JOptionPane.showMessageDialog(null, "One or more of your order line items are not completed!");
         }
     }//GEN-LAST:event_orderCompletedJButtonActionPerformed
 
