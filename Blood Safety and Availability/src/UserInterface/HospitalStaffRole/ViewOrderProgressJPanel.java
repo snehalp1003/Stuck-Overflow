@@ -129,44 +129,56 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         orderCompletedJButton = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(51, 0, 51));
+
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 0, 51));
         jLabel6.setText("Order Progress");
 
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("Patient Name");
 
         nameJTextField.setEditable(false);
 
+        jLabel8.setForeground(new java.awt.Color(51, 0, 51));
         jLabel8.setText("Blood Group");
 
         bloodGroupJTextField.setEditable(false);
 
+        jLabel15.setForeground(new java.awt.Color(51, 0, 51));
         jLabel15.setText("Diagnosis");
 
         diagnosisJTextField.setEditable(false);
 
+        jLabel9.setForeground(new java.awt.Color(51, 0, 51));
         jLabel9.setText("Treatment");
 
         treatmentJTextField.setEditable(false);
 
+        jLabel16.setForeground(new java.awt.Color(51, 0, 51));
         jLabel16.setText("Red Cell Units");
 
+        jLabel17.setForeground(new java.awt.Color(51, 0, 51));
         jLabel17.setText("Platelet Units");
 
         redCellUnitsJTextField.setEditable(false);
 
         plateletUnitsJTextField.setEditable(false);
 
+        jLabel18.setForeground(new java.awt.Color(51, 0, 51));
         jLabel18.setText("Plasma Units");
 
         plasmaUnitsJTextField.setEditable(false);
 
+        jLabel19.setForeground(new java.awt.Color(51, 0, 51));
         jLabel19.setText("Date Required");
 
         dateBloodRequiredJTextField.setEditable(false);
 
         jScrollPane3.setForeground(new java.awt.Color(51, 0, 51));
 
+        orderJTable.setForeground(new java.awt.Color(51, 0, 51));
         orderJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
