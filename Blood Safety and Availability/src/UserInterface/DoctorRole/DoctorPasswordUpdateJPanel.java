@@ -53,17 +53,24 @@ public class DoctorPasswordUpdateJPanel extends javax.swing.JPanel {
         confirmPasswordJPasswordField = new javax.swing.JPasswordField();
         newPasswordJPasswordField = new javax.swing.JPasswordField();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(51, 0, 51));
+
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         jLabel6.setText("Update Password");
 
+        jLabel3.setForeground(new java.awt.Color(51, 0, 51));
         jLabel3.setText("Username");
 
         usernameJTextField.setEditable(false);
 
+        jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("Old Password");
 
+        jLabel5.setForeground(new java.awt.Color(51, 0, 51));
         jLabel5.setText("Confirm Password");
 
+        jLabel7.setForeground(new java.awt.Color(51, 0, 51));
         jLabel7.setText("New Password");
 
         changePasswordJButton.setForeground(new java.awt.Color(51, 0, 51));
