@@ -158,7 +158,7 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
         add(dUserNameJTextFeild);
         dUserNameJTextFeild.setBounds(120, 220, 170, 30);
 
-        CreateDJBtn.setBackground(new java.awt.Color(255, 255, 255));
+        CreateDJBtn.setBackground(new java.awt.Color(204, 204, 204));
         CreateDJBtn.setForeground(new java.awt.Color(51, 0, 51));
         CreateDJBtn.setText("Create Donor");
         CreateDJBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -167,9 +167,9 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
             }
         });
         add(CreateDJBtn);
-        CreateDJBtn.setBounds(410, 350, 150, 30);
+        CreateDJBtn.setBounds(400, 360, 150, 30);
 
-        BackJBtn.setBackground(new java.awt.Color(255, 255, 255));
+        BackJBtn.setBackground(new java.awt.Color(204, 204, 204));
         BackJBtn.setForeground(new java.awt.Color(51, 0, 51));
         BackJBtn.setText("<<BACK");
         BackJBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +178,7 @@ public class ManageDonorsJPanel extends javax.swing.JPanel {
             }
         });
         add(BackJBtn);
-        BackJBtn.setBounds(40, 350, 110, 30);
+        BackJBtn.setBounds(30, 360, 110, 30);
         add(passwordJPasswordField);
         passwordJPasswordField.setBounds(120, 260, 170, 30);
 
