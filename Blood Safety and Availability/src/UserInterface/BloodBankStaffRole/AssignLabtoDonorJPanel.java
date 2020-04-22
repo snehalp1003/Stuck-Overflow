@@ -12,6 +12,8 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -48,6 +50,47 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
         assignStaffJTextField.setText(userAcc.getEmployee().toString());
 
     }
+    
+    private boolean HeartRatePatternCorrect() {
+
+        String ht = heartRatejTextField.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
+        boolean b = m.matches();
+        return b;
+    }
+    
+     private boolean TempPatternCorrect() {
+
+        String ht = tempjTextField.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
+        boolean b = m.matches();
+        return b;
+    }
+     
+      private boolean LowBPPatternCorrect() {
+
+        String ht = bloodPressjTextField.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
+        boolean b = m.matches();
+        return b;
+    }
+      
+       private boolean HighBPPatternCorrect() {
+
+        String ht = highBPJTextFeild.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
+        boolean b = m.matches();
+        return b;
+    }
+
 
     private void populateUserDetails() {
         nameJTextField.setText(donor.getDonorName());
@@ -386,33 +429,117 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
     private void SavejButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavejButtonActionPerformed
         // TODO add your handling code here:
 
-        Double BP = Double.parseDouble(bloodPressjTextField.getText());
-        if (BP == null || bloodPressjTextField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter donor's low blood pressure !");
-            return;
+        
+        if (HeartRatePatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(heartRatejTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid donor's heart rate in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid donor's heart rate in numbers !");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid donor's heart rate !");
         }
         
-        Double highBP = Double.parseDouble(highBPJTextFeild.getText());
-        if(highBP == null || highBPJTextFeild.getText().isEmpty())
+        
+        if (TempPatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(tempjTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid donor's temparature in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid donor's temparature in numbers !");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid donor's temparature !");
+        }
+        
+        
+        if (LowBPPatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(bloodPressjTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid donor's low BP in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid donor's low BP in numbers !");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid donor's low BP !");
+        }
+        
+        if (HighBPPatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(highBPJTextFeild.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid donor's high BP in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid donor's high BP in numbers !");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid donor's high BP !");
+        }
+        
+        
+        
+      /*  if (BP == null || bloodPressjTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter donor's low blood pressure !");
+            return;
+        }*/
+        
+        
+     /*   if(highBP == null || highBPJTextFeild.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Please enter donor's high blood pressure !");
              return;
-        }
+        }*/
         
                 
         
 
-        Double HR = Double.parseDouble(heartRatejTextField.getText());
-        if (HR == null || heartRatejTextField.getText().isEmpty()) {
+        
+    /*    if (HR == null || heartRatejTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter donor's  heart rate !");
             return;
-        }
+        }*/
 
-        Double temp = Double.parseDouble(tempjTextField.getText());
-        if (temp == null || tempjTextField.getText().isEmpty()) {
+        
+      /*  if (temp == null || tempjTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter donor's temparature in Farenheit !");
             return;
-        }
+        }*/
 
         String status = (String) DonationjComboBox.getSelectedItem();
         if (status == null || status.isEmpty()) {
@@ -430,6 +557,16 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a Blood Bank staff !");
             return;
         }
+        if(status.matches("NO"))
+        {
+            JOptionPane.showMessageDialog(null, "Cannot accept Donor");
+            return;
+        }
+        Double BP = Double.parseDouble(bloodPressjTextField.getText());
+        Double highBP = Double.parseDouble(highBPJTextFeild.getText());
+        Double HR = Double.parseDouble(heartRatejTextField.getText());
+        Double temp = Double.parseDouble(tempjTextField.getText());
+       
 
         for (UserAccount donorUserAcc : donorOrg.getUserAccountDirectory().getUserAccountList()) {
             if (donor.getDonorName().equals(donorUserAcc.getDonor().getDonorName())
@@ -437,7 +574,7 @@ public class AssignLabtoDonorJPanel extends javax.swing.JPanel {
                     && donor.getDonorBloodType().equals(donorUserAcc.getDonor().getDonorBloodType())
                     && donor.getDOB().equals(donorUserAcc.getDonor().getDOB())
                     && donor.getContact().equals(donorUserAcc.getDonor().getContact())
-                    && donor.getDonorRegisteredDate().equals(donorUserAcc.getDonor().getDonorRegisteredDate())
+                   // && donor.getDonorRegisteredDate().equals(donorUserAcc.getDonor().getDonorRegisteredDate())
                     && donor.getDonorWeight().equals(donorUserAcc.getDonor().getDonorWeight())
                     && donor.getDonorHeight().equals(donorUserAcc.getDonor().getDonorHeight())) {
                 updatedDonorUserAccount = donorUserAcc;

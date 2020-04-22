@@ -54,47 +54,67 @@ public class AssignDoctorToPatientJPanel extends javax.swing.JPanel {
         populateDoctors();
         assignStaffJTextField.setText(userAcc.getEmployee().toString());
     }
+    private boolean HeartRatePatternCorrect() {
+
+        String ht = patientHeartRateJTextField.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
+        boolean b = m.matches();
+        return b;
+    }
     
-    
-   /*  private boolean HeightPatternCorrect(){
-     
-        Pattern p = Pattern.compile("\\d{2,3}\\.\\d{,2}");
-        Matcher m=p.matcher(patientHeightJTextField.getText());
+     private boolean TempPatternCorrect() {
+
+        String ht = patientTemperatureJTextField.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
         boolean b = m.matches();
         return b;
     }
      
-     private boolean WeightPatternCorrect(){
-     
-        Pattern p = Pattern.compile("\\d{2,3}\\.\\d{,3}");
-        Matcher m=p.matcher(patientWeightJTextField.getText());
+      private boolean LowBPPatternCorrect() {
+
+        String ht = patientLowBPJTextField.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
         boolean b = m.matches();
         return b;
     }
-     
-      private boolean LowBPPatternCorrect(){
-     
-        Pattern p = Pattern.compile("^\\d+$");
-        Matcher m=p.matcher(patientLowBPJTextField.getText());
-        boolean b = m.matches();
-        return b;
-    }
-     
-      private boolean HighBPPatternCorrect(){
-     
-        Pattern p = Pattern.compile("^\\d+$");
-        Matcher m=p.matcher(patientHighBPJTextField.getText());
-        boolean b = m.matches();
-        return b;
-    }
-       private boolean TempPatternCorrect(){
-     
-        Pattern p = Pattern.compile("\\d{2,3}\\.\\d{,2}");
-        Matcher m=p.matcher(patientTemperatureJTextField.getText());
-        boolean b = m.matches();
-        return b;
-    }*/
       
+       private boolean HighBPPatternCorrect() {
+
+        String ht = patientHighBPJTextField.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
+        boolean b = m.matches();
+        return b;
+    }
+       
+    private boolean HeightPatternCorrect() {
+
+        String ht = patientHeightJTextField.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
+        boolean b = m.matches();
+        return b;
+    }
+    
+    private boolean WeightPatternCorrect() {
+
+        String ht = patientWeightJTextField.getText();
+//        Pattern p = Pattern.compile("^[0-9]+\\.[0-9]+$");
+        Pattern p = Pattern.compile("^[0-9]+$");
+        Matcher m = p.matcher(ht);
+        boolean b = m.matches();
+        return b;
+    }
+    
+  
      
     
 
@@ -414,18 +434,134 @@ public class AssignDoctorToPatientJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void SaveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveJButtonActionPerformed
-        Double height = Double.parseDouble(patientHeightJTextField.getText());
-        if (height == null || patientHeightJTextField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter valid patient's height !");
-            return;
+        
+        if (HeightPatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(patientHeightJTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid patient's height in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid patient's height in numbers !");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid patient's height in numbers !");
         }
         
-        Double weight = Double.parseDouble(patientWeightJTextField.getText());
-        if (weight == null || patientWeightJTextField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter valid patient's weight !");
-            return;
+         
+         if (WeightPatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(patientWeightJTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid patient's weight in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid patient's weight in numbers !");
+            }
         }
-        Double lowBP = Double.parseDouble(patientLowBPJTextField.getText());
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid patient's weight in numbers !");
+        }
+         
+        if (HeartRatePatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(patientHeartRateJTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid patient's heart rate in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid patient's heart rate in numbers !");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid patient's heart rate in numbers !");
+        }
+        
+        
+        if (TempPatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(patientTemperatureJTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid patient's temparature in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid patient's temparature in numbers !");
+            }
+        }
+        else
+        {
+           JOptionPane.showMessageDialog(null, "Please enter valid patient's temparature in numbers !");
+        }
+        
+        
+        if (LowBPPatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(patientLowBPJTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid patient's low BP in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid patient's low BP in numbers !");
+            }
+        }
+        else
+        {
+             JOptionPane.showMessageDialog(null, "Please enter valid patient's low BP in numbers !");
+        }
+        
+        if (HighBPPatternCorrect())
+        {
+            try
+            {
+                Double.parseDouble(patientHighBPJTextField.getText());
+            }
+            catch(NumberFormatException nfe)
+            {
+                JOptionPane.showMessageDialog(null, "Please enter valid patient's high BP in numbers !");
+            }
+            catch (Exception e)
+            {
+                  JOptionPane.showMessageDialog(null, "Please enter valid patient's high BP in numbers !");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please enter valid patient's high BP in numbers !");
+        }
+        
+        
+        
+        
+       /* Double lowBP = Double.parseDouble(patientLowBPJTextField.getText());
         if (lowBP == null || patientLowBPJTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter patient's valid low blood pressure !");
             return;
@@ -444,7 +580,7 @@ public class AssignDoctorToPatientJPanel extends javax.swing.JPanel {
         if (temperature == null || patientTemperatureJTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter patient's valid temperature !");
             return;
-        }
+        }*/
         Employee doctor = (Employee) assignDoctorJComboBox.getSelectedItem();
         if (doctor == null) {
             JOptionPane.showMessageDialog(null, "Please select a doctor !");
@@ -456,6 +592,13 @@ public class AssignDoctorToPatientJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a staff !");
             return;
         }
+        Double height = Double.parseDouble(patientHeightJTextField.getText());
+        Double weight = Double.parseDouble(patientWeightJTextField.getText());
+        Double lowBP = Double.parseDouble(patientLowBPJTextField.getText());
+        Double highBP = Double.parseDouble(patientHighBPJTextField.getText());
+        Double heartRate = Double.parseDouble(patientHeartRateJTextField.getText());
+        Double temperature = Double.parseDouble(patientTemperatureJTextField.getText());
+        
 
         for (UserAccount patientUserAcc : patientOrg.getUserAccountDirectory().getUserAccountList()) {
 
