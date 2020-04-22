@@ -437,7 +437,7 @@ public class DonorPersonalDetailsJPanel extends javax.swing.JPanel {
                     donor.getDonorWeight() == null || (donor.getDonorWeight().equals(oldDonor.getDonorWeight()))&&
                     donor.getDonorHeight() == null || (donor.getDonorHeight().equals(oldDonor.getDonorHeight())))
             {
-                updatedDonor = donor;
+                this.updatedDonor = donor;
             }
         }
         

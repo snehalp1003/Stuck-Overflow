@@ -48,7 +48,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
         this.workRequest = workRequest;
         this.patient = workRequest.getPatient().getPatient();
         bloodBankDir = new HashMap<>();
-        if (workRequest.getOrderStatus()== null || !workRequest.getOrderStatus().equals("Blood Transfusion Requested")) {
+        if (workRequest.getOrderStatus() == null || !workRequest.getOrderStatus().equals("Blood Transfusion Requested")) {
             placeOrderJButton.setEnabled(false);
         }
         populatePatientDetails();
@@ -285,8 +285,6 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
         jLabel23.setForeground(new java.awt.Color(51, 0, 51));
         jLabel23.setText("No. of Units");
 
-        noOfUnitsJTextField.setEditable(false);
-
         jScrollPane3.setForeground(new java.awt.Color(51, 0, 51));
 
         orderJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -520,6 +518,10 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchJButtonActionPerformed
+        bloodBankJComboBox.removeAllItems();
+        componentNeededJComboBox.removeAllItems();
+        pricePerUnitJTextField.setText("");
+        noOfUnitsJTextField.setText("");
         compatibleBloodGroup = compatibleBloodGroupJComboBox.getSelectedItem().toString();
 
         DefaultTableModel model = (DefaultTableModel) bloodBanksJTable.getModel();
@@ -551,13 +553,13 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_searchJButtonActionPerformed
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-        if (workRequest.getOrderStatus()== null || workRequest.getOrderStatus().equals("Blood Transfusion Requested")) {
+        if (workRequest.getOrderStatus() == null || workRequest.getOrderStatus().equals("Blood Transfusion Requested")) {
             BloodBankEnterprise bloodBankWithOrder = (BloodBankEnterprise) bloodBankJComboBox.getSelectedItem();
             String componentNeeded = componentNeededJComboBox.getSelectedItem().toString();
             Double pricePerUnit = Double.parseDouble(pricePerUnitJTextField.getText());
             int noOfUnits = Integer.parseInt(noOfUnitsJTextField.getText());
-            if (noOfUnitsJTextField.getText().isEmpty() || noOfUnits == 0) {
-                JOptionPane.showMessageDialog(null, "Cannot add a component which is not required !!", "Warning", JOptionPane.WARNING_MESSAGE);
+            if (noOfUnitsJTextField.getText().isEmpty() || noOfUnits == 0 || noOfUnitsJTextField.getText() == null) {
+                JOptionPane.showMessageDialog(null, "Please enter a valid quantity !!", "Warning", JOptionPane.WARNING_MESSAGE);
             } else {
                 DefaultTableModel model = (DefaultTableModel) orderJTable.getModel();
                 for (int i = 0; i < model.getRowCount(); i++) {
@@ -579,7 +581,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Cannot add item as order placed already !", "Warning", JOptionPane.WARNING_MESSAGE);
         }
 
-        if ((workRequest.getOrderStatus()== null || workRequest.getOrderStatus().equals("Blood Transfusion Requested")) && totalAmount > 0.0) {
+        if ((workRequest.getOrderStatus() == null || workRequest.getOrderStatus().equals("Blood Transfusion Requested")) && totalAmount > 0.0) {
             placeOrderJButton.setEnabled(true);
         }
     }//GEN-LAST:event_addJButtonActionPerformed
@@ -596,7 +598,7 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
 
     private void placeOrderJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderJButtonActionPerformed
 
-        if ((workRequest.getOrderStatus()== null || !workRequest.getOrderStatus().equals("Placed Order")) && totalAmount > 0.0) {
+        if ((workRequest.getOrderStatus() == null || !workRequest.getOrderStatus().equals("Placed Order")) && totalAmount > 0.0) {
             int totalUnits = patient.getRedCellsUnits() + patient.getPlateletUnits() + patient.getPlasmaUnits();
             int unitsPlaced = 0;
             DefaultTableModel model = (DefaultTableModel) orderJTable.getModel();
@@ -644,9 +646,10 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
                 }
                 workRequest.setHospitalStaff(userAcc);
                 workRequest.setOrderStatus("Placed Order");
+                placeOrderJButton.setEnabled(false);
                 JOptionPane.showMessageDialog(null, "Order placed successfully !");
                 //from,password,to,subject,message
-                Mailer.send(workRequest.getDoctor().getEmployee().getEmail(),"Husky@2019","bloodb290@gmail.com","New Blood Transfusion Request","Please login to your portal to check your order for more details !");
+                Mailer.send(workRequest.getDoctor().getEmployee().getEmail(), "Husky@2019", "bloodb290@gmail.com", "New Blood Transfusion Request", "Please login to your portal to check your order for more details !");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Order cart empty !", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -654,29 +657,34 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_placeOrderJButtonActionPerformed
 
     private void bloodBankJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloodBankJComboBoxActionPerformed
-        if (bloodBankDir.get("Red Cells - " + compatibleBloodGroup) > 0) {
-            componentNeededJComboBox.addItem("Red Cells - " + compatibleBloodGroup);
+        if (bloodBankDir.get("Red Cells - " + compatibleBloodGroupJComboBox.getSelectedItem().toString()) > 0) {
+            componentNeededJComboBox.addItem("Red Cells - " + compatibleBloodGroupJComboBox.getSelectedItem().toString());
         }
-        if (bloodBankDir.get("Platelet - " + compatibleBloodGroup) > 0) {
-            componentNeededJComboBox.addItem("Platelet - " + compatibleBloodGroup);
+        if (bloodBankDir.get("Platelet - " + compatibleBloodGroupJComboBox.getSelectedItem().toString()) > 0) {
+            componentNeededJComboBox.addItem("Platelet - " + compatibleBloodGroupJComboBox.getSelectedItem().toString());
         }
-        if (bloodBankDir.get("Plasma - " + compatibleBloodGroup) > 0) {
-            componentNeededJComboBox.addItem("Plasma - " + compatibleBloodGroup);
+        if (bloodBankDir.get("Plasma - " + compatibleBloodGroupJComboBox.getSelectedItem().toString()) > 0) {
+            componentNeededJComboBox.addItem("Plasma - " + compatibleBloodGroupJComboBox.getSelectedItem().toString());
         }
     }//GEN-LAST:event_bloodBankJComboBoxActionPerformed
 
     private void componentNeededJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_componentNeededJComboBoxActionPerformed
         BloodBankEnterprise bloodBankWithOrder = (BloodBankEnterprise) bloodBankJComboBox.getSelectedItem();
 
-        if (componentNeededJComboBox.getSelectedItem().toString().equals("Red Cells - " + compatibleBloodGroup)) {
-            pricePerUnitJTextField.setText(Double.toString(bloodBankWithOrder.getBloodBankPrices().get("Red Cells Unit Price")));
-            noOfUnitsJTextField.setText(Integer.toString(patient.getRedCellsUnits()));
-        } else if (componentNeededJComboBox.getSelectedItem().toString().equals("Platelet - " + compatibleBloodGroup)) {
-            pricePerUnitJTextField.setText(Double.toString(bloodBankWithOrder.getBloodBankPrices().get("Platelet Unit Price")));
-            noOfUnitsJTextField.setText(Integer.toString(patient.getPlateletUnits()));
-        } else if (componentNeededJComboBox.getSelectedItem().toString().equals("Plasma - " + compatibleBloodGroup)) {
-            pricePerUnitJTextField.setText(Double.toString(bloodBankWithOrder.getBloodBankPrices().get("Plasma Unit Price")));
-            noOfUnitsJTextField.setText(Integer.toString(patient.getPlasmaUnits()));
+        if (componentNeededJComboBox.getSelectedItem() != null) {
+            if (componentNeededJComboBox.getSelectedItem().toString().equals("Red Cells - " + compatibleBloodGroup)) {
+                if (bloodBankWithOrder.getBloodBankPrices().get("Red Cells Unit Price") != null) {
+                    pricePerUnitJTextField.setText(Double.toString(bloodBankWithOrder.getBloodBankPrices().get("Red Cells Unit Price")));
+                }
+            } else if (componentNeededJComboBox.getSelectedItem().toString().equals("Platelet - " + compatibleBloodGroup)) {
+                if (bloodBankWithOrder.getBloodBankPrices().get("Platelet Unit Price") != null) {
+                    pricePerUnitJTextField.setText(Double.toString(bloodBankWithOrder.getBloodBankPrices().get("Platelet Unit Price")));
+                }
+            } else if (componentNeededJComboBox.getSelectedItem().toString().equals("Plasma - " + compatibleBloodGroup)) {
+                if (bloodBankWithOrder.getBloodBankPrices().get("Plasma Unit Price") != null) {
+                    pricePerUnitJTextField.setText(Double.toString(bloodBankWithOrder.getBloodBankPrices().get("Plasma Unit Price")));
+                }
+            }
         }
     }//GEN-LAST:event_componentNeededJComboBoxActionPerformed
 
