@@ -81,7 +81,6 @@
                       <Component id="SaveJButton" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="changePasswordJButton" min="-2" pref="160" max="-2" attributes="0"/>
-                      <EmptySpace pref="114" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="189" max="32767" attributes="0"/>
