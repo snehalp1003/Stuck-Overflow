@@ -383,11 +383,10 @@ public class ViewOrderProgressJPanel extends javax.swing.JPanel {
         if (canOrderBeMarkedComplete == 3) {
             workRequest.setOrderStatus("Completed");
             populateOrderTable();
+            //from,password,to,subject,message
+            Mailer.send("bloodb290@gmail.com","Husky@2020",workRequest.getDoctor().getEmployee().getEmail(),"Blood Order Request Completed","Please login to your portal or contact your staff for more details !");
             JOptionPane.showMessageDialog(null, "Order completed!");
         }
-        
-        
-        
     }//GEN-LAST:event_orderCompletedJButtonActionPerformed
 
 

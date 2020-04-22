@@ -627,6 +627,8 @@ public class PlaceTransfusionRequestJPanel extends javax.swing.JPanel {
                 workRequest.setHospitalStaff(userAcc);
                 workRequest.setOrderStatus("Placed Order");
                 JOptionPane.showMessageDialog(null, "Order placed successfully !");
+                //from,password,to,subject,message
+                Mailer.send(workRequest.getDoctor().getEmployee().getEmail(),"Husky@2019","bloodb290@gmail.com","New Blood Transfusion Request","Please login to your portal to check your order for more details !");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Order cart empty !", "Warning", JOptionPane.WARNING_MESSAGE);
