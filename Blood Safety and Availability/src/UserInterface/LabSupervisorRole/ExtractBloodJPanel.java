@@ -116,48 +116,64 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
         jLabel21 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         HighBPJTextField = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 0, 51));
         jLabel6.setText("Donor Details & Vitals");
 
+        jLabel2.setForeground(new java.awt.Color(51, 0, 51));
         jLabel2.setText("Donor Name");
 
         nameJTextField.setEditable(false);
 
+        jLabel4.setForeground(new java.awt.Color(51, 0, 51));
         jLabel4.setText("Gender");
 
         donorGenderJTextField.setEditable(false);
 
+        jLabel8.setForeground(new java.awt.Color(51, 0, 51));
         jLabel8.setText("Blood Group");
 
         bloodGroupJTextField.setEditable(false);
 
+        jLabel5.setForeground(new java.awt.Color(51, 0, 51));
         jLabel5.setText("Date of Birth");
 
         dateOfBirthJTextField.setEditable(false);
 
+        jLabel7.setForeground(new java.awt.Color(51, 0, 51));
         jLabel7.setText("Contact No.");
 
         contactNoJTextField.setEditable(false);
 
+        jLabel3.setForeground(new java.awt.Color(51, 0, 51));
         jLabel3.setText("Registration Date");
 
         dateOfregJTextField.setEditable(false);
 
+        jLabel1.setForeground(new java.awt.Color(51, 0, 51));
         jLabel1.setText("Height (cms)");
 
         HeightJTextField.setEditable(false);
 
+        jLabel9.setForeground(new java.awt.Color(51, 0, 51));
         jLabel9.setText("Weight (lbs)");
 
         WeightJTextField.setEditable(false);
 
+        jLabel10.setForeground(new java.awt.Color(51, 0, 51));
         jLabel10.setText("Heart Rate");
 
+        jLabel11.setForeground(new java.awt.Color(51, 0, 51));
         jLabel11.setText("Low BP");
 
+        jLabel12.setForeground(new java.awt.Color(51, 0, 51));
         jLabel12.setText("Temperature");
 
+        jLabel13.setForeground(new java.awt.Color(51, 0, 51));
         jLabel13.setText("Assigned Staff");
 
         HeartRateJTextField.setEditable(false);
@@ -170,6 +186,7 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
 
         unitsCollectedJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1" }));
 
+        jLabel16.setForeground(new java.awt.Color(51, 0, 51));
         jLabel16.setText("Expiry");
 
         UpdatejButton.setText("Update");
@@ -186,15 +203,21 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel17.setForeground(new java.awt.Color(51, 0, 51));
         jLabel17.setText("Donor Eligibility");
 
         DonorEligibilityJTextField.setEditable(false);
 
+        jLabel21.setForeground(new java.awt.Color(51, 0, 51));
         jLabel21.setText("Units Collected");
 
+        jLabel14.setForeground(new java.awt.Color(51, 0, 51));
         jLabel14.setText("High BP");
 
         HighBPJTextField.setEditable(false);
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/drop (1) (1) (1).jpg"))); // NOI18N
+        jLabel18.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(51, 0, 51)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -239,7 +262,7 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
                                                 .addComponent(TempJTextField)
                                                 .addComponent(AssStaffJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addComponent(jLabel2))
-                                .addGap(190, 190, 190)
+                                .addGap(58, 58, 58)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel3)
@@ -255,33 +278,39 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
                         .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(unitsCollectedJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(donorGenderJTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(dateOfregJTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(WeightJTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(BloodPressJTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(DonorEligibilityJTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                                .addComponent(dateOfBirthJTextField)
-                                .addComponent(HighBPJTextField, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(donorGenderJTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dateOfregJTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(WeightJTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BloodPressJTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DonorEligibilityJTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                    .addComponent(dateOfBirthJTextField)
+                                    .addComponent(HighBPJTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel18)))
+                        .addGap(0, 192, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(donorGenderJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bloodGroupJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateOfBirthJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(donorGenderJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bloodGroupJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateOfBirthJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)))
+                    .addComponent(jLabel18))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -441,6 +470,7 @@ public class ExtractBloodJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
