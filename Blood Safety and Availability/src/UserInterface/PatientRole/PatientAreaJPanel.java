@@ -46,7 +46,6 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         viewPersonalDetailsJButton = new javax.swing.JButton();
         patientNameLabel = new javax.swing.JLabel();
         helloLabel = new javax.swing.JLabel();
-        viewHistoryJButton = new javax.swing.JButton();
         hospitalNameLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -66,14 +65,6 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         helloLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         helloLabel.setText("Hello,");
 
-        viewHistoryJButton.setForeground(new java.awt.Color(51, 0, 51));
-        viewHistoryJButton.setText("View History");
-        viewHistoryJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewHistoryJButtonActionPerformed(evt);
-            }
-        });
-
         hospitalNameLabel.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         hospitalNameLabel.setText("<value>");
 
@@ -90,9 +81,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(43, 43, 43)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(viewPersonalDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(viewHistoryJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(viewPersonalDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(patientNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -109,9 +98,7 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
                     .addComponent(helloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(viewPersonalDetailsJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(viewHistoryJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -122,19 +109,11 @@ public class PatientAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_viewPersonalDetailsJButtonActionPerformed
 
-    private void viewHistoryJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHistoryJButtonActionPerformed
-        PatientViewHistoryJPanel patientViewHistoryJPanel = new PatientViewHistoryJPanel(userProcessContainer, enterprise, userAcc);
-        userProcessContainer.add("patientViewHistoryJPanel", patientViewHistoryJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_viewHistoryJButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel helloLabel;
     private javax.swing.JLabel hospitalNameLabel;
     private javax.swing.JLabel patientNameLabel;
-    private javax.swing.JButton viewHistoryJButton;
     private javax.swing.JButton viewPersonalDetailsJButton;
     // End of variables declaration//GEN-END:variables
 }
